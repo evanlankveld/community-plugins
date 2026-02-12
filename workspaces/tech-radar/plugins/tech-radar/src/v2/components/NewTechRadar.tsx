@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 The Backstage Authors
+ * Copyright 2026 The Backstage Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import '@backstage/cli/asset-types';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import '@backstage/ui';
+import type { HTMLAttributes } from 'react';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
+import '../../css/tech-radar.css';
+import { NewTechRadarContent } from './NewTechRadarContent';
+
+type Props = {
+  customComponents?: null;
+} & HTMLAttributes<HTMLDivElement>;
+
+export const NewTechRadar = ({ customComponents, ...props }: Props) => {
+  return (
+    <div id="tech-radar-root" {...props}>
+      <NewTechRadarContent />
+    </div>
+  );
+};

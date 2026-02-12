@@ -14,20 +14,10 @@
  * limitations under the License.
  */
 
-import {
-  Content,
-  ContentHeader,
-  Header,
-  Page,
-  SupportButton,
-  Link,
-} from '@backstage/core-components';
-import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
+import { Content, Header, Page } from '@backstage/core-components';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { useState } from 'react';
-import { RadarComponent, type TechRadarComponentProps } from './RadarComponent';
+import { type TechRadarComponentProps } from './RadarComponent';
+import { NewTechRadar } from '../v2/components/NewTechRadar.tsx';
 
 const useStyles = makeStyles(() => ({
   overflowXScroll: {
@@ -64,41 +54,14 @@ export function RadarPage(props: TechRadarPageProps) {
   const {
     title = 'Tech Radar',
     subtitle = 'Pick the recommended technologies for your projects',
-    pageTitle = 'Company Radar',
-    ...componentProps
   } = props;
   const classes = useStyles();
-  const [searchText, setSearchText] = useState('');
 
   return (
     <Page themeId="tool">
       <Header title={title} subtitle={subtitle} />
       <Content className={classes.overflowXScroll}>
-        <ContentHeader title={pageTitle}>
-          <Input
-            id="tech-radar-filter"
-            type="search"
-            placeholder="Filter"
-            onChange={e => setSearchText(e.target.value)}
-          />
-          <SupportButton>
-            <Typography paragraph>
-              This is used for visualizing the official guidelines of different
-              areas of software development such as languages, frameworks,
-              infrastructure and processes. You can find an explanation for the
-              radar at{' '}
-              <Link to="https://opensource.zalando.com/tech-radar/">
-                Zalando Tech Radar
-              </Link>
-              .
-            </Typography>
-          </SupportButton>
-        </ContentHeader>
-        <Grid container spacing={3} direction="row">
-          <Grid item xs={12} sm={6} md={4}>
-            <RadarComponent searchText={searchText} {...componentProps} />
-          </Grid>
-        </Grid>
+        <NewTechRadar />
       </Content>
     </Page>
   );

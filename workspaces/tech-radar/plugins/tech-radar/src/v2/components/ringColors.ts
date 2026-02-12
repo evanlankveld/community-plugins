@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 The Backstage Authors
+ * Copyright 2026 The Backstage Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import '@backstage/cli/asset-types';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import '@backstage/ui';
+import type { RingId } from './types';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<App />);
+export const RING_STYLE = {
+  adopt: 'bg-success',
+  assess: 'bg-warning',
+  hold: 'bg-muted',
+  leave: 'bg-error',
+  trial: 'bg-info',
+} as const satisfies Record<RingId, string>;
+
+export const BRIGHT_RING_STYLE = {
+  adopt: 'success-foreground',
+  assess: 'warning-foreground',
+  hold: 'muted-foreground',
+  leave: 'error-foreground',
+  trial: 'info-foreground',
+} as const satisfies Record<RingId, string>;
