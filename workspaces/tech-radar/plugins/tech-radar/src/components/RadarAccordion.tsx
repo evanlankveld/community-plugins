@@ -101,13 +101,15 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
                   <Info data-testid="info-icon" />
                 </Button>
 
-                <Dialog>
+                <Dialog className="with-custom-css" width={1000}>
                   <DialogHeader>Legend</DialogHeader>
                   <DialogBody>
                     <RingLegend highlighted={ringId} radarData={radarData} />
                   </DialogBody>
                   <DialogFooter>
-                    <Button>Close</Button>
+                    <Button variant="secondary" slot="close">
+                      Close
+                    </Button>
                   </DialogFooter>
                 </Dialog>
               </DialogTrigger>

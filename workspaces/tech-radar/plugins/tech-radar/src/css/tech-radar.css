@@ -106,517 +106,598 @@
   --tw-contain-style:  
 }
 
-#tech-radar-root .pointer-events-none {
+.with-custom-css .pointer-events-none {
   pointer-events: none
 }
 
-#tech-radar-root .\!visible {
+.with-custom-css .\!visible {
   visibility: visible !important
 }
 
-#tech-radar-root .visible {
+.with-custom-css .visible {
   visibility: visible
 }
 
-#tech-radar-root .static {
-  position: static
-}
-
-#tech-radar-root .relative {
+.with-custom-css .relative {
   position: relative
 }
 
-#tech-radar-root .sticky {
+.with-custom-css .sticky {
   position: sticky
 }
 
-#tech-radar-root .top-\[6rem\] {
+.with-custom-css .top-\[6rem\] {
   top: 6rem
 }
 
-#tech-radar-root .mt-0\.5 {
+.with-custom-css .mt-0\.5 {
   margin-top: 0.125rem
 }
 
-#tech-radar-root .block {
+.with-custom-css .mr-2 {
+  margin-right: 0.5rem
+}
+
+.with-custom-css .block {
   display: block
 }
 
-#tech-radar-root .flex {
+.with-custom-css .flex {
   display: flex
 }
 
-#tech-radar-root .inline-flex {
+.with-custom-css .inline-flex {
   display: inline-flex
 }
 
-#tech-radar-root .table {
-  display: table
-}
-
-#tech-radar-root .grid {
-  display: grid
-}
-
-#tech-radar-root .hidden {
+.with-custom-css .hidden {
   display: none
 }
 
-#tech-radar-root .h-10 {
+.with-custom-css .h-10 {
   height: 2.5rem
 }
 
-#tech-radar-root .h-12 {
+.with-custom-css .h-12 {
   height: 3rem
 }
 
-#tech-radar-root .h-5 {
+.with-custom-css .h-5 {
   height: 1.25rem
 }
 
-#tech-radar-root .h-\[calc\(100vh-140px\)\] {
+.with-custom-css .h-\[calc\(100vh-140px\)\] {
   height: calc(100vh - 140px)
 }
 
-#tech-radar-root .h-\[calc\(100vh-270px\)\] {
+.with-custom-css .h-\[calc\(100vh-270px\)\] {
   height: calc(100vh - 270px)
 }
 
-#tech-radar-root .h-auto {
+.with-custom-css .h-auto {
   height: auto
 }
 
-#tech-radar-root .h-full {
+.with-custom-css .h-full {
   height: 100%
 }
 
-#tech-radar-root .w-12 {
+.with-custom-css .h-8 {
+  height: 2rem
+}
+
+.with-custom-css .w-12 {
   width: 3rem
 }
 
-#tech-radar-root .w-5 {
+.with-custom-css .w-5 {
   width: 1.25rem
 }
 
-#tech-radar-root .w-80 {
+.with-custom-css .w-80 {
   width: 20rem
 }
 
-#tech-radar-root .w-auto {
+.with-custom-css .w-auto {
   width: auto
 }
 
-#tech-radar-root .w-full {
+.with-custom-css .w-full {
   width: 100%
 }
 
-#tech-radar-root .max-w-80 {
+.with-custom-css .w-40 {
+  width: 10rem
+}
+
+.with-custom-css .max-w-80 {
   max-width: 20rem
 }
 
-#tech-radar-root .flex-1 {
+.with-custom-css .flex-1 {
   flex: 1 1 0%
 }
 
-#tech-radar-root .basis-1\/3 {
+.with-custom-css .grow {
+  flex-grow: 1
+}
+
+.with-custom-css .basis-1\/3 {
   flex-basis: 33.333333%
 }
 
-#tech-radar-root .basis-2\/3 {
+.with-custom-css .basis-2\/3 {
   flex-basis: 66.666667%
 }
 
-#tech-radar-root .basis-\[13\%\] {
+.with-custom-css .basis-\[13\%\] {
   flex-basis: 13%
 }
 
-#tech-radar-root .rotate-180 {
+.with-custom-css .rotate-180 {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
-#tech-radar-root .transform {
+.with-custom-css .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
-#tech-radar-root .cursor-pointer {
+.with-custom-css .cursor-pointer {
   cursor: pointer
 }
 
-#tech-radar-root .select-none {
+.with-custom-css .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none
 }
 
-#tech-radar-root .resize {
-  resize: both
-}
-
-#tech-radar-root .flex-col {
+.with-custom-css .flex-col {
   flex-direction: column
 }
 
-#tech-radar-root .items-start {
+.with-custom-css .items-start {
   align-items: flex-start
 }
 
-#tech-radar-root .items-center {
+.with-custom-css .items-center {
   align-items: center
 }
 
-#tech-radar-root .justify-end {
+.with-custom-css .justify-start {
+  justify-content: flex-start
+}
+
+.with-custom-css .justify-end {
   justify-content: flex-end
 }
 
-#tech-radar-root .justify-between {
+.with-custom-css .justify-between {
   justify-content: space-between
 }
 
-#tech-radar-root .gap-1\.5 {
+.with-custom-css .gap-1\.5 {
   gap: 0.375rem
 }
 
-#tech-radar-root .gap-2 {
+.with-custom-css .gap-2 {
   gap: 0.5rem
 }
 
-#tech-radar-root .gap-4 {
+.with-custom-css .gap-4 {
   gap: 1rem
 }
 
-#tech-radar-root .gap-5 {
+.with-custom-css .gap-5 {
   gap: 1.25rem
 }
 
-#tech-radar-root :is(.space-y-1\.5 > :not([hidden]) ~ :not([hidden])) {
+.with-custom-css :is(.space-y-1\.5 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.375rem * var(--tw-space-y-reverse))
 }
 
-#tech-radar-root .rounded {
+.with-custom-css .rounded {
   border-radius: 0.25rem
 }
 
-#tech-radar-root .border {
+.with-custom-css .border {
   border-width: 1px
 }
 
-#tech-radar-root .border-b {
+.with-custom-css .border-0 {
+  border-width: 0px
+}
+
+.with-custom-css .border-b {
   border-bottom-width: 1px
 }
 
-#tech-radar-root .border-border {
+.with-custom-css .border-solid {
+  border-style: solid
+}
+
+.with-custom-css .border-border {
   border-color: var(--bui-border)
 }
 
-#tech-radar-root .border-gray-300 {
+.with-custom-css .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity, 1))
 }
 
-#tech-radar-root .border-muted {
+.with-custom-css .border-muted {
   border-color: var(--bui-bg-surface-1)
 }
 
-#tech-radar-root .bg-background {
+.with-custom-css .border-muted-foreground {
+  border-color: var(--bui-fg-secondary)
+}
+
+.with-custom-css .border-red-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity, 1))
+}
+
+.with-custom-css .bg-background {
   background-color: var(--bui-bg-surface-0)
 }
 
-#tech-radar-root .bg-card {
+.with-custom-css .bg-card {
   background-color: var(--bui-bg-surface-1)
 }
 
-#tech-radar-root .bg-error {
+.with-custom-css .bg-error {
   background-color: var(--bui-bg-danger)
 }
 
-#tech-radar-root .bg-info {
+.with-custom-css .bg-info {
   background-color: var(--bui-bg-solid)
 }
 
-#tech-radar-root .bg-muted {
+.with-custom-css .bg-muted {
   background-color: var(--bui-bg-surface-1)
 }
 
-#tech-radar-root .bg-success {
+.with-custom-css .bg-success {
   background-color: var(--bui-bg-success)
 }
 
-#tech-radar-root .bg-warning {
+.with-custom-css .bg-warning {
   background-color: var(--bui-bg-warning)
 }
 
-#tech-radar-root .fill-card {
+.with-custom-css .bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+}
+
+.with-custom-css .fill-card {
   fill: var(--bui-bg-surface-1)
 }
 
-#tech-radar-root .fill-muted-foreground {
+.with-custom-css .fill-muted-foreground {
   fill: var(--bui-fg-secondary)
 }
 
-#tech-radar-root .fill-slate-600 {
+.with-custom-css .fill-slate-600 {
   fill: #475569
 }
 
-#tech-radar-root .fill-white {
+.with-custom-css .fill-white {
   fill: #fff
 }
 
-#tech-radar-root .stroke-slate-200 {
+.with-custom-css .stroke-slate-200 {
   stroke: #e2e8f0
 }
 
-#tech-radar-root .stroke-slate-400 {
+.with-custom-css .stroke-slate-400 {
   stroke: #94a3b8
 }
 
-#tech-radar-root .p-0 {
+.with-custom-css .p-0 {
   padding: 0px
 }
 
-#tech-radar-root .p-0\.5 {
+.with-custom-css .p-0\.5 {
   padding: 0.125rem
 }
 
-#tech-radar-root .p-2 {
+.with-custom-css .p-2 {
   padding: 0.5rem
 }
 
-#tech-radar-root .p-4 {
+.with-custom-css .p-4 {
   padding: 1rem
 }
 
-#tech-radar-root .py-2 {
+.with-custom-css .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem
 }
 
-#tech-radar-root .pb-2 {
+.with-custom-css .pb-2 {
   padding-bottom: 0.5rem
 }
 
-#tech-radar-root .align-middle {
+.with-custom-css .text-left {
+  text-align: left
+}
+
+.with-custom-css .align-middle {
   vertical-align: middle
 }
 
-#tech-radar-root .font-sans {
+.with-custom-css .font-sans {
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 }
 
-#tech-radar-root .text-\[12px\] {
+.with-custom-css .text-\[12px\] {
   font-size: 12px
 }
 
-#tech-radar-root .text-lg {
+.with-custom-css .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem
 }
 
-#tech-radar-root .text-sm {
+.with-custom-css .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem
 }
 
-#tech-radar-root .text-xs {
+.with-custom-css .text-xs {
   font-size: 0.75rem;
   line-height: 1rem
 }
 
-#tech-radar-root .font-light {
+.with-custom-css .font-light {
   font-weight: 300
 }
 
-#tech-radar-root .font-medium {
+.with-custom-css .font-medium {
   font-weight: 500
 }
 
-#tech-radar-root .font-semibold {
+.with-custom-css .font-semibold {
   font-weight: 600
 }
 
-#tech-radar-root .uppercase {
+.with-custom-css .font-normal {
+  font-weight: 400
+}
+
+.with-custom-css .uppercase {
   text-transform: uppercase
 }
 
-#tech-radar-root .capitalize {
+.with-custom-css .capitalize {
   text-transform: capitalize
 }
 
-#tech-radar-root .proportional-nums {
-  --tw-numeric-spacing: proportional-nums;
-  font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction)
-}
-
-#tech-radar-root .leading-relaxed {
+.with-custom-css .leading-relaxed {
   line-height: 1.625
 }
 
-#tech-radar-root .tracking-\[0\.4em\] {
+.with-custom-css .tracking-\[0\.4em\] {
   letter-spacing: 0.4em
 }
 
-#tech-radar-root .tracking-tight {
+.with-custom-css .tracking-tight {
   letter-spacing: -0.025em
 }
 
-#tech-radar-root .text-foreground {
+.with-custom-css .text-foreground {
   color: var(--bui-fg-primary)
 }
 
-#tech-radar-root .text-muted-foreground {
+.with-custom-css .text-muted-foreground {
   color: var(--bui-fg-secondary)
 }
 
-#tech-radar-root .opacity-0 {
+.with-custom-css .opacity-0 {
   opacity: 0
 }
 
-#tech-radar-root .opacity-10 {
+.with-custom-css .opacity-10 {
   opacity: 0.1
 }
 
-#tech-radar-root .opacity-100 {
+.with-custom-css .opacity-100 {
   opacity: 1
 }
 
-#tech-radar-root .opacity-30 {
+.with-custom-css .opacity-30 {
   opacity: 0.3
 }
 
-#tech-radar-root .opacity-80 {
+.with-custom-css .opacity-80 {
   opacity: 0.8
 }
 
-#tech-radar-root .shadow-sm {
+.with-custom-css .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
 
-#tech-radar-root .\!ring {
+.with-custom-css .\!ring {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color) !important;
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color) !important;
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000) !important
 }
 
-#tech-radar-root .ring {
+.with-custom-css .ring {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
 }
 
-#tech-radar-root .filter {
+.with-custom-css .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
-#tech-radar-root .transition-\[position\2c width\2c height\] {
+.with-custom-css .transition-\[position\2c width\2c height\] {
   transition-property: position,width,height;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms
 }
 
-#tech-radar-root .transition-all {
+.with-custom-css .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms
 }
 
-#tech-radar-root .transition-colors {
+.with-custom-css .transition-colors {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms
 }
 
-#tech-radar-root .transition-opacity {
+.with-custom-css .transition-opacity {
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms
 }
 
-#tech-radar-root .duration-200 {
+.with-custom-css .duration-200 {
   transition-duration: 200ms
 }
 
-#tech-radar-root .duration-300 {
+.with-custom-css .duration-300 {
   transition-duration: 300ms
 }
 
-#tech-radar-root .duration-500 {
+.with-custom-css .duration-500 {
   transition-duration: 500ms
 }
 
-#tech-radar-root .ease-in-out {
+.with-custom-css .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 }
 
-#tech-radar-root .hover\:bg-transparent:hover {
+.with-custom-css .hover\:bg-transparent:hover {
   background-color: transparent
 }
 
-#tech-radar-root .hover\:fill-blue-100:hover {
+.with-custom-css .hover\:bg-muted:hover {
+  background-color: var(--bui-bg-surface-1)
+}
+
+.with-custom-css .hover\:fill-blue-100:hover {
   fill: #dbeafe
 }
 
-#tech-radar-root .hover\:stroke-blue-300:hover {
+.with-custom-css .hover\:stroke-blue-300:hover {
   stroke: #93c5fd
 }
 
-#tech-radar-root .fullscreen\:overflow-y-auto:fullscreen {
+.with-custom-css .fullscreen\:overflow-y-auto:fullscreen {
   overflow-y: auto
 }
 
-#tech-radar-root .fullscreen\:bg-background:fullscreen {
+.with-custom-css .fullscreen\:bg-background:fullscreen {
   background-color: var(--bui-bg-surface-0)
 }
 
-#tech-radar-root .fullscreen\:p-10:fullscreen {
+.with-custom-css .fullscreen\:p-10:fullscreen {
   padding: 2.5rem
 }
 
-#tech-radar-root :is(.group:fullscreen .group-fullscreen\:top-\[2rem\]) {
+.with-custom-css :is(.group:fullscreen .group-fullscreen\:top-\[2rem\]) {
   top: 2rem
 }
 
-#tech-radar-root :is(.group:fullscreen .group-fullscreen\:block) {
+.with-custom-css :is(.group:fullscreen .group-fullscreen\:block) {
   display: block
 }
 
-#tech-radar-root :is(.group:fullscreen .group-fullscreen\:hidden) {
+.with-custom-css :is(.group:fullscreen .group-fullscreen\:hidden) {
   display: none
 }
 
-#tech-radar-root :is(.group:fullscreen .group-fullscreen\:h-\[calc\(100vh-140px\)\]) {
+.with-custom-css :is(.group:fullscreen .group-fullscreen\:h-\[calc\(100vh-140px\)\]) {
   height: calc(100vh - 140px)
 }
 
 @media (min-width: 640px) {
-  #tech-radar-root .sm\:gap-3 {
+  .with-custom-css .sm\:gap-3 {
     gap: 0.75rem
   }
 }
 
-#tech-radar-root .\[\&\:has\(\[data-state\=open\]\)\]\:bg-error:has([data-state=open]) {
+.with-custom-css .\[\&\:has\(\[data-state\=open\]\)\]\:bg-error:has([data-state=open]) {
   background-color: var(--bui-bg-danger)
 }
 
-#tech-radar-root .\[\&\:has\(\[data-state\=open\]\)\]\:bg-info:has([data-state=open]) {
+.with-custom-css .\[\&\:has\(\[data-state\=open\]\)\]\:bg-info:has([data-state=open]) {
   background-color: var(--bui-bg-solid)
 }
 
-#tech-radar-root .\[\&\:has\(\[data-state\=open\]\)\]\:bg-success:has([data-state=open]) {
+.with-custom-css .\[\&\:has\(\[data-state\=open\]\)\]\:bg-success:has([data-state=open]) {
   background-color: var(--bui-bg-success)
 }
 
-#tech-radar-root .\[\&\:has\(\[data-state\=open\]\)\]\:bg-warning:has([data-state=open]) {
+.with-custom-css .\[\&\:has\(\[data-state\=open\]\)\]\:bg-warning:has([data-state=open]) {
   background-color: var(--bui-bg-warning)
 }
 
-#tech-radar-root :is(.\[\&_svg\]\:h-\[22px\] svg) {
+.with-custom-css :is(.\[\&\>\*\]\:w-full>*) {
+  width: 100%
+}
+
+.with-custom-css :is(.\[\&_\*\]\:w-full *) {
+  width: 100%
+}
+
+.with-custom-css :is(.\[\&_\.bui-ButtonContent\]\:justify-start .bui-ButtonContent) {
+  justify-content: flex-start
+}
+
+.with-custom-css :is(.\[\&_\.bui-ButtonContent\]\:justify-between .bui-ButtonContent) {
+  justify-content: space-between
+}
+
+.with-custom-css :is(.\[\&_\.bui-MenuItemContent\]\:flex .bui-MenuItemContent) {
+  display: flex
+}
+
+.with-custom-css :is(.\[\&_\.bui-MenuItemContent\]\:w-full .bui-MenuItemContent) {
+  width: 100%
+}
+
+.with-custom-css :is(.\[\&_\.bui-MenuItemContent\]\:items-center .bui-MenuItemContent) {
+  align-items: center
+}
+
+.with-custom-css :is(.\[\&_\.bui-MenuItemContent\]\:justify-between .bui-MenuItemContent) {
+  justify-content: space-between
+}
+
+.with-custom-css :is(.\[\&_\.bui-MenuItemContent\]\:gap-4 .bui-MenuItemContent) {
+  gap: 1rem
+}
+
+.with-custom-css :is(.\[\&_\.bui-MenuItemWrapper\]\:w-full .bui-MenuItemWrapper) {
+  width: 100%
+}
+
+.with-custom-css :is(.\[\&_\.bui-SearchFieldInputWrapper\]\:h-10 .bui-SearchFieldInputWrapper) {
+  height: 2.5rem
+}
+
+.with-custom-css .\[\&_\]\:w-full {
+  width: 100%
+}
+
+.with-custom-css :is(.\[\&_svg\]\:h-\[22px\] svg) {
   height: 22px
 }
 
-#tech-radar-root :is(.\[\&_svg\]\:w-\[22px\] svg) {
+.with-custom-css :is(.\[\&_svg\]\:w-\[22px\] svg) {
   width: 22px
 }

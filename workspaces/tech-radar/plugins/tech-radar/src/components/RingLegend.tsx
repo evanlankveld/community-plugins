@@ -16,6 +16,7 @@
 import type { TechRadarLoaderResponse } from '@backstage-community/plugin-tech-radar-common';
 
 import type { RingId } from './types';
+import content from './content.json';
 import { BRIGHT_RING_STYLE } from './ringColors';
 import { Radar } from './RadarPlot/Radar';
 import { cn } from '../util/cn';
@@ -27,7 +28,7 @@ type Props = Readonly<{
 
 export const RingLegend = (props: Props) => {
   const { highlighted } = props;
-  const orderedContent: { name: string; text: string }[] = [];
+  const orderedContent = [...content];
 
   if (highlighted) {
     const highlightIndex = orderedContent.findIndex(

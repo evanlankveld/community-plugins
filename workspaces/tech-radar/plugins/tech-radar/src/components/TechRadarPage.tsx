@@ -47,7 +47,7 @@ export const TechRadarPage = ({
         <ComponentContext.Provider
           value={{ ...defaultComponents, ...customComponents }}
         >
-          <div id="tech-radar-root" {...props}>
+          <div className="with-custom-css" {...props}>
             <TechRadarContent />
           </div>
         </ComponentContext.Provider>

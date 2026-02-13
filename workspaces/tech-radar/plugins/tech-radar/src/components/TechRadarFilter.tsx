@@ -17,8 +17,10 @@ import { useMemo } from 'react';
 
 import type { TechRadarLoaderResponse } from '@backstage-community/plugin-tech-radar-common';
 import { useComponents } from './hooks/useComponents';
+import { ChevronDown } from 'lucide-react';
 
 type Option = Readonly<{
+  category: string;
   label: string;
   value: string;
 }>;
@@ -42,11 +44,13 @@ const buildOptions = (data: TechRadarLoaderResponse): Option[] => {
   const options = [] as Option[];
 
   const ringOptions = data.rings.map(item => ({
+    category: 'Ring',
     label: capitalize(item.name),
     value: `ring:${item.id}`,
   }));
 
   const quadrantsOptions = data.quadrants.map(item => ({
+    category: 'Quadrant',
     label: capitalize(item.name),
     value: `quadrant:${item.id}`,
   }));
@@ -78,11 +82,16 @@ export const TechRadarFilter = (props: Props) => {
   return (
     <div className={className}>
       <MenuTrigger>
-        <Button aria-label="Filter" variant="secondary">
+        <Button
+          aria-label="Filter"
+          variant="tertiary"
+          className="bg-card border border-border border-solid w-40 h-10 [&_.bui-ButtonContent]:justify-between font-normal"
+        >
           {triggerLabel}
+          <ChevronDown size={12} className="text-muted-foreground" />
         </Button>
         <MenuAutocompleteListbox
-          className="h-full"
+          className="with-custom-css"
           onSelectionChange={keys =>
             handleChange(Array.from(keys).map(key => String(key)))
           }
@@ -91,8 +100,16 @@ export const TechRadarFilter = (props: Props) => {
           selectionMode="multiple"
         >
           {options.map(option => (
-            <MenuListBoxItem key={option.value} id={option.value}>
-              {option.label}
+            <MenuListBoxItem
+              key={option.value}
+              id={option.value}
+              textValue={option.label}
+              className="w-full [&_.bui-MenuItemWrapper]:w-full [&_.bui-MenuItemContent]:flex [&_.bui-MenuItemContent]:items-center [&_.bui-MenuItemContent]:w-full"
+            >
+              <span className="grow mr-2">{option.label}</span>
+              <span className="text-muted-foreground text-xs">
+                {option.category}
+              </span>
             </MenuListBoxItem>
           ))}
         </MenuAutocompleteListbox>

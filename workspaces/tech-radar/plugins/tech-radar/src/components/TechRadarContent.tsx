@@ -120,51 +120,52 @@ export const TechRadarContent = () => {
           )}
           ref={ref}
         >
-          <div className="flex items-center justify-between gap-2 border-b pb-2">
+          <div className="flex items-center justify-between gap-2 border-0 border-b border-solid border-border pb-2 grow">
             <SearchField
-              className="h-10 max-w-80"
+              className="[&_.bui-SearchFieldInputWrapper]:h-10 max-w-80"
               onChange={value => onSearch(value)}
               placeholder="Search"
               type="text"
             />
-            <TechRadarFilter
-              className="h-10 w-80"
-              handleChange={selected => {
-                setSelectedBlipId('');
-                setSelectedFilters(selected);
-                setFilteredEntries(
-                  filterEntries({ data, searchTerm, selectedFilters }),
-                );
-              }}
-              placeholder="Select filter"
-              radarData={data}
-              selected={selectedFilters}
-            />
-            <Button
-              className="h-10 w-12 p-0.5 [&_svg]:h-[22px] [&_svg]:w-[22px]"
-              variant="secondary"
-              onClick={() => {
-                return document.fullscreenElement
-                  ? document.exitFullscreen()
-                  : ref.current?.requestFullscreen();
-              }}
-            >
-              <Minimize className="hidden h-5 w-5 group-fullscreen:block" />
-              <Maximize className="block h-5 w-5 group-fullscreen:hidden" />
-            </Button>
-            <QuadrantFilterButtons
-              className="h-12 w-auto"
-              onSelect={q => {
-                setSelectedBlipId('');
-                if (selectedQuadrant === q.id) {
-                  setSelectedQuadrant(undefined);
-                } else {
-                  setSelectedQuadrant(q.id);
-                }
-              }}
-              quadrants={data.quadrants}
-              selected={selectedQuadrant}
-            />
+            <div className="flex items-center gap-2">
+              <TechRadarFilter
+                handleChange={selected => {
+                  setSelectedBlipId('');
+                  setSelectedFilters(selected);
+                  setFilteredEntries(
+                    filterEntries({ data, searchTerm, selectedFilters }),
+                  );
+                }}
+                placeholder="Select filter"
+                radarData={data}
+                selected={selectedFilters}
+              />
+              <Button
+                className="h-10 w-12 p-0.5 [&_svg]:h-[22px] [&_svg]:w-[22px] bg-card border border-border border-solid"
+                variant="tertiary"
+                onClick={() => {
+                  return document.fullscreenElement
+                    ? document.exitFullscreen()
+                    : ref.current?.requestFullscreen();
+                }}
+              >
+                <Minimize className="hidden h-5 w-5 group-fullscreen:block" />
+                <Maximize className="block h-5 w-5 group-fullscreen:hidden" />
+              </Button>
+              <QuadrantFilterButtons
+                className="h-10 w-auto"
+                onSelect={q => {
+                  setSelectedBlipId('');
+                  if (selectedQuadrant === q.id) {
+                    setSelectedQuadrant(undefined);
+                  } else {
+                    setSelectedQuadrant(q.id);
+                  }
+                }}
+                quadrants={data.quadrants}
+                selected={selectedQuadrant}
+              />
+            </div>
           </div>
           <div className="flex w-full gap-2">
             <div className="basis-1/3">
