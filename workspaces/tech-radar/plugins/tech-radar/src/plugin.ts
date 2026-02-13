@@ -24,6 +24,7 @@ import {
   discoveryApiRef,
   fetchApiRef,
   identityApiRef,
+  createComponentExtension,
 } from '@backstage/core-plugin-api';
 
 export const rootRouteRef = createRouteRef({
@@ -71,7 +72,23 @@ export const techRadarPlugin = createPlugin({
 export const TechRadarPage = techRadarPlugin.provide(
   createRoutableExtension({
     name: 'TechRadarPage',
-    component: () => import('./components/RadarPage').then(m => m.RadarPage),
+    component: () =>
+      import('./components/TechRadarPage').then(m => m.TechRadarPage),
     mountPoint: rootRouteRef,
+  }),
+);
+
+/**
+ * Main Tech Radar Content
+ *
+ * @public
+ */
+export const TechRadarContent = techRadarPlugin.provide(
+  createComponentExtension({
+    name: 'TechRadarContent',
+    component: {
+      lazy: async () =>
+        import('./components/TechRadarContent').then(m => m.TechRadarContent),
+    },
   }),
 );

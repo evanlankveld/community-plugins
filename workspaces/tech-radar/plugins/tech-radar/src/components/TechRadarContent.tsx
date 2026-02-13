@@ -32,7 +32,7 @@ import { TrendLegend } from './TrendLegend';
 import { useComponents } from './hooks/useComponents.ts';
 import { cn } from '../util/cn';
 
-export const NewTechRadarContent = () => {
+export const TechRadarContent = () => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedQuadrant, setSelectedQuadrant] = useState<string | undefined>(

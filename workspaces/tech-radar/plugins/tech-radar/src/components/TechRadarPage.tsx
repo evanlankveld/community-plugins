@@ -14,27 +14,44 @@
  * limitations under the License.
  */
 import type { HTMLAttributes } from 'react';
+import { Content, Header, Page } from '@backstage/core-components';
 
-import '../../css/tech-radar.css';
-import { NewTechRadarContent } from './NewTechRadarContent';
+import '../css/tech-radar.css';
+import { TechRadarContent } from './TechRadarContent';
 import {
   ComponentContext,
   ComponentContextProps,
   defaultComponents,
 } from './hooks/useComponents';
 
-type Props = {
+export type TechRadarPageProps = {
   customComponents?: Partial<ComponentContextProps>;
+  pageTitle?: string;
+  title?: string;
+  subtitle?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const NewTechRadar = ({ customComponents = {}, ...props }: Props) => {
+export const TechRadarPage = ({
+  customComponents = {},
+  ...props
+}: TechRadarPageProps) => {
+  const {
+    title = 'Tech Radar',
+    subtitle = 'Pick the recommended technologies for your projects',
+  } = props;
+
   return (
-    <ComponentContext.Provider
-      value={{ ...defaultComponents, ...customComponents }}
-    >
-      <div id="tech-radar-root" {...props}>
-        <NewTechRadarContent />
-      </div>
-    </ComponentContext.Provider>
+    <Page themeId="tool">
+      <Header title={title} subtitle={subtitle} />
+      <Content>
+        <ComponentContext.Provider
+          value={{ ...defaultComponents, ...customComponents }}
+        >
+          <div id="tech-radar-root" {...props}>
+            <TechRadarContent />
+          </div>
+        </ComponentContext.Provider>
+      </Content>
+    </Page>
   );
 };
