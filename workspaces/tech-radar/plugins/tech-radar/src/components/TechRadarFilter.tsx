@@ -69,7 +69,7 @@ export const TechRadarFilter = (props: Props) => {
 
   const triggerLabel = useMemo(() => {
     if (selected.length === 0) {
-      return <span className="text-muted-foreground">Select filter</span>;
+      return <span className="text-muted-foreground">{placeholder}</span>;
     }
 
     if (selected.length === 1) {
@@ -77,7 +77,7 @@ export const TechRadarFilter = (props: Props) => {
     }
 
     return `${selected.length} selected`;
-  }, [options, selected]);
+  }, [placeholder, options, selected]);
 
   return (
     <div className={className}>
@@ -95,7 +95,6 @@ export const TechRadarFilter = (props: Props) => {
           onSelectionChange={keys =>
             handleChange(Array.from(keys).map(key => String(key)))
           }
-          placeholder={placeholder}
           selectedKeys={selected}
           selectionMode="multiple"
         >
