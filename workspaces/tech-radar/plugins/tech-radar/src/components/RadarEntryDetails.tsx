@@ -13,95 +13,99 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { RadarEntry } from '@backstage-community/plugin-tech-radar-common';
-// import { MovedState } from '@backstage-community/plugin-tech-radar-common';
-// import { DateTime } from 'luxon';
-// import { ArrowDown, ArrowUp, CircleDot } from 'lucide-react';
+import {
+  MovedState,
+  type RadarEntry,
+} from '@backstage-community/plugin-tech-radar-common';
 import { useComponents } from './hooks/useComponents';
+import { ArrowDown, ArrowUp, CircleDot } from 'lucide-react';
+import { DateTime } from 'luxon';
 
 type Props = Readonly<{
   onOpenChange?: (open: boolean) => void;
-  open: boolean;
-  radarEntry: RadarEntry;
+  entry?: RadarEntry;
 }>;
 
 export const RadarEntryDetails = (props: Props) => {
-  const { onOpenChange, open, radarEntry } = props;
-  const { Dialog, DialogBody, DialogFooter, DialogHeader, Link } =
+  const { onOpenChange, entry } = props;
+  const { Button, Dialog, DialogBody, DialogFooter, DialogHeader, Link } =
     useComponents();
 
   const latestDescription =
-    radarEntry.description ??
-    radarEntry.timeline.reduce((latest, current) => {
+    entry?.description ??
+    entry?.timeline.reduce((latest, current) => {
       return current.date > latest.date ? current : latest;
     }).description;
 
-  // const snapshots = radarEntry.timeline.sort(
-  //   (t1, t2) => t1.date.getTime() - t2.date.getTime(),
-  // );
-  //
-  // const movedInDirection = (movedState?: MovedState) => {
-  //   const icon = (() => {
-  //     switch (movedState) {
-  //       case MovedState.Down:
-  //         return <ArrowDown size={16} />;
-  //       case MovedState.Up:
-  //         return <ArrowUp size={16} />;
-  //       default:
-  //         return <CircleDot size={16} />;
-  //     }
-  //   })();
-  //
-  //   return <div className={'flex items-center'}>{icon}</div>;
-  // };
+  const snapshots =
+    entry?.timeline.sort((t1, t2) => t1.date.getTime() - t2.date.getTime()) ??
+    [];
+
+  const movedInDirection = (movedState?: MovedState) => {
+    const icon = (() => {
+      switch (movedState) {
+        case MovedState.Down:
+          return <ArrowDown size={16} />;
+        case MovedState.Up:
+          return <ArrowUp size={16} />;
+        default:
+          return <CircleDot size={16} />;
+      }
+    })();
+
+    return <div className="flex items-center">{icon}</div>;
+  };
+
+  const thStyles = 'font-semibold text-left';
 
   return (
-    <Dialog onOpenChange={onOpenChange} isOpen={open}>
-      <DialogHeader>{radarEntry.title}</DialogHeader>
-      <div className="flex flex-col gap-4 p-4">
-        {latestDescription && (
-          <DialogBody>
+    <Dialog
+      onOpenChange={onOpenChange}
+      isOpen={!!entry}
+      width={900}
+      className="with-custom-css"
+    >
+      <DialogHeader>{entry?.title}</DialogHeader>
+      <DialogBody>
+        <div className="flex flex-col gap-4 p-4">
+          {latestDescription && (
             <div className="text-sm text-foreground">{latestDescription}</div>
+          )}
 
-            {/* <Table>*/}
-            {/*  <TableHeader>*/}
-            {/*    <TableRow className={'hover:bg-transparent'}>*/}
-            {/*      <TableHead className={'font-semibold'}>*/}
-            {/*        {'Moved in direction'}*/}
-            {/*      </TableHead>*/}
-            {/*      <TableHead className={'font-semibold'}>*/}
-            {/*        {'Moved to ring'}*/}
-            {/*      </TableHead>*/}
-            {/*      <TableHead className={'font-semibold'}>*/}
-            {/*        {'Moved on date'}*/}
-            {/*      </TableHead>*/}
-            {/*      <TableHead className={'font-semibold'}>*/}
-            {/*        {'Description'}*/}
-            {/*      </TableHead>*/}
-            {/*    </TableRow>*/}
-            {/*  </TableHeader>*/}
-            {/*  <TableBody>*/}
-            {/*    {snapshots.map((snapshot, idx) => {*/}
-            {/*      return (*/}
-            {/*        <TableRow className={'hover:bg-transparent'} key={idx}>*/}
-            {/*          <TableCell>{movedInDirection(snapshot.moved)}</TableCell>*/}
-            {/*          <TableCell>{snapshot.ringId}</TableCell>*/}
-            {/*          <TableCell>*/}
-            {/*            {DateTime.fromJSDate(snapshot.date).toISODate()}*/}
-            {/*          </TableCell>*/}
-            {/*          <TableCell>{snapshot.description}</TableCell>*/}
-            {/*        </TableRow>*/}
-            {/*      );*/}
-            {/*    })}*/}
-            {/*  </TableBody>*/}
-            {/* </Table>*/}
-          </DialogBody>
-        )}
-      </div>
+          <table>
+            <thead>
+              <tr className="hover:bg-transparent">
+                <th className={thStyles}>Moved in direction</th>
+                <th className={thStyles}>Moved to ring</th>
+                <th className={thStyles}>Moved on date</th>
+                <th className={thStyles}>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {snapshots.map((snapshot, idx) => {
+                return (
+                  <tr className="hover:bg-transparent" key={idx}>
+                    <td>{movedInDirection(snapshot.moved)}</td>
+                    <td>{snapshot.ringId}</td>
+                    <td>{DateTime.fromJSDate(snapshot.date).toISODate()}</td>
+                    <td>{snapshot.description}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </DialogBody>
       <DialogFooter>
-        <Link className="capitalize" href={radarEntry.url ?? '#'}>
-          Learn more
-        </Link>
+        {entry?.url ? (
+          <Link className="capitalize" href={entry.url}>
+            Learn more
+          </Link>
+        ) : null}
+
+        <Button variant="secondary" slot="close">
+          Close
+        </Button>
       </DialogFooter>
     </Dialog>
   );

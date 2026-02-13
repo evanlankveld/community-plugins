@@ -134,16 +134,16 @@
   margin: 0px
 }
 
-.with-custom-css .mt-0\.5 {
-  margin-top: 0.125rem
+.with-custom-css .mb-4 {
+  margin-bottom: 1rem
 }
 
 .with-custom-css .mr-2 {
   margin-right: 0.5rem
 }
 
-.with-custom-css .mb-0 {
-  margin-bottom: 0px
+.with-custom-css .mt-0\.5 {
+  margin-top: 0.125rem
 }
 
 .with-custom-css .block {
@@ -158,16 +158,16 @@
   display: inline-flex
 }
 
+.with-custom-css .table {
+  display: table
+}
+
 .with-custom-css .hidden {
   display: none
 }
 
 .with-custom-css .h-10 {
   height: 2.5rem
-}
-
-.with-custom-css .h-12 {
-  height: 3rem
 }
 
 .with-custom-css .h-5 {
@@ -186,14 +186,6 @@
   height: auto
 }
 
-.with-custom-css .h-full {
-  height: 100%
-}
-
-.with-custom-css .h-8 {
-  height: 2rem
-}
-
 .with-custom-css .w-12 {
   width: 3rem
 }
@@ -202,8 +194,8 @@
   width: 1.25rem
 }
 
-.with-custom-css .w-80 {
-  width: 20rem
+.with-custom-css .w-60 {
+  width: 15rem
 }
 
 .with-custom-css .w-auto {
@@ -212,14 +204,6 @@
 
 .with-custom-css .w-full {
   width: 100%
-}
-
-.with-custom-css .w-40 {
-  width: 10rem
-}
-
-.with-custom-css .w-60 {
-  width: 15rem
 }
 
 .with-custom-css .max-w-80 {
@@ -277,16 +261,16 @@
   align-items: center
 }
 
-.with-custom-css .justify-start {
-  justify-content: flex-start
-}
-
 .with-custom-css .justify-end {
   justify-content: flex-end
 }
 
 .with-custom-css .justify-between {
   justify-content: space-between
+}
+
+.with-custom-css .gap-1 {
+  gap: 0.25rem
 }
 
 .with-custom-css .gap-1\.5 {
@@ -303,14 +287,6 @@
 
 .with-custom-css .gap-5 {
   gap: 1.25rem
-}
-
-.with-custom-css .gap-1 {
-  gap: 0.25rem
-}
-
-.with-custom-css .gap-0\.5 {
-  gap: 0.125rem
 }
 
 .with-custom-css :is(.space-y-1\.5 > :not([hidden]) ~ :not([hidden])) {
@@ -352,15 +328,6 @@
   border-color: var(--bui-bg-surface-1)
 }
 
-.with-custom-css .border-muted-foreground {
-  border-color: var(--bui-fg-secondary)
-}
-
-.with-custom-css .border-red-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(239 68 68 / var(--tw-border-opacity, 1))
-}
-
 .with-custom-css .bg-background {
   background-color: var(--bui-bg-surface-0)
 }
@@ -387,11 +354,6 @@
 
 .with-custom-css .bg-warning {
   background-color: var(--bui-bg-warning)
-}
-
-.with-custom-css .bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
 }
 
 .with-custom-css .fill-card {
@@ -443,14 +405,6 @@
   padding-bottom: 0.5rem
 }
 
-.with-custom-css .pt-2 {
-  padding-top: 0.5rem
-}
-
-.with-custom-css .pt-6 {
-  padding-top: 1.5rem
-}
-
 .with-custom-css .pt-4 {
   padding-top: 1rem
 }
@@ -494,12 +448,12 @@
   font-weight: 500
 }
 
-.with-custom-css .font-semibold {
-  font-weight: 600
-}
-
 .with-custom-css .font-normal {
   font-weight: 400
+}
+
+.with-custom-css .font-semibold {
+  font-weight: 600
 }
 
 .with-custom-css .uppercase {
@@ -528,6 +482,10 @@
 
 .with-custom-css .text-muted-foreground {
   color: var(--bui-fg-secondary)
+}
+
+.with-custom-css .text-primary {
+  color: var(--bui-bg-solid)
 }
 
 .with-custom-css .opacity-0 {
@@ -616,10 +574,6 @@
   background-color: transparent
 }
 
-.with-custom-css .hover\:bg-muted:hover {
-  background-color: var(--bui-bg-surface-1)
-}
-
 .with-custom-css .hover\:fill-blue-100:hover {
   fill: #dbeafe
 }
@@ -678,18 +632,6 @@
   background-color: var(--bui-bg-warning)
 }
 
-.with-custom-css :is(.\[\&\>\*\]\:w-full>*) {
-  width: 100%
-}
-
-.with-custom-css :is(.\[\&_\*\]\:w-full *) {
-  width: 100%
-}
-
-.with-custom-css :is(.\[\&_\.bui-ButtonContent\]\:justify-start .bui-ButtonContent) {
-  justify-content: flex-start
-}
-
 .with-custom-css :is(.\[\&_\.bui-ButtonContent\]\:justify-between .bui-ButtonContent) {
   justify-content: space-between
 }
@@ -706,24 +648,12 @@
   align-items: center
 }
 
-.with-custom-css :is(.\[\&_\.bui-MenuItemContent\]\:justify-between .bui-MenuItemContent) {
-  justify-content: space-between
-}
-
-.with-custom-css :is(.\[\&_\.bui-MenuItemContent\]\:gap-4 .bui-MenuItemContent) {
-  gap: 1rem
-}
-
 .with-custom-css :is(.\[\&_\.bui-MenuItemWrapper\]\:w-full .bui-MenuItemWrapper) {
   width: 100%
 }
 
 .with-custom-css :is(.\[\&_\.bui-SearchFieldInputWrapper\]\:h-10 .bui-SearchFieldInputWrapper) {
   height: 2.5rem
-}
-
-.with-custom-css .\[\&_\]\:w-full {
-  width: 100%
 }
 
 .with-custom-css :is(.\[\&_svg\]\:h-\[22px\] svg) {

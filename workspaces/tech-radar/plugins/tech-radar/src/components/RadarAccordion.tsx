@@ -58,7 +58,7 @@ const Moved = (props: {
 
 export const RadarAccordion = (props: RadarAccordionProps) => {
   const { entries, onValueChange, radarData, rings, selectedBlipId } = props;
-  const [open, setOpen] = useState<boolean>(false);
+  const [viewingEntryDetails, setViewingEntryDetails] = useState<RadarEntry>();
   const {
     Accordion,
     AccordionGroup,
@@ -85,105 +85,109 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
   }, [selectedBlipId]);
 
   return (
-    <AccordionGroup
-      allowsMultiple={false}
-      className="rounded bg-background p-0"
-    >
-      {rings.map(ring => {
-        const ringId = ring.id as RingId;
+    <>
+      <AccordionGroup
+        allowsMultiple={false}
+        className="rounded bg-background p-0"
+      >
+        {rings.map(ring => {
+          const ringId = ring.id as RingId;
 
-        return (
-          <div className={cn('flex flex-col gap-1 pt-4')} key={ringId}>
-            <div className="flex items-center gap-1.5">
-              <h3 className="py-2 m-0">{ring.name}</h3>
-              <DialogTrigger>
-                <Button variant="tertiary">
-                  <Info data-testid="info-icon" />
-                </Button>
+          return (
+            <div className={cn('flex flex-col gap-1 pt-4')} key={ringId}>
+              <div className="flex items-center gap-1.5">
+                <h3 className="py-2 m-0">{ring.name}</h3>
+                <DialogTrigger>
+                  <Button variant="tertiary">
+                    <Info data-testid="info-icon" />
+                  </Button>
 
-                <Dialog className="with-custom-css" width={1000}>
-                  <DialogHeader>Legend</DialogHeader>
-                  <DialogBody>
-                    <RingLegend highlighted={ringId} radarData={radarData} />
-                  </DialogBody>
-                  <DialogFooter>
-                    <Button variant="secondary" slot="close">
-                      Close
-                    </Button>
-                  </DialogFooter>
-                </Dialog>
-              </DialogTrigger>
-            </div>
+                  <Dialog className="with-custom-css" width={1000}>
+                    <DialogHeader>Legend</DialogHeader>
+                    <DialogBody>
+                      <RingLegend highlighted={ringId} radarData={radarData} />
+                    </DialogBody>
+                    <DialogFooter>
+                      <Button variant="secondary" slot="close">
+                        Close
+                      </Button>
+                    </DialogFooter>
+                  </Dialog>
+                </DialogTrigger>
+              </div>
 
-            {entries
-              .filter(e => e.timeline[0].ringId === ringId)
-              .map(entry => {
-                const timeline = entry.timeline.sort(
-                  (a, b) => b.date.getTime() - a.date.getTime(),
-                )[0];
-                const timelineDate = DateTime.fromJSDate(timeline.date);
+              {entries
+                .filter(e => e.timeline[0].ringId === ringId)
+                .map(entry => {
+                  const timeline = entry.timeline.sort(
+                    (a, b) => b.date.getTime() - a.date.getTime(),
+                  )[0];
+                  const timelineDate = DateTime.fromJSDate(timeline.date);
 
-                return (
-                  <Accordion
-                    className={cn(
-                      'relative border-b border-muted transition-all',
-                      selectedBlipId === entry.key && RING_STYLE[ringId],
-                    )}
-                    defaultExpanded
-                    key={entry.id}
-                    onExpandedChange={isExpanded =>
-                      onValueChange(isExpanded ? entry.key : '')
-                    }
-                    ref={selectedBlipId === entry.key ? activeItemRef : null}
-                  >
-                    <AccordionTrigger level={5}>
-                      <div className="flex items-center gap-2">
-                        {entry.title}
-                        {selectedBlipId !== entry.key && (
-                          <Moved moved={timeline.moved} size={16} />
-                        )}
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionPanel className="flex flex-col gap-2">
-                      <div className="p-4">
-                        <div className="flex gap-2">
-                          {timelineDate.isValid && (
-                            <div
-                              className={
-                                timeline.moved
-                                  ? 'inline-flex items-center gap-2 sm:gap-3'
-                                  : ''
-                              }
-                            >
-                              <Moved moved={timeline.moved} showLabel />
-                              <span>
-                                {'SINCE: '}
-                                <b>{timelineDate.toISODate()}</b>
-                              </span>
-                            </div>
+                  return (
+                    <Accordion
+                      className={cn(
+                        'relative border-b border-muted transition-all',
+                        selectedBlipId === entry.key && RING_STYLE[ringId],
+                      )}
+                      defaultExpanded
+                      key={entry.id}
+                      onExpandedChange={isExpanded =>
+                        onValueChange(isExpanded ? entry.key : '')
+                      }
+                      ref={selectedBlipId === entry.key ? activeItemRef : null}
+                    >
+                      <AccordionTrigger level={5}>
+                        <div className="flex items-center gap-2">
+                          {entry.title}
+                          {selectedBlipId !== entry.key && (
+                            <Moved moved={timeline.moved} size={16} />
                           )}
                         </div>
-                        <div>{entry.timeline[0].description}</div>
-                        <RadarEntryDetails
-                          onOpenChange={() => setOpen(false)}
-                          open={open}
-                          radarEntry={entry}
-                        />
-                        <Link
-                          className="uppercase"
-                          onClick={() => setOpen(!open)}
-                          href="#"
-                        >
-                          Details
-                        </Link>
-                      </div>
-                    </AccordionPanel>
-                  </Accordion>
-                );
-              })}
-          </div>
-        );
-      })}
-    </AccordionGroup>
+                      </AccordionTrigger>
+                      <AccordionPanel className="flex flex-col gap-2">
+                        <div className="p-4">
+                          <div className="flex gap-2">
+                            {timelineDate.isValid && (
+                              <div
+                                className={
+                                  timeline.moved
+                                    ? 'inline-flex items-center gap-2 sm:gap-3'
+                                    : ''
+                                }
+                              >
+                                <Moved moved={timeline.moved} showLabel />
+                                <span>
+                                  {'SINCE: '}
+                                  <b>{timelineDate.toISODate()}</b>
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                          <div className="py-2">
+                            {entry.timeline[0].description}
+                          </div>
+                          <Link
+                            className="uppercase text-primary"
+                            onClick={() => setViewingEntryDetails(entry)}
+                            href="#"
+                          >
+                            Details
+                          </Link>
+                        </div>
+                      </AccordionPanel>
+                    </Accordion>
+                  );
+                })}
+            </div>
+          );
+        })}
+      </AccordionGroup>
+
+      <RadarEntryDetails
+        onOpenChange={() => setViewingEntryDetails(undefined)}
+        entry={viewingEntryDetails}
+      />
+    </>
   );
 };
