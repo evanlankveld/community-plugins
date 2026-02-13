@@ -210,6 +210,10 @@
   width: 10rem
 }
 
+.with-custom-css .w-60 {
+  width: 15rem
+}
+
 .with-custom-css .max-w-80 {
   max-width: 20rem
 }

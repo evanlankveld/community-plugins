@@ -85,7 +85,7 @@ export const TechRadarFilter = (props: Props) => {
         <Button
           aria-label="Filter"
           variant="tertiary"
-          className="bg-card border border-border border-solid w-40 h-10 [&_.bui-ButtonContent]:justify-between font-normal"
+          className="bg-card border border-border border-solid w-60 h-10 [&_.bui-ButtonContent]:justify-between font-normal"
         >
           {triggerLabel}
           <ChevronDown size={12} className="text-muted-foreground" />
