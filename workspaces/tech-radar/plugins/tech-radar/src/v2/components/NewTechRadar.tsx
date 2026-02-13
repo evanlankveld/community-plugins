@@ -17,15 +17,24 @@ import type { HTMLAttributes } from 'react';
 
 import '../../css/tech-radar.css';
 import { NewTechRadarContent } from './NewTechRadarContent';
+import {
+  ComponentContext,
+  ComponentContextProps,
+  defaultComponents,
+} from './hooks/useComponents';
 
 type Props = {
-  customComponents?: null;
+  customComponents?: Partial<ComponentContextProps>;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const NewTechRadar = ({ customComponents, ...props }: Props) => {
+export const NewTechRadar = ({ customComponents = {}, ...props }: Props) => {
   return (
-    <div id="tech-radar-root" {...props}>
-      <NewTechRadarContent />
-    </div>
+    <ComponentContext.Provider
+      value={{ ...defaultComponents, ...customComponents }}
+    >
+      <div id="tech-radar-root" {...props}>
+        <NewTechRadarContent />
+      </div>
+    </ComponentContext.Provider>
   );
 };
