@@ -58,27 +58,45 @@ const buildOptions = (data: TechRadarLoaderResponse): Option[] => {
 
 export const TechRadarFilter = (props: Props) => {
   const { className, handleChange, placeholder, radarData, selected } = props;
-  const { MenuAutocompleteListbox, MenuListBoxItem } = useComponents();
+  const { Button, MenuAutocompleteListbox, MenuListBoxItem, MenuTrigger } =
+    useComponents();
 
   const options = useMemo(() => buildOptions(radarData), [radarData]);
 
+  const triggerLabel = useMemo(() => {
+    if (selected.length === 0) {
+      return <span className="text-muted-foreground">Select filter</span>;
+    }
+
+    if (selected.length === 1) {
+      return options.find(option => option.value === selected[0])?.label;
+    }
+
+    return `${selected.length} selected`;
+  }, [options, selected]);
+
   return (
     <div className={className}>
-      <MenuAutocompleteListbox
-        className="h-full"
-        onSelectionChange={keys =>
-          handleChange(Array.from(keys).map(key => String(key)))
-        }
-        placeholder={placeholder}
-        selectedKeys={selected}
-        selectionMode="multiple"
-      >
-        {options.map(option => (
-          <MenuListBoxItem key={option.value} id={option.value}>
-            {option.label}
-          </MenuListBoxItem>
-        ))}
-      </MenuAutocompleteListbox>
+      <MenuTrigger>
+        <Button aria-label="Filter" variant="secondary">
+          {triggerLabel}
+        </Button>
+        <MenuAutocompleteListbox
+          className="h-full"
+          onSelectionChange={keys =>
+            handleChange(Array.from(keys).map(key => String(key)))
+          }
+          placeholder={placeholder}
+          selectedKeys={selected}
+          selectionMode="multiple"
+        >
+          {options.map(option => (
+            <MenuListBoxItem key={option.value} id={option.value}>
+              {option.label}
+            </MenuListBoxItem>
+          ))}
+        </MenuAutocompleteListbox>
+      </MenuTrigger>
     </div>
   );
 };
