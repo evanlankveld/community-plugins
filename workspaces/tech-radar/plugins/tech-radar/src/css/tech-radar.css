@@ -130,12 +130,20 @@
   top: 6rem
 }
 
+.with-custom-css .m-0 {
+  margin: 0px
+}
+
 .with-custom-css .mt-0\.5 {
   margin-top: 0.125rem
 }
 
 .with-custom-css .mr-2 {
   margin-right: 0.5rem
+}
+
+.with-custom-css .mb-0 {
+  margin-bottom: 0px
 }
 
 .with-custom-css .block {
@@ -297,6 +305,14 @@
   gap: 1.25rem
 }
 
+.with-custom-css .gap-1 {
+  gap: 0.25rem
+}
+
+.with-custom-css .gap-0\.5 {
+  gap: 0.125rem
+}
+
 .with-custom-css :is(.space-y-1\.5 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));
@@ -425,6 +441,18 @@
 
 .with-custom-css .pb-2 {
   padding-bottom: 0.5rem
+}
+
+.with-custom-css .pt-2 {
+  padding-top: 0.5rem
+}
+
+.with-custom-css .pt-6 {
+  padding-top: 1.5rem
+}
+
+.with-custom-css .pt-4 {
+  padding-top: 1rem
 }
 
 .with-custom-css .text-left {

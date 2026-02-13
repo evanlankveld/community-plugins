@@ -93,9 +93,9 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
         const ringId = ring.id as RingId;
 
         return (
-          <div className={cn('flex flex-col')} key={ringId}>
+          <div className={cn('flex flex-col gap-1 pt-4')} key={ringId}>
             <div className="flex items-center gap-1.5">
-              <h3 className="py-2">{ring.name}</h3>
+              <h3 className="py-2 m-0">{ring.name}</h3>
               <DialogTrigger>
                 <Button variant="tertiary">
                   <Info data-testid="info-icon" />
@@ -136,7 +136,7 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
                     }
                     ref={selectedBlipId === entry.key ? activeItemRef : null}
                   >
-                    <AccordionTrigger className="py-2" level={5}>
+                    <AccordionTrigger level={5}>
                       <div className="flex items-center gap-2">
                         {entry.title}
                         {selectedBlipId !== entry.key && (
