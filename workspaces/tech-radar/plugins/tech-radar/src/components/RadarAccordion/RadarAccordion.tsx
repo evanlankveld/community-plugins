@@ -24,11 +24,11 @@ import { ArrowDown, ArrowUp, Info } from 'lucide-react';
 import { DateTime } from 'luxon';
 
 import { useComponents } from './../hooks/useComponents';
-import { RingId } from '../types.ts';
-import { cn } from '../../util/cn.ts';
-import { RING_STYLE } from '../ringColors.ts';
-import { RingLegend } from '../Legend/RingLegend.tsx';
-import { RadarEntryDetails } from '../RadarEntryDetails/RadarEntryDetails.tsx';
+import { RingId } from '../types';
+import { cn } from '../../util/cn';
+import { RING_STYLE } from '../ringColors';
+import { RingLegend } from '../Legend/RingLegend';
+import { RadarEntryDetails } from '../RadarEntryDetails/RadarEntryDetails';
 
 type RadarAccordionProps = Readonly<{
   entries: RadarEntry[];
