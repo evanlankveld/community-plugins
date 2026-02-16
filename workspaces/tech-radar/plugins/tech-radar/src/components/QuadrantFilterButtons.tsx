@@ -79,6 +79,7 @@ export const QuadrantFilterButtons = ({
       <path
         className={quadrantClass(quadrants[0])}
         d="M202 10 H390 V118 H202 Z"
+        data-testid="quadrant-0"
         fill="transparent"
         onClick={() => onSelect(quadrants[0])}
       />
@@ -87,6 +88,7 @@ export const QuadrantFilterButtons = ({
       <path
         className={quadrantClass(quadrants[1])}
         d="M10 10 H198 V118 H10 Z"
+        data-testid="quadrant-1"
         fill="transparent"
         onClick={() => onSelect(quadrants[1])}
       />
@@ -95,6 +97,7 @@ export const QuadrantFilterButtons = ({
       <path
         className={quadrantClass(quadrants[2])}
         d="M10 122 H198 V230 H10 Z"
+        data-testid="quadrant-2"
         fill="transparent"
         onClick={() => onSelect(quadrants[2])}
       />
@@ -103,6 +106,7 @@ export const QuadrantFilterButtons = ({
       <path
         className={quadrantClass(quadrants[3])}
         d="M202 122 H390 V230 H202 Z"
+        data-testid="quadrant-3"
         fill="transparent"
         onClick={() => onSelect(quadrants[3])}
       />
