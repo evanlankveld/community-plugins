@@ -22,15 +22,15 @@ import type { RadarEntry } from '@backstage-community/plugin-tech-radar-common';
 
 import { errorApiRef, useAnalytics, useApi } from '@backstage/core-plugin-api';
 
-import { QuadrantFilterButtons } from './QuadrantFilterButtons';
-import { RadarAccordion } from './RadarAccordion';
 import { Radar, RadarBlipsAndLabels } from './RadarPlot/Radar';
 import { mapToEntries } from './RadarPlot/radarPlotUtils';
-import { TechRadarFilter } from './TechRadarFilter';
-import { filterEntries } from './filterTechRadarEntries';
-import { TrendLegend } from './TrendLegend';
 import { useComponents } from './hooks/useComponents.ts';
 import { cn } from '../util/cn';
+import { filterEntries } from './RadarFilter/filterTechRadarEntries.ts';
+import { TechRadarFilter } from './RadarFilter/TechRadarFilter.tsx';
+import { QuadrantFilterButtons } from './QuadrantFilter/QuadrantFilterButtons.tsx';
+import { RadarAccordion } from './RadarAccordion/RadarAccordion.tsx';
+import { TrendLegend } from './Legend/TrendLegend.tsx';
 
 export const TechRadarContent = () => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
