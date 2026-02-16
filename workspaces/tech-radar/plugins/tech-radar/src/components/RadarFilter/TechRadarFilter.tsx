@@ -16,7 +16,7 @@
 import { useMemo } from 'react';
 
 import type { TechRadarLoaderResponse } from '@backstage-community/plugin-tech-radar-common';
-import { useComponents } from './hooks/useComponents';
+import { useComponents } from './../hooks/useComponents';
 import { ChevronDown } from 'lucide-react';
 
 type Option = Readonly<{

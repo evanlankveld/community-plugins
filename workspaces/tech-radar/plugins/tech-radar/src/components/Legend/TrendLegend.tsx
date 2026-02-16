@@ -16,7 +16,7 @@
 import type { ReactNode } from 'react';
 
 import { CircleDot, Triangle } from 'lucide-react';
-import { useComponents } from './hooks/useComponents';
+import { useComponents } from './../hooks/useComponents';
 
 type ItemProps = Readonly<{
   icon: ReactNode;
