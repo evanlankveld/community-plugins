@@ -61,7 +61,6 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
   const [viewingEntryDetails, setViewingEntryDetails] = useState<RadarEntry>();
   const {
     Accordion,
-    AccordionGroup,
     AccordionPanel,
     AccordionTrigger,
     Button,
@@ -86,10 +85,7 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
 
   return (
     <>
-      <AccordionGroup
-        allowsMultiple={false}
-        className="rounded bg-background p-0"
-      >
+      <div className="rounded bg-background p-0">
         {rings.map(ring => {
           const ringId = ring.id as RingId;
 
@@ -130,7 +126,7 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
                         'relative border-b border-muted transition-all',
                         selectedBlipId === entry.key && RING_STYLE[ringId],
                       )}
-                      defaultExpanded
+                      isExpanded={selectedBlipId === entry.key}
                       key={entry.id}
                       onExpandedChange={isExpanded =>
                         onValueChange(isExpanded ? entry.key : '')
@@ -182,7 +178,7 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
             </div>
           );
         })}
-      </AccordionGroup>
+      </div>
 
       <RadarEntryDetails
         onOpenChange={() => setViewingEntryDetails(undefined)}
