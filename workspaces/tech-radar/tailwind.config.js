@@ -6,7 +6,7 @@ const config = {
   corePlugins: {
     preflight: false,
   },
-  important: '#tech-radar-root',
+  important: '.with-custom-css',
   plugins: [
     plugin(function ({ addVariant }) {
       addVariant('fullscreen', '&:fullscreen');
