@@ -17,7 +17,7 @@ import {
   MovedState,
   type RadarEntry,
 } from '@backstage-community/plugin-tech-radar-common';
-import { useComponents } from './hooks/useComponents';
+import { useComponents } from './../hooks/useComponents';
 import { ArrowDown, ArrowUp, CircleDot } from 'lucide-react';
 import { DateTime } from 'luxon';
 

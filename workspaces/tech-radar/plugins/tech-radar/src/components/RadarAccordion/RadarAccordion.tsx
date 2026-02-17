@@ -23,12 +23,12 @@ import type {
 import { ArrowDown, ArrowUp, Info } from 'lucide-react';
 import { DateTime } from 'luxon';
 
-import { RingLegend } from './RingLegend';
-import type { RingId } from './types';
-import { RING_STYLE } from './ringColors';
-import { RadarEntryDetails } from './RadarEntryDetails';
-import { useComponents } from './hooks/useComponents';
-import { cn } from '../util/cn';
+import { useComponents } from './../hooks/useComponents';
+import { RingId } from '../types';
+import { cn } from '../../util/cn';
+import { RING_STYLE } from '../ringColors';
+import { RingLegend } from '../Legend/RingLegend';
+import { RadarEntryDetails } from '../RadarEntryDetails/RadarEntryDetails';
 
 type RadarAccordionProps = Readonly<{
   entries: RadarEntry[];

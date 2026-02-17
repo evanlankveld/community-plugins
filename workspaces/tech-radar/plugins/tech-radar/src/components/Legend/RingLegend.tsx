@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 import type { TechRadarLoaderResponse } from '@backstage-community/plugin-tech-radar-common';
-
-import type { RingId } from './types';
-import content from './content.json';
-import { BRIGHT_RING_STYLE } from './ringColors';
-import { Radar } from './RadarPlot/Radar';
-import { cn } from '../util/cn';
+import { RingId } from '../types';
+import { cn } from '../../util/cn';
+import { BRIGHT_RING_STYLE } from '../ringColors';
+import { Radar } from '../RadarPlot/Radar';
+import content from './../content.json';
 
 type Props = Readonly<{
   highlighted: RingId;
