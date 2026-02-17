@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 import type { ReactNode } from 'react';
+import { Focusable } from 'react-aria-components';
 
 import { CircleDot, Triangle } from 'lucide-react';
 import { useComponents } from './../hooks/useComponents';
@@ -28,11 +29,13 @@ const Item = (props: ItemProps) => {
   const { Tooltip, TooltipTrigger } = useComponents();
 
   return (
-    <TooltipTrigger>
-      <div className="flex items-center gap-1.5">
-        {props.icon}
-        <span className="capitalize">{props.text}</span>
-      </div>
+    <TooltipTrigger delay={150}>
+      <Focusable>
+        <div className="flex items-center gap-1.5 cursor-pointer">
+          {props.icon}
+          <span className="capitalize">{props.text}</span>
+        </div>
+      </Focusable>
 
       <Tooltip>{props.tooltipText}</Tooltip>
     </TooltipTrigger>
