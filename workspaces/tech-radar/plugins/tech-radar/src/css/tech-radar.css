@@ -234,10 +234,6 @@
   width: 15rem
 }
 
-.with-custom-css .w-80 {
-  width: 20rem
-}
-
 .with-custom-css .w-\[calc\(50\%\+1px\)\] {
   width: calc(50% + 1px)
 }
@@ -418,8 +414,8 @@
   border-color: var(--bui-bg-surface-1)
 }
 
-.with-custom-css .bg-\[hsl\(210_79\%_46\%\)\/\.6\] {
-  background-color: hsl(210 79% 46%)/.6
+.with-custom-css .bg-active-quadrant-filter\/60 {
+  background-color: hsl(210 79% 46% / 0.6)
 }
 
 .with-custom-css .bg-background {
@@ -452,10 +448,6 @@
 
 .with-custom-css .bg-warning {
   background-color: var(--bui-bg-warning)
-}
-
-.with-custom-css .bg-active-quadrant-filter\/60 {
-  background-color: hsl(210 79% 46% / 0.6)
 }
 
 .with-custom-css .fill-card {
