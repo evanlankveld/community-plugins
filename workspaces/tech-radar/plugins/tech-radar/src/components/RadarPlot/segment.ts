@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { Quadrant, Ring } from '../../util/types';
+import type { Quadrant, Ring } from '../../types';
 
 import { BLIP_RADIUS } from './radarPlotUtils';
 

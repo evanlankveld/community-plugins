@@ -13,35 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 
-import type {
-  RadarEntry,
-  RadarRing,
-  TechRadarLoaderResponse,
-} from '@backstage-community/plugin-tech-radar-common';
-import { ArrowDown, ArrowUp, Info } from 'lucide-react';
+import { Info, Triangle } from 'lucide-react';
 import { DateTime } from 'luxon';
 
 import { useComponents } from './../hooks/useComponents';
-import { RingId } from '../types';
+import { RingId } from '../../types';
 import { cn } from '../../util/cn';
-import { RING_STYLE } from '../ringColors';
 import { RingLegend } from '../Legend/RingLegend';
-import { RadarEntryDetails } from '../RadarEntryDetails/RadarEntryDetails';
+import { RadarFilterContext } from '../RadarFilterContext';
+import { Blip, Quadrant, Ring } from '../../types';
+import { ACCORDION_BG_COLOR } from '../ringColors';
+import { RadarBlipDetails } from '../RadarBlipDetails/RadarBlipDetails';
 
-type RadarAccordionProps = Readonly<{
-  entries: RadarEntry[];
-  onValueChange: (value: string) => void;
-  radarData: TechRadarLoaderResponse;
-  rings: RadarRing[];
-  selectedBlipId: string;
+type Props = Readonly<{
+  quadrants: Quadrant[];
+  rings: Ring[];
 }>;
 
 const Moved = (props: {
   moved?: number | undefined;
   showLabel?: boolean;
-  size?: number;
+  size: number;
 }) => {
   const { moved, showLabel = false, size } = props;
   if (!moved) {
@@ -51,14 +45,30 @@ const Moved = (props: {
   return (
     <span className="inline-flex items-center gap-1.5">
       {showLabel && 'Moved: '}
-      {moved === 1 ? <ArrowUp size={size} /> : <ArrowDown size={size} />}
+      {moved === 1 ? (
+        <Triangle
+          className="text-muted-foreground fill-muted-foreground"
+          size={size}
+        />
+      ) : (
+        <Triangle
+          className="rotate-180 text-muted-foreground fill-muted-foreground"
+          size={size}
+        />
+      )}
     </span>
   );
 };
 
-export const RadarAccordion = (props: RadarAccordionProps) => {
-  const { entries, onValueChange, radarData, rings, selectedBlipId } = props;
-  const [viewingEntryDetails, setViewingEntryDetails] = useState<RadarEntry>();
+export const RadarAccordion = ({ quadrants, rings }: Props) => {
+  const {
+    blips,
+    focusedQuadrant,
+    handleSelectedBlip,
+    selectedBlip,
+    selectedFilters,
+  } = useContext(RadarFilterContext);
+
   const {
     Accordion,
     AccordionPanel,
@@ -72,27 +82,57 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
     Link,
   } = useComponents();
 
+  const visibleBlips = useMemo(() => {
+    return blips
+      .filter(blip => blip.visible)
+      .filter(blip =>
+        focusedQuadrant ? blip.quadrant.id === focusedQuadrant.id : true,
+      );
+  }, [blips, focusedQuadrant]);
+
+  const [openBlip, setOpenBlip] = useState<Blip>();
+
   const activeItemRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (selectedBlipId && activeItemRef.current) {
+    if (selectedBlip && activeItemRef.current) {
       activeItemRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
       });
     }
-  }, [selectedBlipId]);
+  }, [selectedBlip]);
+
+  const onAccordionValueChange = (value?: string) => {
+    if (!value) {
+      handleSelectedBlip(undefined);
+    } else if (value !== selectedBlip?.id) {
+      handleSelectedBlip(blips.find(b => b.id === value));
+    }
+  };
 
   return (
     <>
       <div className="rounded bg-background p-0">
         {rings.map(ring => {
           const ringId = ring.id as RingId;
+          const ringEntries = visibleBlips.filter(e => e.ring.id === ringId);
+
+          const ringFilters = selectedFilters.filter(f =>
+            f.startsWith('ring:'),
+          );
+          if (
+            ringEntries.length === 0 &&
+            ringFilters.length > 0 &&
+            !ringFilters.includes(`ring:${ringId}`)
+          ) {
+            return null;
+          }
 
           return (
-            <div className={cn('flex flex-col gap-1 pt-4')} key={ringId}>
-              <div className="flex items-center gap-1.5">
-                <h3 className="py-2 m-0">{ring.name}</h3>
+            <div key={ringId}>
+              <h3 className="mt-4 mb-2 flex items-center gap-1">
+                <span className="capitalize">{ring.name.toLowerCase()}</span>
                 <DialogTrigger>
                   <Button variant="tertiary">
                     <Info data-testid="info-icon" />
@@ -101,7 +141,11 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
                   <Dialog className="with-custom-css" width={1000}>
                     <DialogHeader>Legend</DialogHeader>
                     <DialogBody>
-                      <RingLegend highlighted={ringId} radarData={radarData} />
+                      <RingLegend
+                        highlighted={ringId}
+                        quadrants={quadrants}
+                        rings={rings}
+                      />
                     </DialogBody>
                     <DialogFooter>
                       <Button variant="secondary" slot="close">
@@ -110,40 +154,50 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
                     </DialogFooter>
                   </Dialog>
                 </DialogTrigger>
-              </div>
+              </h3>
 
-              {entries
-                .filter(e => e.timeline[0].ringId === ringId)
-                .map(entry => {
-                  const timeline = entry.timeline.sort(
-                    (a, b) => b.date.getTime() - a.date.getTime(),
-                  )[0];
-                  const timelineDate = DateTime.fromJSDate(timeline.date);
+              {ringEntries.length === 0 && (
+                <div className="text-sm text-muted-foreground">
+                  No entries found
+                </div>
+              )}
 
-                  return (
-                    <Accordion
-                      className={cn(
-                        'relative border-b border-muted transition-all',
-                        selectedBlipId === entry.key && RING_STYLE[ringId],
-                      )}
-                      isExpanded={selectedBlipId === entry.key}
-                      key={entry.id}
-                      onExpandedChange={isExpanded =>
-                        onValueChange(isExpanded ? entry.key : '')
-                      }
-                      ref={selectedBlipId === entry.key ? activeItemRef : null}
-                    >
-                      <AccordionTrigger level={5}>
-                        <div className="flex items-center gap-2">
-                          {entry.title}
-                          {selectedBlipId !== entry.key && (
-                            <Moved moved={timeline.moved} size={16} />
-                          )}
-                        </div>
-                      </AccordionTrigger>
-                      <AccordionPanel className="flex flex-col gap-2">
-                        <div className="p-4">
-                          <div className="flex gap-2">
+              <div className="flex flex-col gap-1">
+                {visibleBlips
+                  .filter(blip => blip.timeline?.[0].ring.id === ringId)
+                  .map(blip => {
+                    const timeline = blip.timeline?.sort(
+                      (a, b) => b.date.getTime() - a.date.getTime(),
+                    )[0];
+                    const timelineDate = DateTime.fromJSDate(timeline.date);
+
+                    const isSelected = selectedBlip?.id === blip.id;
+
+                    return (
+                      <Accordion
+                        className={cn(
+                          'relative border-b border-muted transition-all first:rounded-t-lg last:rounded-b-lg',
+                          isSelected && ACCORDION_BG_COLOR[ringId],
+                        )}
+                        isExpanded={isSelected}
+                        onExpandedChange={isExpanded =>
+                          onAccordionValueChange(
+                            isExpanded ? blip.id : undefined,
+                          )
+                        }
+                        key={blip.id}
+                        ref={isSelected ? activeItemRef : null}
+                      >
+                        <AccordionTrigger level={5}>
+                          <div className="flex items-center gap-2">
+                            {blip.title}
+                            {!isSelected && (
+                              <Moved moved={timeline.moved} size={12} />
+                            )}
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionPanel className="flex flex-col gap-2">
+                          <div className="flex gap-2 mt-4">
                             {timelineDate.isValid && (
                               <div
                                 className={
@@ -152,37 +206,40 @@ export const RadarAccordion = (props: RadarAccordionProps) => {
                                     : ''
                                 }
                               >
-                                <Moved moved={timeline.moved} showLabel />
-                                <span>
+                                <Moved
+                                  moved={timeline.moved}
+                                  showLabel
+                                  size={12}
+                                />
+                                <span className="text-xs">
                                   {'SINCE: '}
-                                  <b>{timelineDate.toISODate()}</b>
+                                  <span className="font-semibold">
+                                    {timelineDate.toISODate()}
+                                  </span>
                                 </span>
                               </div>
                             )}
                           </div>
-                          <div className="py-2">
-                            {entry.timeline[0].description}
-                          </div>
+                          <div>{blip.timeline[0].description}</div>
                           <Link
                             className="uppercase text-primary"
-                            onClick={() => setViewingEntryDetails(entry)}
-                            href="#"
+                            onClick={() => setOpenBlip(blip)}
                           >
                             Details
                           </Link>
-                        </div>
-                      </AccordionPanel>
-                    </Accordion>
-                  );
-                })}
+                        </AccordionPanel>
+                      </Accordion>
+                    );
+                  })}
+              </div>
             </div>
           );
         })}
       </div>
 
-      <RadarEntryDetails
-        onOpenChange={() => setViewingEntryDetails(undefined)}
-        entry={viewingEntryDetails}
+      <RadarBlipDetails
+        blip={openBlip}
+        onOpenChange={() => setOpenBlip(undefined)}
       />
     </>
   );

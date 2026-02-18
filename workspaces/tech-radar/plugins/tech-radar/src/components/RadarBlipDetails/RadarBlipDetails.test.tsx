@@ -16,7 +16,7 @@
 
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { RadarEntryDetails } from './RadarEntryDetails';
+import { RadarBlipDetails } from './RadarBlipDetails';
 import {
   type RadarEntry,
   MovedState,
@@ -45,7 +45,7 @@ const mockEntry: RadarEntry = {
   url: 'https://example.com',
 };
 
-describe('RadarEntryDetails', () => {
+describe('RadarBlipDetails', () => {
   const onOpenChange = jest.fn();
 
   beforeEach(() => {
@@ -54,7 +54,7 @@ describe('RadarEntryDetails', () => {
 
   it('should not render the dialog when entry is not provided', () => {
     const { container } = render(
-      <RadarEntryDetails onOpenChange={onOpenChange} />,
+      <RadarBlipDetails onOpenChange={onOpenChange} />,
     );
     expect(container.firstChild).toBeNull();
   });
@@ -62,7 +62,7 @@ describe('RadarEntryDetails', () => {
   it('should render the dialog when entry is provided', () => {
     render(
       <MemoryRouter>
-        <RadarEntryDetails onOpenChange={onOpenChange} entry={mockEntry} />
+        <RadarBlipDetails onOpenChange={onOpenChange} entry={mockEntry} />
       </MemoryRouter>,
     );
     expect(screen.getByText('Entry 1')).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe('RadarEntryDetails', () => {
   it('should display the correct title, description, and timeline information', () => {
     render(
       <MemoryRouter>
-        <RadarEntryDetails onOpenChange={onOpenChange} entry={mockEntry} />
+        <RadarBlipDetails onOpenChange={onOpenChange} entry={mockEntry} />
       </MemoryRouter>,
     );
 
@@ -88,7 +88,7 @@ describe('RadarEntryDetails', () => {
   it('should display the "Learn more" link when the entry has a URL', () => {
     render(
       <MemoryRouter>
-        <RadarEntryDetails onOpenChange={onOpenChange} entry={mockEntry} />
+        <RadarBlipDetails onOpenChange={onOpenChange} entry={mockEntry} />
       </MemoryRouter>,
     );
     expect(screen.getByText('Learn more')).toBeInTheDocument();
@@ -97,7 +97,7 @@ describe('RadarEntryDetails', () => {
   it('should not display the "Learn more" link when the entry does not have a URL', () => {
     const entryWithoutUrl = { ...mockEntry, url: undefined };
     render(
-      <RadarEntryDetails onOpenChange={onOpenChange} entry={entryWithoutUrl} />,
+      <RadarBlipDetails onOpenChange={onOpenChange} entry={entryWithoutUrl} />,
     );
     expect(screen.queryByText('Learn more')).not.toBeInTheDocument();
   });
@@ -105,7 +105,7 @@ describe('RadarEntryDetails', () => {
   it('should call onOpenChange when the dialog is closed', () => {
     render(
       <MemoryRouter>
-        <RadarEntryDetails onOpenChange={onOpenChange} entry={mockEntry} />
+        <RadarBlipDetails onOpenChange={onOpenChange} entry={mockEntry} />
       </MemoryRouter>,
     );
     fireEvent.click(screen.getByText('Close'));

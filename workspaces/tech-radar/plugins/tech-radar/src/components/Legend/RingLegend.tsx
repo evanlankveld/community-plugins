@@ -13,20 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { TechRadarLoaderResponse } from '@backstage-community/plugin-tech-radar-common';
-import { RingId } from '../types';
-import { cn } from '../../util/cn';
+import type { Quadrant, Ring, RingId } from '../../types';
+
+import content from '../content.json';
 import { BRIGHT_RING_STYLE } from '../ringColors';
 import { Radar } from '../RadarPlot/Radar';
-import content from './../content.json';
+import { cn } from '../../util/cn';
 
 type Props = Readonly<{
   highlighted: RingId;
-  radarData: TechRadarLoaderResponse;
+  quadrants: Quadrant[];
+  rings: Ring[];
 }>;
 
 export const RingLegend = (props: Props) => {
-  const { highlighted } = props;
+  const { highlighted, quadrants, rings } = props;
   const orderedContent = [...content];
 
   if (highlighted) {
@@ -43,32 +44,33 @@ export const RingLegend = (props: Props) => {
     <div className={cn('flex flex-col gap-2')}>
       {orderedContent.map(({ name, text }) => {
         const ringId = name as RingId;
-        const color = BRIGHT_RING_STYLE[ringId];
+        const textColor = BRIGHT_RING_STYLE.text;
         const isHighlighted = highlighted === ringId;
 
         return (
           <div
             className={cn(
-              'flex items-start gap-4 p-4',
+              'flex items-start gap-4 p-2',
               isHighlighted
                 ? 'border-primary/40 bg-muted/70 shadow-sm'
                 : 'border-border bg-card hover:bg-muted/40',
             )}
             key={ringId}
           >
-            <div className="mt-0.5 basis-[13%] border border-gray-300 bg-card p-2">
+            <div className="mt-0.5 basis-[10%] border border-gray-300 bg-card p-2">
               <Radar
                 highlightRing={ringId}
                 isInLegend
-                radarData={props.radarData}
+                quadrants={quadrants}
+                rings={rings}
               />
             </div>
 
-            <div className="flex-1 space-y-1.5">
+            <div className="flex-1 space-y-0.5">
               <h3
                 className={cn(
                   'text-lg font-semibold capitalize tracking-tight',
-                  `text-${color}`,
+                  textColor[ringId],
                 )}
               >
                 {name}

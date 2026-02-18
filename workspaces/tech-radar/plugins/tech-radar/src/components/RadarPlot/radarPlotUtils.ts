@@ -15,13 +15,12 @@
  */
 import { forceCollide, forceSimulation } from 'd3-force';
 import type {
-  RadarEntry,
   RadarQuadrant,
   RadarRing,
   TechRadarLoaderResponse,
 } from '@backstage-community/plugin-tech-radar-common';
 
-import type { Blip, Entry, Quadrant, Ring } from '../../util/types';
+import type { Blip, ProcessedEntry, Quadrant, Ring } from '../../types';
 
 import { Segment } from './segment';
 
@@ -30,10 +29,9 @@ export const QUADRANT_GAP = 10;
 export const RADAR_PADDING = 40;
 export const BLIP_RADIUS = 10;
 
-export const mapToEntries = (
+export const processRadarFileEntries = (
   loaderResponse: TechRadarLoaderResponse,
-  filteredRadarEntries: RadarEntry[],
-): Entry[] => {
+): ProcessedEntry[] => {
   return loaderResponse.entries.map(entry => ({
     id: entry.key,
     description: entry.description || entry.timeline[0].description,
@@ -50,11 +48,13 @@ export const mapToEntries = (
       };
     }),
     title: entry.title,
-    visible: !!filteredRadarEntries.find(e => e.key === entry.key),
+    url: entry.url,
   }));
 };
 
-export const adjustQuadrants = (quadrants: RadarQuadrant[]): Quadrant[] => {
+export const processRadarFileQuadrants = (
+  quadrants: RadarQuadrant[],
+): Quadrant[] => {
   return quadrants.map((quadrant, index) => {
     return {
       ...quadrant,
@@ -67,15 +67,13 @@ export const adjustQuadrants = (quadrants: RadarQuadrant[]): Quadrant[] => {
   });
 };
 
-export const adjustEntries = ({
-  activeEntry,
+export const placeBlipsOnRadar = ({
   entries,
   quadrants,
   radius,
   rings,
 }: {
-  activeEntry?: Entry;
-  entries: Entry[];
+  entries: ProcessedEntry[];
   quadrants: Quadrant[];
   radius: number;
   rings: Ring[];
@@ -110,7 +108,6 @@ export const adjustEntries = ({
 
     return {
       ...entry,
-      active: !!(activeEntry && entry.id === activeEntry?.id),
       color: entry.ring.color,
       index: index,
       quadrant: quadrant,

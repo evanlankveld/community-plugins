@@ -13,71 +13,53 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 
-import type { TechRadarLoaderResponse } from '@backstage-community/plugin-tech-radar-common';
 import { useComponents } from './../hooks/useComponents';
 import { ChevronDown } from 'lucide-react';
-
-type Option = Readonly<{
-  category: string;
-  label: string;
-  value: string;
-}>;
+import { RadarFilterContext } from '../RadarFilterContext';
+import { Quadrant, Ring } from '../../types';
 
 type Props = Readonly<{
   className?: string;
-  handleChange: (selected: string[]) => void;
-  placeholder: string;
-  radarData: TechRadarLoaderResponse;
-  selected: string[];
+  quadrants: Quadrant[];
+  rings: Ring[];
 }>;
 
-const capitalize = (name: string): string => {
-  if (name === 'AI') {
-    return 'AI';
-  }
-  return name.charAt(0) + name.slice(1).toLowerCase();
-};
-
-const buildOptions = (data: TechRadarLoaderResponse): Option[] => {
-  const options = [] as Option[];
-
-  const ringOptions = data.rings.map(item => ({
-    category: 'Ring',
-    label: capitalize(item.name),
-    value: `ring:${item.id}`,
-  }));
-
-  const quadrantsOptions = data.quadrants.map(item => ({
-    category: 'Quadrant',
-    label: capitalize(item.name),
-    value: `quadrant:${item.id}`,
-  }));
-
-  options.push(...ringOptions, ...quadrantsOptions);
-
-  return options;
-};
-
-export const TechRadarFilter = (props: Props) => {
-  const { className, handleChange, placeholder, radarData, selected } = props;
+export const TechRadarFilter = ({ className, quadrants, rings }: Props) => {
   const { Button, MenuAutocompleteListbox, MenuListBoxItem, MenuTrigger } =
     useComponents();
 
-  const options = useMemo(() => buildOptions(radarData), [radarData]);
+  const { handleSelectedBlip, selectedFilters, setSelectedFilters } =
+    useContext(RadarFilterContext);
+
+  const options = useMemo(() => {
+    const ringOptions = rings.map(item => ({
+      category: 'Ring',
+      label: item.name,
+      value: `ring:${item.id}`,
+    }));
+
+    const quadrantsOptions = quadrants.map(item => ({
+      category: 'Quadrant',
+      label: item.name,
+      value: `quadrant:${item.id}`,
+    }));
+
+    return [...ringOptions, ...quadrantsOptions];
+  }, [rings, quadrants]);
 
   const triggerLabel = useMemo(() => {
-    if (selected.length === 0) {
-      return <span className="text-muted-foreground">{placeholder}</span>;
+    if (selectedFilters.length === 0) {
+      return <span className="text-muted-foreground">Select filter</span>;
     }
 
-    if (selected.length === 1) {
-      return options.find(option => option.value === selected[0])?.label;
+    if (selectedFilters.length === 1) {
+      return options.find(option => option.value === selectedFilters[0])?.label;
     }
 
-    return `${selected.length} selected`;
-  }, [placeholder, options, selected]);
+    return `${selectedFilters.length} selected`;
+  }, [options, selectedFilters]);
 
   return (
     <div className={className}>
@@ -92,10 +74,11 @@ export const TechRadarFilter = (props: Props) => {
         </Button>
         <MenuAutocompleteListbox
           className="with-custom-css"
-          onSelectionChange={keys =>
-            handleChange(Array.from(keys).map(key => String(key)))
-          }
-          selectedKeys={selected}
+          onSelectionChange={keys => {
+            handleSelectedBlip(undefined);
+            setSelectedFilters(Array.from(keys).map(key => String(key)));
+          }}
+          selectedKeys={selectedFilters}
           selectionMode="multiple"
         >
           {options.map(option => (

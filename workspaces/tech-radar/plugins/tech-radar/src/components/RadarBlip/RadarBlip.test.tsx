@@ -16,7 +16,7 @@
 
 import { render } from '@testing-library/react';
 import { RadarBlip } from './RadarBlip';
-import { Blip } from '../../util/types';
+import { Blip } from '../../types';
 import GetBBoxPolyfill from '../../util/polyfills/getBBox';
 
 describe('RadarBlip', () => {
@@ -29,7 +29,7 @@ describe('RadarBlip', () => {
   });
 
   const mockBlip: Blip = {
-    index: 0,
+    timeline: [],
     visible: true,
     id: 'test-blip',
     title: 'Test Blip',
