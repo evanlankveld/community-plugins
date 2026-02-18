@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { Blip } from './types';
+import type { Blip } from '../types';
 
 import { filterBlips } from './filterTechRadarBlips';
 
