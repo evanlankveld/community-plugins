@@ -229,7 +229,12 @@ export const RadarBlipsAndLabels = ({
             />
           </Focusable>
 
-          <Tooltip placement="top" offset={-4} containerPadding={0}>
+          <Tooltip
+            placement="top"
+            offset={-4}
+            containerPadding={0}
+            style={{ zIndex: 99 }}
+          >
             {blip.title}
           </Tooltip>
         </TooltipTrigger>
