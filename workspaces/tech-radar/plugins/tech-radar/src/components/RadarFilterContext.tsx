@@ -22,7 +22,7 @@ import type { Blip, Quadrant } from '../types';
 
 import { filterBlips } from '../util/filterTechRadarBlips';
 
-export const RadarFilterContext = createContext<{
+export type RadarFilterContextType = {
   blips: Blip[];
   focusedQuadrant: Quadrant | undefined;
   handleSelectedBlip: (blip: Blip | undefined) => void;
@@ -32,7 +32,9 @@ export const RadarFilterContext = createContext<{
   setFocusedQuadrant: (quadrant: Quadrant | undefined) => void;
   setSearchTerm: (term: string) => void;
   setSelectedFilters: (filters: string[]) => void;
-}>({
+};
+
+export const RadarFilterContext = createContext<RadarFilterContextType>({
   blips: [],
   focusedQuadrant: undefined,
   handleSelectedBlip: () => {},

@@ -210,6 +210,7 @@ export const RadarBlipsAndLabels = ({
             <RadarBlip
               blip={blip}
               className="focus:outline-none"
+              data-testid={blip.id}
               muted={!!selectedBlip}
               onClick={e => {
                 e.stopPropagation();

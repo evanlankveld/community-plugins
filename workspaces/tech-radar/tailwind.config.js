@@ -18,6 +18,7 @@ const config = {
       colors: {
         border: 'var(--bui-border)',
         ring: 'var(--bui-ring)',
+        'active-quadrant-filter': 'hsl(210 79% 46%)',
         background: 'var(--bui-bg-surface-0)',
         card: 'var(--bui-bg-surface-1)',
         foreground: 'var(--bui-fg-primary)',

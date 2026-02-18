@@ -21,7 +21,7 @@ import { Radar } from '../RadarPlot/Radar';
 import { cn } from '../../util/cn';
 
 type Props = Readonly<{
-  highlighted: RingId;
+  highlighted?: RingId;
   quadrants: Quadrant[];
   rings: Ring[];
 }>;

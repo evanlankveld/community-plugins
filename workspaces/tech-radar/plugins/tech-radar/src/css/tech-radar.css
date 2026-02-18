@@ -369,10 +369,6 @@
   border-radius: var(--bui-radius-2)
 }
 
-.with-custom-css .rounded-sm {
-  border-radius: var(--bui-radius-1)
-}
-
 .with-custom-css .rounded-bl-sm {
   border-bottom-left-radius: var(--bui-radius-1)
 }
@@ -405,6 +401,10 @@
   border-style: solid
 }
 
+.with-custom-css .border-none {
+  border-style: none
+}
+
 .with-custom-css .border-border {
   border-color: var(--bui-border)
 }
@@ -416,6 +416,10 @@
 
 .with-custom-css .border-muted {
   border-color: var(--bui-bg-surface-1)
+}
+
+.with-custom-css .bg-\[hsl\(210_79\%_46\%\)\/\.6\] {
+  background-color: hsl(210 79% 46%)/.6
 }
 
 .with-custom-css .bg-background {
@@ -448,6 +452,10 @@
 
 .with-custom-css .bg-warning {
   background-color: var(--bui-bg-warning)
+}
+
+.with-custom-css .bg-active-quadrant-filter\/60 {
+  background-color: hsl(210 79% 46% / 0.6)
 }
 
 .with-custom-css .fill-card {

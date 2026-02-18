@@ -36,7 +36,7 @@ export const QuadrantFilterButtons = ({ quadrants }: Props) => {
   return (
     <div
       aria-label="Radar quadrant filter"
-      className="relative aspect-[5/3] h-10 rounded-sm border border-border bg-card"
+      className="relative aspect-[5/3] h-10 rounded-md border border-solid border-border bg-card"
       role="group"
     >
       <svg
@@ -81,9 +81,10 @@ export const QuadrantFilterButtons = ({ quadrants }: Props) => {
         const isFocused = focusedQuadrant?.id === q.id;
         return (
           <button
+            data-testid={q.id}
             className={cn(
-              'absolute h-[calc(50%+1px)] w-[calc(50%+1px)] bg-transparent transition-all',
-              isFocused ? 'bg-primary/60' : '',
+              'absolute h-[calc(50%+1px)] w-[calc(50%+1px)] bg-transparent transition-all border-none cursor-pointer',
+              isFocused ? 'bg-active-quadrant-filter/60' : '',
               q.offsetX === 1 ? 'right-[-1px]' : 'left-[-1px]',
               q.offsetY === 1 ? 'bottom-[-1px]' : 'top-[-1px]',
               q.offsetX === -1 && q.offsetY === -1 && 'rounded-tl-sm',

@@ -16,25 +16,26 @@
 
 import { render, screen } from '@testing-library/react';
 import { RingLegend } from './RingLegend';
-import {
-  type TechRadarLoaderResponse,
-  type RadarRing,
-} from '@backstage-community/plugin-tech-radar-common';
+import { Quadrant, Ring } from '../../types';
 
-const mockRadarData: TechRadarLoaderResponse = {
-  entries: [],
-  quadrants: [],
-  rings: [
-    { id: 'adopt', name: 'ADOPT', color: '#93c47d' },
-    { id: 'assess', name: 'ASSESS', color: '#b7e1cd' },
-    { id: 'hold', name: 'HOLD', color: '#fce8b2' },
-    { id: 'trial', name: 'TRIAL', color: '#6fa8dc' },
-  ] as RadarRing[],
-};
+const mockQuadrants: Quadrant[] = [];
+
+const mockRings = [
+  { id: 'adopt', name: 'ADOPT', color: '#93c47d' },
+  { id: 'assess', name: 'ASSESS', color: '#b7e1cd' },
+  { id: 'hold', name: 'HOLD', color: '#fce8b2' },
+  { id: 'trial', name: 'TRIAL', color: '#6fa8dc' },
+] as Ring[];
 
 describe('RingLegend', () => {
   it('should render all rings', () => {
-    render(<RingLegend highlighted="adopt" radarData={mockRadarData} />);
+    render(
+      <RingLegend
+        highlighted="adopt"
+        quadrants={mockQuadrants}
+        rings={mockRings}
+      />,
+    );
 
     expect(screen.getByText('adopt')).toBeInTheDocument();
     expect(screen.getByText('assess')).toBeInTheDocument();
@@ -43,13 +44,25 @@ describe('RingLegend', () => {
   });
 
   it('should move the highlighted ring to the top', () => {
-    render(<RingLegend highlighted="hold" radarData={mockRadarData} />);
+    render(
+      <RingLegend
+        highlighted="hold"
+        quadrants={mockQuadrants}
+        rings={mockRings}
+      />,
+    );
     const rings = screen.getAllByRole('heading');
     expect(rings[0]).toHaveTextContent('hold');
   });
 
   it('should apply highlighted styles to the highlighted ring', () => {
-    render(<RingLegend highlighted="adopt" radarData={mockRadarData} />);
+    render(
+      <RingLegend
+        highlighted="adopt"
+        quadrants={mockQuadrants}
+        rings={mockRings}
+      />,
+    );
     const highlightedRing = screen
       .getByText('adopt')
       .closest('div[class*="border-primary/40"]');

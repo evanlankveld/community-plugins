@@ -18,33 +18,44 @@ import { renderInTestApp } from '@backstage/test-utils';
 import GetBBoxPolyfill from '../../util/polyfills/getBBox';
 
 import { Radar, RadarBlipsAndLabels } from './Radar';
-import { TechRadarLoaderResponse } from '@backstage-community/plugin-tech-radar-common';
-import { mapToEntries } from './radarPlotUtils';
+import { Blip, Quadrant, Ring } from '../../types';
+import {
+  RadarFilterContext,
+  RadarFilterContextType,
+} from '../RadarFilterContext.tsx';
 
-const mockRadarData: TechRadarLoaderResponse = {
-  quadrants: [
-    { id: 'infrastructure', name: 'Infrastructure' },
-    { id: 'frameworks', name: 'Frameworks' },
-    { id: 'languages', name: 'Languages' },
-    { id: 'process', name: 'Process' },
-  ],
-  rings: [{ id: 'use', name: 'USE', color: '#93c47d' }],
-  entries: [
-    {
-      key: 'typescript',
-      id: 'typescript',
-      title: 'TypeScript',
-      quadrant: 'languages',
-      timeline: [
-        {
-          moved: 0,
-          ringId: 'use',
-          date: new Date('2020-08-06'),
-        },
-      ],
-    },
-  ],
-};
+const mockQuadrants = [
+  { id: 'infrastructure', name: 'Infrastructure' },
+  { id: 'frameworks', name: 'Frameworks' },
+  { id: 'languages', name: 'Languages' },
+  { id: 'process', name: 'Process' },
+] as Quadrant[];
+
+const mockRings = [{ id: 'use', name: 'USE', color: '#93c47d' }] as Ring[];
+
+const mockBlips: Blip[] = [
+  {
+    color: '#ffffff',
+    x: 0,
+    y: 0,
+    id: 'typescript',
+    title: 'TypeScript',
+    quadrant: { id: 'languages', name: 'Languages' },
+    ring: mockRings[0],
+    visible: true,
+    timeline: [
+      {
+        moved: 0,
+        ring: mockRings[0],
+        date: new Date('2020-08-06'),
+      },
+    ],
+  },
+];
+
+const mockContext = {
+  blips: mockBlips,
+} as unknown as RadarFilterContextType;
 
 describe('Radar', () => {
   beforeAll(() => {
@@ -56,27 +67,25 @@ describe('Radar', () => {
   });
 
   it('should render', async () => {
-    const rendered = await renderInTestApp(<Radar radarData={mockRadarData} />);
+    const rendered = await renderInTestApp(
+      <Radar rings={mockRings} quadrants={mockQuadrants} />,
+    );
 
     const svg = rendered.container.querySelector('svg');
     expect(svg).not.toBeNull();
   });
 
   it('should render blips and labels', async () => {
-    const mockEntries = mapToEntries(mockRadarData, mockRadarData.entries);
-
     const rendered = await renderInTestApp(
-      <Radar radarData={mockRadarData}>
-        <RadarBlipsAndLabels
-          radarData={mockRadarData}
-          entries={mockEntries}
-          selectedBlipId="typescript"
-        />
-      </Radar>,
+      <RadarFilterContext.Provider value={mockContext}>
+        <Radar rings={mockRings} quadrants={mockQuadrants}>
+          <RadarBlipsAndLabels rings={mockRings} quadrants={mockQuadrants} />
+        </Radar>
+      </RadarFilterContext.Provider>,
     );
 
     expect(rendered.container.querySelector('svg')).not.toBeNull();
-    expect(await rendered.findByText('TypeScript')).toBeInTheDocument();
+    expect(await rendered.findByTestId('typescript')).toBeInTheDocument();
     expect(await rendered.findByText('Infrastructure')).toBeInTheDocument();
     expect(await rendered.findByText('Frameworks')).toBeInTheDocument();
     expect(await rendered.findByText('Languages')).toBeInTheDocument();
