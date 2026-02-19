@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { HTMLAttributes } from 'react';
+import { HTMLAttributes, useMemo } from 'react';
 import { Content, Header, Page } from '@backstage/core-components';
 
+import '../css/bui-styles.css';
 import '../css/tech-radar.css';
 import { TechRadarContent } from './TechRadarContent';
 import {
@@ -23,6 +24,15 @@ import {
   ComponentContextProps,
   defaultComponents,
 } from './hooks/useComponents';
+import { RadarFilterContextWrapper } from './RadarFilterContext';
+import { useTechRadarLoader } from './hooks/useTechRadarLoader';
+import {
+  adjustRings,
+  placeBlipsOnRadar,
+  processRadarFileEntries,
+  processRadarFileQuadrants,
+  RADAR_DIAMETER,
+} from './RadarPlot/radarPlotUtils';
 
 export type TechRadarPageProps = {
   customComponents?: Partial<ComponentContextProps>;
@@ -40,6 +50,42 @@ export const TechRadarPage = ({
     subtitle = 'Pick the recommended technologies for your projects',
   } = props;
 
+  const { loading, value: radarFileData } = useTechRadarLoader();
+
+  const rings = useMemo(
+    () =>
+      adjustRings(
+        radarFileData ? radarFileData.rings : [{ id: '', color: '', name: '' }],
+        RADAR_DIAMETER / 2,
+      ),
+    [radarFileData],
+  );
+  const quadrants = useMemo(
+    () =>
+      processRadarFileQuadrants(
+        radarFileData
+          ? radarFileData.quadrants
+          : Array.from({ length: 4 }).map((_, i) => ({
+              id: i.toString(),
+              name: '',
+            })),
+      ),
+    [radarFileData],
+  );
+
+  const allBlips = useMemo(() => {
+    if (!radarFileData) {
+      return [];
+    }
+    const entries = processRadarFileEntries(radarFileData);
+    return placeBlipsOnRadar({
+      entries,
+      quadrants,
+      radius: RADAR_DIAMETER / 2,
+      rings,
+    });
+  }, [radarFileData, quadrants, rings]);
+
   return (
     <Page themeId="tool">
       <Header title={title} subtitle={subtitle} />
@@ -47,9 +93,15 @@ export const TechRadarPage = ({
         <ComponentContext.Provider
           value={{ ...defaultComponents, ...customComponents }}
         >
-          <div className="with-custom-css" {...props}>
-            <TechRadarContent />
-          </div>
+          <RadarFilterContextWrapper allBlips={allBlips} quadrants={quadrants}>
+            <div className="with-custom-css" {...props}>
+              <TechRadarContent
+                loading={loading}
+                rings={rings}
+                quadrants={quadrants}
+              />
+            </div>
+          </RadarFilterContextWrapper>
         </ComponentContext.Provider>
       </Content>
     </Page>

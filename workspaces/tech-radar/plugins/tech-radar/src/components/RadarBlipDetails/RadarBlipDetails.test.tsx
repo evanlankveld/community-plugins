@@ -16,36 +16,33 @@
 
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { RadarEntryDetails } from './RadarEntryDetails';
-import {
-  type RadarEntry,
-  MovedState,
-} from '@backstage-community/plugin-tech-radar-common';
+import { RadarBlipDetails } from './RadarBlipDetails';
+import { MovedState } from '@backstage-community/plugin-tech-radar-common';
+import { Blip } from '../../types';
 
-const mockEntry: RadarEntry = {
+const mockBlip = {
   id: 'entry-1',
-  key: 'entry-1',
   title: 'Entry 1',
-  quadrant: 'quadrant-1',
-  description: 'This is a description',
+  quadrant: { id: 'quadrant-1', name: 'Quadrant 1' },
+  ring: { id: 'ring-1', name: 'Ring 1', color: '#ff0000' },
   timeline: [
     {
       date: new Date('2024-01-01'),
-      ringId: 'ring-1',
+      ring: { id: 'ring-1', name: 'Ring 1', color: '#ff0000' },
       description: 'Description for entry 1',
       moved: MovedState.Up,
     },
     {
       date: new Date('2023-01-01'),
-      ringId: 'ring-2',
+      ring: { id: 'ring-2', name: 'Ring 2', color: '#ff0000' },
       description: 'Older description',
       moved: MovedState.Down,
     },
   ],
   url: 'https://example.com',
-};
+} as Blip;
 
-describe('RadarEntryDetails', () => {
+describe('RadarBlipDetails', () => {
   const onOpenChange = jest.fn();
 
   beforeEach(() => {
@@ -54,7 +51,7 @@ describe('RadarEntryDetails', () => {
 
   it('should not render the dialog when entry is not provided', () => {
     const { container } = render(
-      <RadarEntryDetails onOpenChange={onOpenChange} />,
+      <RadarBlipDetails onOpenChange={onOpenChange} />,
     );
     expect(container.firstChild).toBeNull();
   });
@@ -62,7 +59,7 @@ describe('RadarEntryDetails', () => {
   it('should render the dialog when entry is provided', () => {
     render(
       <MemoryRouter>
-        <RadarEntryDetails onOpenChange={onOpenChange} entry={mockEntry} />
+        <RadarBlipDetails onOpenChange={onOpenChange} blip={mockBlip} />
       </MemoryRouter>,
     );
     expect(screen.getByText('Entry 1')).toBeInTheDocument();
@@ -71,12 +68,9 @@ describe('RadarEntryDetails', () => {
   it('should display the correct title, description, and timeline information', () => {
     render(
       <MemoryRouter>
-        <RadarEntryDetails onOpenChange={onOpenChange} entry={mockEntry} />
+        <RadarBlipDetails onOpenChange={onOpenChange} blip={mockBlip} />
       </MemoryRouter>,
     );
-
-    expect(screen.getByText('Entry 1')).toBeInTheDocument();
-    expect(screen.getByText('This is a description')).toBeInTheDocument();
 
     expect(screen.getByText('2024-01-01')).toBeInTheDocument();
     expect(screen.getByText('Description for entry 1')).toBeInTheDocument();
@@ -88,16 +82,16 @@ describe('RadarEntryDetails', () => {
   it('should display the "Learn more" link when the entry has a URL', () => {
     render(
       <MemoryRouter>
-        <RadarEntryDetails onOpenChange={onOpenChange} entry={mockEntry} />
+        <RadarBlipDetails onOpenChange={onOpenChange} blip={mockBlip} />
       </MemoryRouter>,
     );
     expect(screen.getByText('Learn more')).toBeInTheDocument();
   });
 
   it('should not display the "Learn more" link when the entry does not have a URL', () => {
-    const entryWithoutUrl = { ...mockEntry, url: undefined };
+    const entryWithoutUrl = { ...mockBlip, url: undefined };
     render(
-      <RadarEntryDetails onOpenChange={onOpenChange} entry={entryWithoutUrl} />,
+      <RadarBlipDetails onOpenChange={onOpenChange} blip={entryWithoutUrl} />,
     );
     expect(screen.queryByText('Learn more')).not.toBeInTheDocument();
   });
@@ -105,7 +99,7 @@ describe('RadarEntryDetails', () => {
   it('should call onOpenChange when the dialog is closed', () => {
     render(
       <MemoryRouter>
-        <RadarEntryDetails onOpenChange={onOpenChange} entry={mockEntry} />
+        <RadarBlipDetails onOpenChange={onOpenChange} blip={mockBlip} />
       </MemoryRouter>,
     );
     fireEvent.click(screen.getByText('Close'));

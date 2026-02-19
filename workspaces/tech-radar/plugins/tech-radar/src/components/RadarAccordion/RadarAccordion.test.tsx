@@ -18,70 +18,77 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { RadarAccordion } from './RadarAccordion';
 import {
-  type RadarEntry,
-  type TechRadarLoaderResponse,
-} from '@backstage-community/plugin-tech-radar-common';
+  RadarFilterContext,
+  RadarFilterContextType,
+} from '../RadarFilterContext';
+import { Blip, Quadrant, Ring } from '../../types';
 
-const mockRadarData: TechRadarLoaderResponse = {
-  entries: [
-    {
-      id: 'entry-1',
-      key: 'entry-1',
-      title: 'Entry 1',
-      quadrant: 'quadrant-1',
-      timeline: [
-        {
-          date: new Date('2024-01-01'),
-          ringId: 'ring-1',
-          description: 'Description for entry 1',
-        },
-      ],
-    },
-    {
-      id: 'entry-2',
-      key: 'entry-2',
-      title: 'Entry 2',
-      quadrant: 'quadrant-1',
-      timeline: [
-        {
-          date: new Date('2024-01-01'),
-          ringId: 'ring-2',
-          description: 'Description for entry 2',
-          moved: 1,
-        },
-      ],
-    },
-    {
-      id: 'entry-3',
-      key: 'entry-3',
-      title: 'Entry 3',
-      quadrant: 'quadrant-2',
-      timeline: [
-        {
-          date: new Date('2024-01-01'),
-          ringId: 'ring-1',
-          description: 'Description for entry 3',
-          moved: -1,
-        },
-      ],
-    },
-  ],
-  quadrants: [
-    { id: 'quadrant-1', name: 'Quadrant 1' },
-    { id: 'quadrant-2', name: 'Quadrant 2' },
-  ],
-  rings: [
-    { id: 'ring-1', name: 'Ring 1', color: '#ff0000' },
-    { id: 'ring-2', name: 'Ring 2', color: '#00ff00' },
-  ],
-};
+const handleSelectedBlip = jest.fn();
 
-const mockEntries: RadarEntry[] = mockRadarData.entries;
-const mockRings = mockRadarData.rings;
+const mockBlips = [
+  {
+    id: 'entry-1',
+    title: 'Entry 1',
+    quadrant: { id: 'quadrant-1', name: 'Quadrant 1' },
+    visible: true,
+    ring: { id: 'ring-1', name: 'Ring 1', color: '#ff0000' },
+    timeline: [
+      {
+        date: new Date('2024-01-01'),
+        ring: { id: 'ring-1', name: 'Ring 1', color: '#ff0000' },
+        description: 'Description for entry 1',
+      },
+    ],
+  },
+  {
+    id: 'entry-2',
+    title: 'Entry 2',
+    visible: true,
+    quadrant: { id: 'quadrant-1', name: 'Quadrant 1' },
+    ring: { id: 'ring-2', name: 'Ring 2', color: '#00ff00' },
+    timeline: [
+      {
+        date: new Date('2024-01-01'),
+        ring: { id: 'ring-2', name: 'Ring 2', color: '#00ff00' },
+        description: 'Description for entry 2',
+        moved: 1,
+      },
+    ],
+  },
+  {
+    id: 'entry-3',
+    title: 'Entry 3',
+    visible: true,
+    quadrant: { id: 'quadrant-2', name: 'Quadrant 2' },
+    ring: { id: 'ring-1', name: 'Ring 1', color: '#ff0000' },
+    timeline: [
+      {
+        date: new Date('2024-01-01'),
+        ring: { id: 'ring-1', name: 'Ring 1', color: '#ff0000' },
+        description: 'Description for entry 3',
+        moved: -1,
+      },
+    ],
+  },
+] as Blip[];
+
+const mockRadarContext = {
+  blips: mockBlips,
+  handleSelectedBlip,
+  selectedFilters: [],
+} as unknown as RadarFilterContextType;
+
+const mockQuadrants = [
+  { id: 'quadrant-1', name: 'Quadrant 1' },
+  { id: 'quadrant-2', name: 'Quadrant 2' },
+] as Quadrant[];
+
+const mockRings = [
+  { id: 'ring-1', name: 'Ring 1', color: '#ff0000' },
+  { id: 'ring-2', name: 'Ring 2', color: '#00ff00' },
+] as Ring[];
 
 describe('RadarAccordion', () => {
-  const onValueChange = jest.fn();
-
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -89,18 +96,14 @@ describe('RadarAccordion', () => {
   it('should render the accordion with the correct number of rings and entries', () => {
     render(
       <MemoryRouter>
-        <RadarAccordion
-          entries={mockEntries}
-          onValueChange={onValueChange}
-          radarData={mockRadarData}
-          rings={mockRings}
-          selectedBlipId=""
-        />
+        <RadarFilterContext.Provider value={mockRadarContext}>
+          <RadarAccordion quadrants={mockQuadrants} rings={mockRings} />
+        </RadarFilterContext.Provider>
       </MemoryRouter>,
     );
 
-    expect(screen.getByText('Ring 1')).toBeInTheDocument();
-    expect(screen.getByText('Ring 2')).toBeInTheDocument();
+    expect(screen.getByText('ring 1')).toBeInTheDocument();
+    expect(screen.getByText('ring 2')).toBeInTheDocument();
     expect(screen.getByText('Entry 1')).toBeInTheDocument();
     expect(screen.getByText('Entry 2')).toBeInTheDocument();
     expect(screen.getByText('Entry 3')).toBeInTheDocument();
@@ -109,18 +112,14 @@ describe('RadarAccordion', () => {
   it('should call onValueChange when an accordion is expanded', () => {
     render(
       <MemoryRouter>
-        <RadarAccordion
-          entries={mockEntries}
-          onValueChange={onValueChange}
-          radarData={mockRadarData}
-          rings={mockRings}
-          selectedBlipId=""
-        />
+        <RadarFilterContext.Provider value={mockRadarContext}>
+          <RadarAccordion quadrants={mockQuadrants} rings={mockRings} />
+        </RadarFilterContext.Provider>
       </MemoryRouter>,
     );
 
     fireEvent.click(screen.getByText('Entry 1'));
-    expect(onValueChange).toHaveBeenCalledWith('entry-1');
+    expect(handleSelectedBlip).toHaveBeenCalledWith(mockBlips[0]);
   });
 
   it('should scroll to the active item when selectedBlipId changes', () => {
@@ -129,25 +128,19 @@ describe('RadarAccordion', () => {
 
     const { rerender } = render(
       <MemoryRouter>
-        <RadarAccordion
-          entries={mockEntries}
-          onValueChange={onValueChange}
-          radarData={mockRadarData}
-          rings={mockRings}
-          selectedBlipId=""
-        />
+        <RadarFilterContext.Provider value={mockRadarContext}>
+          <RadarAccordion quadrants={mockQuadrants} rings={mockRings} />
+        </RadarFilterContext.Provider>
       </MemoryRouter>,
     );
 
     rerender(
       <MemoryRouter>
-        <RadarAccordion
-          entries={mockEntries}
-          onValueChange={onValueChange}
-          radarData={mockRadarData}
-          rings={mockRings}
-          selectedBlipId="entry-2"
-        />
+        <RadarFilterContext.Provider
+          value={{ ...mockRadarContext, selectedBlip: mockBlips[1] }}
+        >
+          <RadarAccordion quadrants={mockQuadrants} rings={mockRings} />
+        </RadarFilterContext.Provider>
       </MemoryRouter>,
     );
 

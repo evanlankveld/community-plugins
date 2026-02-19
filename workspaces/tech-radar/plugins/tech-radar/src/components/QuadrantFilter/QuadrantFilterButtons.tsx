@@ -13,103 +13,90 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { RadarQuadrant } from '@backstage-community/plugin-tech-radar-common';
+import { useContext } from 'react';
 
-export const QuadrantFilterButtons = ({
-  className,
-  onSelect,
-  quadrants,
-  selected,
-}: {
-  className?: string;
-  onSelect: (q: RadarQuadrant) => void;
-  quadrants: RadarQuadrant[];
-  selected: string | undefined;
-}) => {
-  const quadrantClass = (item: RadarQuadrant) =>
-    `cursor-pointer transition-all ${
-      selected === item.id ? 'fill-primary/40 ' : ''
-    }`;
+import type { Quadrant } from '../../types';
+
+import { RadarFilterContext } from '../RadarFilterContext';
+import { cn } from '../../util/cn';
+
+type Props = Readonly<{
+  quadrants: Quadrant[];
+}>;
+
+export const QuadrantFilterButtons = ({ quadrants }: Props) => {
+  const { focusedQuadrant, handleSelectedBlip, setFocusedQuadrant } =
+    useContext(RadarFilterContext);
+
+  const onSelect = (q: Quadrant) => {
+    handleSelectedBlip(undefined);
+    setFocusedQuadrant(focusedQuadrant?.id === q.id ? undefined : q);
+  };
 
   return (
-    <svg
+    <div
       aria-label="Radar quadrant filter"
-      className={className}
+      className="relative aspect-[5/3] h-10 rounded-md border border-solid border-border bg-card"
       role="group"
-      viewBox="0 0 400 240"
     >
-      {/* Background */}
-      <rect
-        fill="#d4d9e3"
-        height="220"
-        rx="4"
-        stroke="#b6bdd0"
-        strokeWidth="6"
-        width="380"
-        x="10"
-        y="10"
-      />
-
-      {/* Cross */}
-      <line
-        stroke="white"
-        strokeWidth="6"
-        x1="200"
-        x2="200"
-        y1="10"
-        y2="230"
-        z={10}
-      />
-      <line stroke="white" strokeWidth="6" x1="10" x2="390" y1="120" y2="120" />
-
-      {/* Concentric circles */}
-      {[30, 50, 70, 90].map(r => (
-        <circle
-          cx="200"
-          cy="120"
-          fill="none"
-          key={r}
-          r={r}
-          stroke="white"
+      <svg
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full"
+        viewBox="0 0 400 240"
+      >
+        {/* Cross */}
+        <line
+          className="stroke-muted-foreground"
           strokeWidth="6"
+          x1="200"
+          x2="200"
+          y1="0"
+          y2="240"
         />
-      ))}
+        <line
+          className="stroke-muted-foreground"
+          strokeWidth="6"
+          x1="0"
+          x2="400"
+          y1="120"
+          y2="120"
+        />
 
-      {/* Top Right */}
-      <path
-        className={quadrantClass(quadrants[0])}
-        d="M202 10 H390 V118 H202 Z"
-        data-testid="quadrant-0"
-        fill="transparent"
-        onClick={() => onSelect(quadrants[0])}
-      />
+        {/* Concentric circles */}
+        {[30, 50, 70, 90].map(r => (
+          <circle
+            className="stroke-muted-foreground"
+            cx="200"
+            cy="120"
+            fill="none"
+            key={r}
+            r={r}
+            strokeWidth="6"
+          />
+        ))}
+      </svg>
 
-      {/* Top Left */}
-      <path
-        className={quadrantClass(quadrants[1])}
-        d="M10 10 H198 V118 H10 Z"
-        data-testid="quadrant-1"
-        fill="transparent"
-        onClick={() => onSelect(quadrants[1])}
-      />
-
-      {/* Bottom Left */}
-      <path
-        className={quadrantClass(quadrants[2])}
-        d="M10 122 H198 V230 H10 Z"
-        data-testid="quadrant-2"
-        fill="transparent"
-        onClick={() => onSelect(quadrants[2])}
-      />
-
-      {/* Bottom Right */}
-      <path
-        className={quadrantClass(quadrants[3])}
-        d="M202 122 H390 V230 H202 Z"
-        data-testid="quadrant-3"
-        fill="transparent"
-        onClick={() => onSelect(quadrants[3])}
-      />
-    </svg>
+      {/* Quadrant Buttons */}
+      {quadrants.map(q => {
+        const isFocused = focusedQuadrant?.id === q.id;
+        return (
+          <button
+            data-testid={q.id}
+            className={cn(
+              'absolute h-[calc(50%+1px)] w-[calc(50%+1px)] bg-transparent transition-all border-none cursor-pointer',
+              isFocused ? 'bg-active-quadrant-filter/60' : '',
+              q.offsetX === 1 ? 'right-[-1px]' : 'left-[-1px]',
+              q.offsetY === 1 ? 'bottom-[-1px]' : 'top-[-1px]',
+              q.offsetX === -1 && q.offsetY === -1 && 'rounded-tl-sm',
+              q.offsetX === 1 && q.offsetY === -1 && 'rounded-tr-sm',
+              q.offsetX === -1 && q.offsetY === 1 && 'rounded-bl-sm',
+              q.offsetX === 1 && q.offsetY === 1 && 'rounded-br-sm',
+            )}
+            key={q.id}
+            onClick={() => onSelect(q)}
+          />
+        );
+      })}
+    </div>
   );
 };

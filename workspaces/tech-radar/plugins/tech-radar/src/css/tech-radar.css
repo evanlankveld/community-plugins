@@ -106,16 +106,24 @@
   --tw-contain-style:  
 }
 
-.with-custom-css .pointer-events-none {
-  pointer-events: none
-}
-
 .with-custom-css .\!visible {
   visibility: visible !important
 }
 
 .with-custom-css .visible {
   visibility: visible
+}
+
+.with-custom-css .invisible {
+  visibility: hidden
+}
+
+.with-custom-css .static {
+  position: static
+}
+
+.with-custom-css .absolute {
+  position: absolute
 }
 
 .with-custom-css .relative {
@@ -126,16 +134,32 @@
   position: sticky
 }
 
-.with-custom-css .top-\[6rem\] {
-  top: 6rem
+.with-custom-css .inset-0 {
+  inset: 0px
 }
 
-.with-custom-css .m-0 {
-  margin: 0px
+.with-custom-css .bottom-\[-1px\] {
+  bottom: -1px
 }
 
-.with-custom-css .mb-4 {
-  margin-bottom: 1rem
+.with-custom-css .left-\[-1px\] {
+  left: -1px
+}
+
+.with-custom-css .right-\[-1px\] {
+  right: -1px
+}
+
+.with-custom-css .top-\[-1px\] {
+  top: -1px
+}
+
+.with-custom-css .top-\[9rem\] {
+  top: 9rem
+}
+
+.with-custom-css .mb-2 {
+  margin-bottom: 0.5rem
 }
 
 .with-custom-css .mr-2 {
@@ -144,6 +168,14 @@
 
 .with-custom-css .mt-0\.5 {
   margin-top: 0.125rem
+}
+
+.with-custom-css .mt-11 {
+  margin-top: 2.75rem
+}
+
+.with-custom-css .mt-4 {
+  margin-top: 1rem
 }
 
 .with-custom-css .block {
@@ -166,6 +198,10 @@
   display: none
 }
 
+.with-custom-css .aspect-\[5\/3\] {
+  aspect-ratio: 5/3
+}
+
 .with-custom-css .h-10 {
   height: 2.5rem
 }
@@ -174,16 +210,16 @@
   height: 1.25rem
 }
 
-.with-custom-css .h-\[calc\(100vh-140px\)\] {
-  height: calc(100vh - 140px)
+.with-custom-css .h-\[calc\(100vh-320px\)\] {
+  height: calc(100vh - 320px)
 }
 
-.with-custom-css .h-\[calc\(100vh-270px\)\] {
-  height: calc(100vh - 270px)
+.with-custom-css .h-\[calc\(50\%\+1px\)\] {
+  height: calc(50% + 1px)
 }
 
-.with-custom-css .h-auto {
-  height: auto
+.with-custom-css .h-full {
+  height: 100%
 }
 
 .with-custom-css .w-12 {
@@ -198,12 +234,16 @@
   width: 15rem
 }
 
-.with-custom-css .w-auto {
-  width: auto
+.with-custom-css .w-\[calc\(50\%\+1px\)\] {
+  width: calc(50% + 1px)
 }
 
 .with-custom-css .w-full {
   width: 100%
+}
+
+.with-custom-css .min-w-\[7rem\] {
+  min-width: 7rem
 }
 
 .with-custom-css .max-w-80 {
@@ -226,8 +266,8 @@
   flex-basis: 66.666667%
 }
 
-.with-custom-css .basis-\[13\%\] {
-  flex-basis: 13%
+.with-custom-css .basis-\[10\%\] {
+  flex-basis: 10%
 }
 
 .with-custom-css .rotate-180 {
@@ -237,6 +277,16 @@
 
 .with-custom-css .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5
+  }
+}
+
+.with-custom-css .animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite
 }
 
 .with-custom-css .cursor-pointer {
@@ -265,6 +315,10 @@
   justify-content: flex-end
 }
 
+.with-custom-css .justify-center {
+  justify-content: center
+}
+
 .with-custom-css .justify-between {
   justify-content: space-between
 }
@@ -275,6 +329,10 @@
 
 .with-custom-css .gap-1\.5 {
   gap: 0.375rem
+}
+
+.with-custom-css .gap-10 {
+  gap: 2.5rem
 }
 
 .with-custom-css .gap-2 {
@@ -289,14 +347,38 @@
   gap: 1.25rem
 }
 
-.with-custom-css :is(.space-y-1\.5 > :not([hidden]) ~ :not([hidden])) {
+.with-custom-css :is(.space-y-0\.5 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
-  margin-top: calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.375rem * var(--tw-space-y-reverse))
+  margin-top: calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.125rem * var(--tw-space-y-reverse))
+}
+
+.with-custom-css .whitespace-nowrap {
+  white-space: nowrap
 }
 
 .with-custom-css .rounded {
   border-radius: 0.25rem
+}
+
+.with-custom-css .rounded-md {
+  border-radius: var(--bui-radius-2)
+}
+
+.with-custom-css .rounded-bl-sm {
+  border-bottom-left-radius: var(--bui-radius-1)
+}
+
+.with-custom-css .rounded-br-sm {
+  border-bottom-right-radius: var(--bui-radius-1)
+}
+
+.with-custom-css .rounded-tl-sm {
+  border-top-left-radius: var(--bui-radius-1)
+}
+
+.with-custom-css .rounded-tr-sm {
+  border-top-right-radius: var(--bui-radius-1)
 }
 
 .with-custom-css .border {
@@ -315,6 +397,10 @@
   border-style: solid
 }
 
+.with-custom-css .border-none {
+  border-style: none
+}
+
 .with-custom-css .border-border {
   border-color: var(--bui-border)
 }
@@ -326,6 +412,10 @@
 
 .with-custom-css .border-muted {
   border-color: var(--bui-bg-surface-1)
+}
+
+.with-custom-css .bg-active-quadrant-filter\/60 {
+  background-color: hsl(210 79% 46% / 0.6)
 }
 
 .with-custom-css .bg-background {
@@ -352,6 +442,10 @@
   background-color: var(--bui-bg-success)
 }
 
+.with-custom-css .bg-transparent {
+  background-color: transparent
+}
+
 .with-custom-css .bg-warning {
   background-color: var(--bui-bg-warning)
 }
@@ -360,24 +454,32 @@
   fill: var(--bui-bg-surface-1)
 }
 
+.with-custom-css .fill-error-foreground {
+  fill: var(--bui-fg-danger)
+}
+
+.with-custom-css .fill-info-foreground {
+  fill: var(--bui-fg-solid)
+}
+
 .with-custom-css .fill-muted-foreground {
   fill: var(--bui-fg-secondary)
 }
 
-.with-custom-css .fill-slate-600 {
-  fill: #475569
+.with-custom-css .fill-success-foreground {
+  fill: var(--bui-fg-success)
 }
 
-.with-custom-css .fill-white {
-  fill: #fff
+.with-custom-css .fill-warning-foreground {
+  fill: var(--bui-fg-warning)
 }
 
-.with-custom-css .stroke-slate-200 {
-  stroke: #e2e8f0
+.with-custom-css .stroke-border {
+  stroke: var(--bui-border)
 }
 
-.with-custom-css .stroke-slate-400 {
-  stroke: #94a3b8
+.with-custom-css .stroke-muted-foreground {
+  stroke: var(--bui-fg-secondary)
 }
 
 .with-custom-css .p-0 {
@@ -396,6 +498,11 @@
   padding: 1rem
 }
 
+.with-custom-css .px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem
+}
+
 .with-custom-css .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem
@@ -403,10 +510,6 @@
 
 .with-custom-css .pb-2 {
   padding-bottom: 0.5rem
-}
-
-.with-custom-css .pt-4 {
-  padding-top: 1rem
 }
 
 .with-custom-css .text-left {
@@ -476,8 +579,12 @@
   letter-spacing: -0.025em
 }
 
-.with-custom-css .text-foreground {
-  color: var(--bui-fg-primary)
+.with-custom-css .text-error-foreground {
+  color: var(--bui-fg-danger)
+}
+
+.with-custom-css .text-info-foreground {
+  color: var(--bui-fg-solid)
 }
 
 .with-custom-css .text-muted-foreground {
@@ -486,6 +593,14 @@
 
 .with-custom-css .text-primary {
   color: var(--bui-bg-solid)
+}
+
+.with-custom-css .text-success-foreground {
+  color: var(--bui-fg-success)
+}
+
+.with-custom-css .text-warning-foreground {
+  color: var(--bui-fg-warning)
 }
 
 .with-custom-css .opacity-0 {
@@ -502,10 +617,6 @@
 
 .with-custom-css .opacity-30 {
   opacity: 0.3
-}
-
-.with-custom-css .opacity-80 {
-  opacity: 0.8
 }
 
 .with-custom-css .shadow-sm {
@@ -526,6 +637,18 @@
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
 }
 
+.with-custom-css .ring-1 {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
+}
+
+.with-custom-css .ring-2 {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)
+}
+
 .with-custom-css .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
@@ -538,12 +661,6 @@
 
 .with-custom-css .transition-all {
   transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms
-}
-
-.with-custom-css .transition-colors {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms
 }
@@ -570,16 +687,23 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
 }
 
+.with-custom-css .first\:rounded-t-lg:first-child {
+  border-top-left-radius: var(--bui-radius-3);
+  border-top-right-radius: var(--bui-radius-3)
+}
+
+.with-custom-css .last\:rounded-b-lg:last-child {
+  border-bottom-right-radius: var(--bui-radius-3);
+  border-bottom-left-radius: var(--bui-radius-3)
+}
+
 .with-custom-css .hover\:bg-transparent:hover {
   background-color: transparent
 }
 
-.with-custom-css .hover\:fill-blue-100:hover {
-  fill: #dbeafe
-}
-
-.with-custom-css .hover\:stroke-blue-300:hover {
-  stroke: #93c5fd
+.with-custom-css .focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px
 }
 
 .with-custom-css .fullscreen\:overflow-y-auto:fullscreen {
@@ -590,12 +714,13 @@
   background-color: var(--bui-bg-surface-0)
 }
 
-.with-custom-css .fullscreen\:p-10:fullscreen {
-  padding: 2.5rem
+.with-custom-css .fullscreen\:px-10:fullscreen {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem
 }
 
-.with-custom-css :is(.group:fullscreen .group-fullscreen\:top-\[2rem\]) {
-  top: 2rem
+.with-custom-css :is(.group:fullscreen .group-fullscreen\:top-\[6rem\]) {
+  top: 6rem
 }
 
 .with-custom-css :is(.group:fullscreen .group-fullscreen\:block) {
@@ -606,8 +731,8 @@
   display: none
 }
 
-.with-custom-css :is(.group:fullscreen .group-fullscreen\:h-\[calc\(100vh-140px\)\]) {
-  height: calc(100vh - 140px)
+.with-custom-css :is(.group:fullscreen .group-fullscreen\:h-\[calc\(100vh-220px\)\]) {
+  height: calc(100vh - 220px)
 }
 
 @media (min-width: 640px) {

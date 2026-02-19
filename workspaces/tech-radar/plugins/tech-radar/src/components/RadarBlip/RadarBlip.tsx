@@ -13,63 +13,77 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { Blip } from '../../util/types';
+import { forwardRef, HTMLAttributes, useContext } from 'react';
+
+import type { Blip } from '../../types';
 import { BLIP_RADIUS } from '../RadarPlot/radarPlotUtils';
+import { RadarFilterContext } from '../RadarFilterContext';
+import { BRIGHT_RING_STYLE } from '../ringColors';
+import type { RingId } from '../../types';
 import { cn } from '../../util/cn';
 
 type RadarBlipProps = Readonly<{
   blip: Blip;
   muted?: boolean;
-  onClick?: (blip: Blip) => void;
-  onMouseEnter?: (blip: Blip) => void;
-  onMouseLeave?: (blip: Blip) => void;
   selected?: boolean;
-}>;
+}> &
+  HTMLAttributes<SVGElement>;
 
 const makeBlipSvg = (
-  { color, moved, visible }: Blip,
-  selected?: boolean,
-  muted?: boolean,
+  { moved, ring: { id }, visible }: Blip,
+  {
+    muted,
+    selected,
+  }: {
+    muted?: boolean;
+    selected?: boolean;
+  },
 ) => {
   const sharedClasses = cn(
     'cursor-pointer transition-opacity duration-200',
     !visible && 'opacity-10',
     visible && muted && !selected && 'opacity-30',
     visible && (!muted || selected) && 'opacity-100',
+    BRIGHT_RING_STYLE.fill[id as RingId],
   );
-  const style = { fill: color };
 
   if (moved && moved > 0) {
     return (
-      <path className={sharedClasses} d="M -11,5 11,5 0,-13 z" style={style} /> // triangle pointing up
+      <path className={sharedClasses} d="M -11,5 11,5 0,-13 z" /> // triangle pointing up
     );
   }
   if (moved && moved < 0) {
     return (
-      <path className={sharedClasses} d="M -11,-5 11,-5 0,13 z" style={style} /> // triangle pointing down
+      <path className={sharedClasses} d="M -11,-5 11,-5 0,13 z" /> // triangle pointing down
     );
   }
 
-  return <circle className={sharedClasses} r={BLIP_RADIUS - 1} style={style} />;
+  return <circle className={sharedClasses} r={BLIP_RADIUS - 1} />;
 };
 
-export const RadarBlip = (props: RadarBlipProps) => {
-  const { blip, muted, onClick, onMouseEnter, onMouseLeave, selected } = props;
+export const RadarBlip = forwardRef<SVGGElement, RadarBlipProps>(
+  (props, ref) => {
+    const { blip, muted, selected, ...svgProps } = props;
 
-  const blipSvg = makeBlipSvg(blip, selected, muted);
+    const { focusedQuadrant } = useContext(RadarFilterContext);
+    const scale = focusedQuadrant ? 0.6 : 1;
 
-  return (
-    <g
-      data-testid="radar-entry"
-      onClick={e => {
-        e.stopPropagation();
-        onClick?.(blip);
-      }}
-      onMouseEnter={() => onMouseEnter?.(blip)}
-      onMouseLeave={() => onMouseLeave?.(blip)}
-      transform={`translate(${blip.x}, ${blip.y})`}
-    >
-      {blipSvg}
-    </g>
-  );
-};
+    const blipSvg = makeBlipSvg(blip, {
+      muted,
+      selected,
+    });
+
+    return (
+      <g
+        data-testid="radar-entry"
+        ref={ref}
+        transform={`translate(${blip.x}, ${blip.y}) scale(${scale})`}
+        {...svgProps}
+      >
+        {blipSvg}
+      </g>
+    );
+  },
+);
+
+RadarBlip.displayName = 'RadarBlip';

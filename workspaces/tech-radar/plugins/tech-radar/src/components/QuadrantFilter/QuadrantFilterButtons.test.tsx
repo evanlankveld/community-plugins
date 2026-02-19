@@ -16,35 +16,46 @@
 
 import { fireEvent, render, screen } from '@testing-library/react';
 import { QuadrantFilterButtons } from './QuadrantFilterButtons';
+import { Quadrant } from '../../types';
+import {
+  RadarFilterContext,
+  RadarFilterContextType,
+} from '../RadarFilterContext';
 
 const mockQuadrants = [
   { id: 'quadrant-1', name: 'Quadrant 1' },
   { id: 'quadrant-2', name: 'Quadrant 2' },
   { id: 'quadrant-3', name: 'Quadrant 3' },
   { id: 'quadrant-4', name: 'Quadrant 4' },
-];
+] as Quadrant[];
 
 describe('QuadrantFilterButtons', () => {
-  it('should call onSelect with the correct quadrant when a quadrant is clicked', () => {
-    const onSelect = jest.fn();
+  it('should call setFocusedQuadrant with the correct quadrant when a quadrant is clicked', () => {
+    const handleSelectedBlip = jest.fn();
+    const setFocusedQuadrant = jest.fn();
     render(
-      <QuadrantFilterButtons
-        quadrants={mockQuadrants}
-        onSelect={onSelect}
-        selected={undefined}
-      />,
+      <RadarFilterContext.Provider
+        value={
+          {
+            handleSelectedBlip,
+            setFocusedQuadrant,
+          } as unknown as RadarFilterContextType
+        }
+      >
+        <QuadrantFilterButtons quadrants={mockQuadrants} />
+      </RadarFilterContext.Provider>,
     );
 
-    fireEvent.click(screen.getByTestId('quadrant-0'));
-    expect(onSelect).toHaveBeenCalledWith(mockQuadrants[0]);
-
     fireEvent.click(screen.getByTestId('quadrant-1'));
-    expect(onSelect).toHaveBeenCalledWith(mockQuadrants[1]);
+    expect(setFocusedQuadrant).toHaveBeenCalledWith(mockQuadrants[0]);
 
     fireEvent.click(screen.getByTestId('quadrant-2'));
-    expect(onSelect).toHaveBeenCalledWith(mockQuadrants[2]);
+    expect(setFocusedQuadrant).toHaveBeenCalledWith(mockQuadrants[1]);
 
     fireEvent.click(screen.getByTestId('quadrant-3'));
-    expect(onSelect).toHaveBeenCalledWith(mockQuadrants[3]);
+    expect(setFocusedQuadrant).toHaveBeenCalledWith(mockQuadrants[2]);
+
+    fireEvent.click(screen.getByTestId('quadrant-4'));
+    expect(setFocusedQuadrant).toHaveBeenCalledWith(mockQuadrants[3]);
   });
 });

@@ -19,16 +19,19 @@ import type {
   RadarRing,
 } from '@backstage-community/plugin-tech-radar-common';
 
+export type RingId = 'adopt' | 'assess' | 'hold' | 'leave' | 'trial';
+
+// Radar entries after they've been placed on the radar itself and filtered
 export type Blip = Readonly<
   {
     color: string;
-    index: number;
+    visible?: boolean;
     x: number;
     y: number;
-  } & Entry
+  } & ProcessedEntry
 >;
 
-export type Entry = Readonly<{
+export type ProcessedEntry = Readonly<{
   // Most recent description to display in the UI
   description?: string;
   id: string;
@@ -37,9 +40,9 @@ export type Entry = Readonly<{
   moved?: MovedState;
   quadrant: RadarQuadrant;
   ring: RadarRing;
-  timeline?: EntrySnapshot[];
+  timeline: EntrySnapshot[];
   title: string;
-  visible: boolean;
+  url?: string;
 }>;
 
 export type Quadrant = Readonly<{
