@@ -19,8 +19,6 @@ import type {
   RadarRing,
 } from '@backstage-community/plugin-tech-radar-common';
 
-export type RingId = 'adopt' | 'assess' | 'hold' | 'leave' | 'trial';
-
 // Radar entries after they've been placed on the radar itself and filtered
 export type Blip = Readonly<
   {

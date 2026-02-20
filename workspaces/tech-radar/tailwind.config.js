@@ -41,7 +41,7 @@ const config = {
         info: {
           DEFAULT: 'var(--bui-bg-solid)',
           border: 'var(--bui-border)',
-          foreground: 'var(--bui-fg-solid)',
+          foreground: 'var(--bui-fg-link)',
         },
         warning: {
           DEFAULT: 'var(--bui-bg-warning)',

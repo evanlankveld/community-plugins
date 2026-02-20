@@ -13,39 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { Quadrant, Ring, RingId } from '../../types';
+import type { Quadrant, Ring } from '../../types';
 
-import content from '../content.json';
 import { BRIGHT_RING_STYLE } from '../ringColors';
 import { Radar } from '../RadarPlot/Radar';
 import { cn } from '../../util/cn';
 
 type Props = Readonly<{
-  highlighted?: RingId;
+  highlighted?: string;
   quadrants: Quadrant[];
   rings: Ring[];
 }>;
 
 export const RingLegend = (props: Props) => {
   const { highlighted, quadrants, rings } = props;
-  const orderedContent = [...content];
-
-  if (highlighted) {
-    const highlightIndex = orderedContent.findIndex(
-      c => c.name === highlighted,
-    );
-    if (highlightIndex !== -1) {
-      const [highlightItem] = orderedContent.splice(highlightIndex, 1);
-      orderedContent.unshift(highlightItem);
-    }
-  }
 
   return (
     <div className={cn('flex flex-col gap-2')}>
-      {orderedContent.map(({ name, text }) => {
-        const ringId = name as RingId;
+      {rings.map(({ id, name, description }) => {
         const textColor = BRIGHT_RING_STYLE.text;
-        const isHighlighted = highlighted === ringId;
+        const isHighlighted = highlighted === id;
 
         return (
           <div
@@ -55,11 +42,11 @@ export const RingLegend = (props: Props) => {
                 ? 'border-primary/40 bg-muted/70 shadow-sm'
                 : 'border-border bg-card hover:bg-muted/40',
             )}
-            key={ringId}
+            key={id}
           >
             <div className="mt-0.5 basis-[10%] border border-gray-300 bg-card p-2">
               <Radar
-                highlightRing={ringId}
+                highlightRing={id}
                 isInLegend
                 quadrants={quadrants}
                 rings={rings}
@@ -70,13 +57,13 @@ export const RingLegend = (props: Props) => {
               <h3
                 className={cn(
                   'text-lg font-semibold capitalize tracking-tight',
-                  textColor[ringId],
+                  textColor[id],
                 )}
               >
                 {name}
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                {text}
+                {description}
               </p>
             </div>
           </div>

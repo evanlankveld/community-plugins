@@ -58,7 +58,7 @@ export const TechRadarContent = ({ loading, quadrants, rings }: Props) => {
       )}
       ref={ref}
     >
-      <div className="flex items-center justify-between gap-2 border-0 border-b border-solid border-border pb-2 grow">
+      <div className="flex items-center justify-between gap-2 border-0 border-b border-solid border-border py-2 grow sticky top-0 z-10 bg-background">
         <SearchField
           className="[&_.bui-SearchFieldInputWrapper]:h-10 max-w-80"
           onChange={value => onSearch(value)}
@@ -88,18 +88,18 @@ export const TechRadarContent = ({ loading, quadrants, rings }: Props) => {
         </div>
       </div>
 
-      <div className="flex w-full gap-10 px-1">
-        <div className="basis-1/3">
+      <div className="flex w-full gap-10 px-1 flex-col-reverse lg:flex-row">
+        <div className="lg:basis-1/3">
           {loading ? (
             <div className="animate-pulse rounded-md mt-11 h-full w-full bg-card" />
           ) : (
             <RadarAccordion quadrants={quadrants} rings={rings} />
           )}
         </div>
-        <div className="relative basis-2/3">
-          <div className="sticky top-[9rem] flex h-[calc(100vh-320px)] flex-col transition-all duration-500 ease-in-out group-fullscreen:top-[6rem] group-fullscreen:h-[calc(100vh-220px)]">
+        <div className="relative lg:basis-2/3">
+          <div className="sticky top-[9rem] flex flex-col transition-all duration-500 ease-in-out">
             <TrendLegend />
-            <div className="flex h-full flex-1 justify-center">
+            <div className="flex mt-4 h-full flex-1 justify-center">
               <Radar
                 loading={loading}
                 onClick={() => handleSelectedBlip(undefined)}

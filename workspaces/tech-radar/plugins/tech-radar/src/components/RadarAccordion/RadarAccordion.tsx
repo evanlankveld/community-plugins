@@ -19,7 +19,6 @@ import { Info, Triangle } from 'lucide-react';
 import { DateTime } from 'luxon';
 
 import { useComponents } from './../hooks/useComponents';
-import { RingId } from '../../types';
 import { cn } from '../../util/cn';
 import { RingLegend } from '../Legend/RingLegend';
 import { RadarFilterContext } from '../RadarFilterContext';
@@ -115,8 +114,7 @@ export const RadarAccordion = ({ quadrants, rings }: Props) => {
     <>
       <div className="rounded bg-background p-0">
         {rings.map(ring => {
-          const ringId = ring.id as RingId;
-          const ringEntries = visibleBlips.filter(e => e.ring.id === ringId);
+          const ringEntries = visibleBlips.filter(e => e.ring.id === ring.id);
 
           const ringFilters = selectedFilters.filter(f =>
             f.startsWith('ring:'),
@@ -124,13 +122,13 @@ export const RadarAccordion = ({ quadrants, rings }: Props) => {
           if (
             ringEntries.length === 0 &&
             ringFilters.length > 0 &&
-            !ringFilters.includes(`ring:${ringId}`)
+            !ringFilters.includes(`ring:${ring.id}`)
           ) {
             return null;
           }
 
           return (
-            <div key={ringId}>
+            <div key={ring.id}>
               <h3 className="mt-4 mb-2 flex items-center gap-1">
                 <span className="capitalize">{ring.name.toLowerCase()}</span>
                 <DialogTrigger>
@@ -142,7 +140,7 @@ export const RadarAccordion = ({ quadrants, rings }: Props) => {
                     <DialogHeader>Legend</DialogHeader>
                     <DialogBody>
                       <RingLegend
-                        highlighted={ringId}
+                        highlighted={ring.id}
                         quadrants={quadrants}
                         rings={rings}
                       />
@@ -162,9 +160,9 @@ export const RadarAccordion = ({ quadrants, rings }: Props) => {
                 </div>
               )}
 
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 min-w-[15rem]">
                 {visibleBlips
-                  .filter(blip => blip.timeline?.[0].ring.id === ringId)
+                  .filter(blip => blip.timeline?.[0].ring.id === ring.id)
                   .map(blip => {
                     const timeline = blip.timeline?.sort(
                       (a, b) => b.date.getTime() - a.date.getTime(),
@@ -177,7 +175,7 @@ export const RadarAccordion = ({ quadrants, rings }: Props) => {
                       <Accordion
                         className={cn(
                           'relative border-b border-muted transition-all first:rounded-t-lg last:rounded-b-lg',
-                          isSelected && ACCORDION_BG_COLOR[ringId],
+                          isSelected && ACCORDION_BG_COLOR[ring.id],
                         )}
                         isExpanded={isSelected}
                         onExpandedChange={isExpanded =>

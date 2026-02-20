@@ -17,7 +17,7 @@ import type { PropsWithChildren } from 'react';
 import { useContext, useId } from 'react';
 
 import { BRIGHT_RING_STYLE } from '../ringColors';
-import type { Quadrant, Ring, RingId } from '../../types';
+import type { Quadrant, Ring } from '../../types';
 import { RadarBlip } from '../RadarBlip/RadarBlip';
 import { RadarFilterContext } from '../RadarFilterContext';
 
@@ -71,7 +71,10 @@ export const Radar = ({
 
   return (
     <svg
-      className={cn('select-none font-sans', loading ? 'animate-pulse' : '')}
+      className={cn(
+        'select-none font-sans max-h-[calc(100vh-300px)]',
+        loading ? 'animate-pulse' : '',
+      )}
       onClick={onClick}
       viewBox={`${viewBoxMinX} ${viewBoxMinY} ${adjustedViewBoxSize} ${adjustedViewBoxSize}`}
     >
@@ -97,8 +100,7 @@ export const Radar = ({
                 });
 
                 const highlighted = highlightRing === ring.id;
-                const highlightColor =
-                  BRIGHT_RING_STYLE.fill[ring.id as RingId];
+                const highlightColor = BRIGHT_RING_STYLE.fill[ring.id];
 
                 const stroke = isInLegend
                   ? 'stroke-muted-foreground'
