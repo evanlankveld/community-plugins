@@ -24,7 +24,7 @@ export {
   techRadarPlugin,
   techRadarPlugin as plugin,
   TechRadarPage,
-  TechRadarContent,
+  TechRadarComponent,
 } from './plugin';
 
 /**
