@@ -459,7 +459,7 @@
 }
 
 .with-custom-css .fill-info-foreground {
-  fill: var(--bui-fg-solid)
+  fill: var(--bui-fg-link)
 }
 
 .with-custom-css .fill-muted-foreground {
@@ -584,7 +584,7 @@
 }
 
 .with-custom-css .text-info-foreground {
-  color: var(--bui-fg-solid)
+  color: var(--bui-fg-link)
 }
 
 .with-custom-css .text-muted-foreground {

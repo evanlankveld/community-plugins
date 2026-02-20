@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { RingId } from '../types';
 
-type RingToClass = Record<RingId, string>;
-
-export const ACCORDION_BG_COLOR = {
+export const ACCORDION_BG_COLOR: Record<string, string> = {
   adopt: 'bg-success',
   assess: 'bg-warning',
   hold: 'bg-error',
   leave: 'bg-muted',
   trial: 'bg-info',
-} as const satisfies RingToClass;
+};
 
-export const BRIGHT_RING_STYLE = {
+export const BRIGHT_RING_STYLE: Record<
+  'fill' | 'text',
+  Record<string, string>
+> = {
   fill: {
     adopt: 'fill-success-foreground',
     assess: 'fill-warning-foreground',
@@ -40,4 +40,4 @@ export const BRIGHT_RING_STYLE = {
     leave: 'text-muted-foreground',
     trial: 'text-info-foreground',
   },
-} as const satisfies { fill: RingToClass; text: RingToClass };
+};

@@ -19,7 +19,6 @@ import type { Blip } from '../../types';
 import { BLIP_RADIUS } from '../RadarPlot/radarPlotUtils';
 import { RadarFilterContext } from '../RadarFilterContext';
 import { BRIGHT_RING_STYLE } from '../ringColors';
-import type { RingId } from '../../types';
 import { cn } from '../../util/cn';
 
 type RadarBlipProps = Readonly<{
@@ -44,7 +43,7 @@ const makeBlipSvg = (
     !visible && 'opacity-10',
     visible && muted && !selected && 'opacity-30',
     visible && (!muted || selected) && 'opacity-100',
-    BRIGHT_RING_STYLE.fill[id as RingId],
+    BRIGHT_RING_STYLE.fill[id],
   );
 
   if (moved && moved > 0) {

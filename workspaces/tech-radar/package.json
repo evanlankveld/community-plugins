@@ -9,7 +9,7 @@
     "start": "backstage-cli repo start",
     "start:next": "yarn start app-next backend",
     "build:backend": "yarn workspace backend build",
-    "build:css": "yarn tailwindcss -c ./tailwind.config.js -i ./tailwind.base.css -o ./plugins/tech-radar/src/css/tech-radar.css --watch",
+    "dev:build-css": "yarn tailwindcss -c ./tailwind.config.js -i ./tailwind.base.css -o ./plugins/tech-radar/src/css/tech-radar.css --watch",
     "tsc": "tsc",
     "tsc:full": "tsc --skipLibCheck false --incremental false",
     "build:all": "backstage-cli repo build --all",
