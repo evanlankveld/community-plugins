@@ -79,16 +79,18 @@ export const TechRadarPage = techRadarPlugin.provide(
 );
 
 /**
- * Main Tech Radar Content
+ * Main Tech Radar Component
  *
  * @public
  */
-export const TechRadarContent = techRadarPlugin.provide(
+export const TechRadarComponent = techRadarPlugin.provide(
   createComponentExtension({
-    name: 'TechRadarContent',
+    name: 'TechRadarComponent',
     component: {
       lazy: async () =>
-        import('./components/TechRadarContent').then(m => m.TechRadarContent),
+        import('./components/TechRadarComponent').then(
+          m => m.TechRadarComponent,
+        ),
     },
   }),
 );

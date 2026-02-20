@@ -13,96 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { HTMLAttributes, useMemo } from 'react';
 import { Content, Header, Page } from '@backstage/core-components';
 
-import '../css/bui-styles.css';
-import '../css/tech-radar.css';
-import { TechRadarContent } from './TechRadarContent';
-import {
-  ComponentContext,
-  ComponentContextProps,
-  defaultComponents,
-} from './hooks/useComponents';
-import { RadarFilterContextWrapper } from './RadarFilterContext';
-import { useTechRadarLoader } from './hooks/useTechRadarLoader';
-import {
-  adjustRings,
-  placeBlipsOnRadar,
-  processRadarFileEntries,
-  processRadarFileQuadrants,
-  RADAR_DIAMETER,
-} from './RadarPlot/radarPlotUtils';
+import { TechRadarComponent } from './TechRadarComponent';
 
 export type TechRadarPageProps = {
-  customComponents?: Partial<ComponentContextProps>;
   pageTitle?: string;
   title?: string;
   subtitle?: string;
-} & HTMLAttributes<HTMLDivElement>;
+};
 
-export const TechRadarPage = ({
-  customComponents = {},
-  ...props
-}: TechRadarPageProps) => {
+export const TechRadarPage = (props: TechRadarPageProps) => {
   const {
     title = 'Tech Radar',
     subtitle = 'Pick the recommended technologies for your projects',
   } = props;
 
-  const { loading, value: radarFileData } = useTechRadarLoader();
-
-  const rings = useMemo(
-    () =>
-      adjustRings(
-        radarFileData ? radarFileData.rings : [{ id: '', color: '', name: '' }],
-        RADAR_DIAMETER / 2,
-      ),
-    [radarFileData],
-  );
-  const quadrants = useMemo(
-    () =>
-      processRadarFileQuadrants(
-        radarFileData
-          ? radarFileData.quadrants
-          : Array.from({ length: 4 }).map((_, i) => ({
-              id: i.toString(),
-              name: '',
-            })),
-      ),
-    [radarFileData],
-  );
-
-  const allBlips = useMemo(() => {
-    if (!radarFileData) {
-      return [];
-    }
-    const entries = processRadarFileEntries(radarFileData);
-    return placeBlipsOnRadar({
-      entries,
-      quadrants,
-      radius: RADAR_DIAMETER / 2,
-      rings,
-    });
-  }, [radarFileData, quadrants, rings]);
-
   return (
     <Page themeId="tool">
       <Header title={title} subtitle={subtitle} />
       <Content>
-        <ComponentContext.Provider
-          value={{ ...defaultComponents, ...customComponents }}
-        >
-          <RadarFilterContextWrapper allBlips={allBlips} quadrants={quadrants}>
-            <div className="with-custom-css" {...props}>
-              <TechRadarContent
-                loading={loading}
-                rings={rings}
-                quadrants={quadrants}
-              />
-            </div>
-          </RadarFilterContextWrapper>
-        </ComponentContext.Provider>
+        <TechRadarComponent />
       </Content>
     </Page>
   );
