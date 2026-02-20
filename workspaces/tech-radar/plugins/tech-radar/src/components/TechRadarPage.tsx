@@ -15,8 +15,6 @@
  */
 import { Content, Header, Page } from '@backstage/core-components';
 
-import '../css/bui-styles.css';
-import '../css/tech-radar.css';
 import { TechRadarComponent } from './TechRadarComponent';
 
 export type TechRadarPageProps = {
