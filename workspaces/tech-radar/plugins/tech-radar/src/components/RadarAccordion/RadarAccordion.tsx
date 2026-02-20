@@ -82,17 +82,7 @@ export const RadarAccordion = ({ quadrants, rings }: Props) => {
   } = useComponents();
 
   const visibleBlips = useMemo(() => {
-    return [
-      ...blips,
-      ...blips.map(blip => ({ ...blip, id: `${blip.id}-2` })),
-      ...blips.map(blip => ({ ...blip, id: `${blip.id}-3` })),
-      ...blips.map(blip => ({ ...blip, id: `${blip.id}-4` })),
-      ...blips.map(blip => ({ ...blip, id: `${blip.id}-5` })),
-      ...blips.map(blip => ({ ...blip, id: `${blip.id}-6` })),
-      ...blips.map(blip => ({ ...blip, id: `${blip.id}-7` })),
-      ...blips.map(blip => ({ ...blip, id: `${blip.id}-8` })),
-      ...blips.map(blip => ({ ...blip, id: `${blip.id}-9` })),
-    ]
+    return blips
       .filter(blip => blip.visible)
       .filter(blip =>
         focusedQuadrant ? blip.quadrant.id === focusedQuadrant.id : true,
@@ -170,7 +160,7 @@ export const RadarAccordion = ({ quadrants, rings }: Props) => {
                 </div>
               )}
 
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 min-w-[15rem]">
                 {visibleBlips
                   .filter(blip => blip.timeline?.[0].ring.id === ring.id)
                   .map(blip => {

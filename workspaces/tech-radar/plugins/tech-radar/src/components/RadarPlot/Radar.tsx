@@ -71,7 +71,10 @@ export const Radar = ({
 
   return (
     <svg
-      className={cn('select-none font-sans', loading ? 'animate-pulse' : '')}
+      className={cn(
+        'select-none font-sans max-h-[calc(100vh-300px)]',
+        loading ? 'animate-pulse' : '',
+      )}
       onClick={onClick}
       viewBox={`${viewBoxMinX} ${viewBoxMinY} ${adjustedViewBoxSize} ${adjustedViewBoxSize}`}
     >
