@@ -158,6 +158,18 @@
   top: 9rem
 }
 
+.with-custom-css .top-\[5rem\] {
+  top: 5rem
+}
+
+.with-custom-css .top-0 {
+  top: 0px
+}
+
+.with-custom-css .z-10 {
+  z-index: 10
+}
+
 .with-custom-css .mb-2 {
   margin-bottom: 0.5rem
 }
