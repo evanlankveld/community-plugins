@@ -24,6 +24,9 @@ import { RadarFilterContext } from '../RadarFilterContext';
 import { Blip, Quadrant, Ring } from '../../types';
 import { RadarBlipDetails } from '../RadarBlipDetails/RadarBlipDetails';
 import color from 'color';
+import { appThemeApiRef } from '@backstage/frontend-plugin-api';
+import { useApi } from '@backstage/core-plugin-api';
+import { useObservable } from 'react-use';
 
 type Props = Readonly<{
   quadrants: Quadrant[];
@@ -67,7 +70,14 @@ export const RadarAccordion = ({ quadrants, rings }: Props) => {
     selectedFilters,
   } = useContext(RadarFilterContext);
 
-  const isDarkMode = document.body.dataset.themeMode === 'dark';
+  const appThemeApi = useApi(appThemeApiRef);
+  const themeId = useObservable(
+    appThemeApi.activeThemeId$(),
+    appThemeApi.getActiveThemeId(),
+  );
+  const themeIds = appThemeApi.getInstalledThemes();
+  const activeTheme = themeIds.find(t => t.id === themeId);
+  const isDarkMode = activeTheme?.variant === 'dark';
 
   const {
     Accordion,
