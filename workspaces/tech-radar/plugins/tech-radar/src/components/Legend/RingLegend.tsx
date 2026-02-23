@@ -17,7 +17,9 @@ import type { Quadrant, Ring } from '../../types';
 
 import { Radar } from '../RadarPlot/Radar';
 import { cn } from '../../util/cn';
+
 import color from 'color';
+import { Link } from '@backstage/ui';
 
 type Props = Readonly<{
   highlighted?: string;
@@ -63,7 +65,21 @@ export const RingLegend = (props: Props) => {
                 {name}
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                {description}
+                {description ? (
+                  description
+                ) : (
+                  <>
+                    {
+                      'You add a description to this ring by modifying the tech radar file. '
+                    }
+                    <Link
+                      target="_blank"
+                      href="https://github.com/backstage/community-plugins/blob/main/workspaces/tech-radar/plugins/tech-radar/README.md#ring"
+                    >
+                      Schema help.
+                    </Link>
+                  </>
+                )}
               </p>
             </div>
           </div>
