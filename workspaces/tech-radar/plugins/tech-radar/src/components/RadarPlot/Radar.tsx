@@ -101,7 +101,7 @@ export const Radar = ({
 
                 const highlighted = highlightRing === ring.id;
                 const highlightColor = highlighted
-                  ? color(ring.color).hex()
+                  ? color(ring.color).string()
                   : undefined;
 
                 const stroke = isInLegend
@@ -115,7 +115,7 @@ export const Radar = ({
                     d={pathD}
                     key={ring.id}
                     strokeWidth={strokeWidth}
-                    fill={highlightColor}
+                    style={{ fill: highlightColor }}
                   />
                 );
               })}
