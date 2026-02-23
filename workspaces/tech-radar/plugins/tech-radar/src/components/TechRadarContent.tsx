@@ -58,7 +58,7 @@ export const TechRadarContent = ({ loading, quadrants, rings }: Props) => {
       )}
       ref={ref}
     >
-      <div className="flex items-center justify-between gap-2 border-0 border-b border-solid border-border py-2 grow sticky top-0 z-10 bg-background">
+      <div className="flex items-center justify-between gap-2 border-0 border-b border-solid border-border py-2 sticky top-0 z-10 bg-background">
         <SearchField
           className="[&_.bui-SearchFieldInputWrapper]:h-10 max-w-80"
           onChange={value => onSearch(value)}
