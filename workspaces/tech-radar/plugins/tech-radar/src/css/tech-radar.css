@@ -49,7 +49,6 @@
   --tw-contain-size:  ;
   --tw-contain-layout:  ;
   --tw-contain-paint:  ;
-  --tw-contain-style:  
 }
 
 ::backdrop {
@@ -103,7 +102,6 @@
   --tw-contain-size:  ;
   --tw-contain-layout:  ;
   --tw-contain-paint:  ;
-  --tw-contain-style:  
 }
 
 .with-custom-css .\!visible {
@@ -135,7 +133,7 @@
 }
 
 .with-custom-css .inset-0 {
-  inset: 0px
+  inset: 0
 }
 
 .with-custom-css .bottom-\[-1px\] {
@@ -151,7 +149,7 @@
 }
 
 .with-custom-css .top-0 {
-  top: 0px
+  top: 0
 }
 
 .with-custom-css .top-\[-1px\] {
@@ -263,7 +261,7 @@
 }
 
 .with-custom-css .flex-1 {
-  flex: 1 1 0%
+  flex: 1 1 0
 }
 
 .with-custom-css .grow {
@@ -394,7 +392,7 @@
 }
 
 .with-custom-css .border-0 {
-  border-width: 0px
+  border-width: 0
 }
 
 .with-custom-css .border-b {
@@ -491,7 +489,7 @@
 }
 
 .with-custom-css .p-0 {
-  padding: 0px
+  padding: 0
 }
 
 .with-custom-css .p-0\.5 {
@@ -625,7 +623,6 @@
 
 .with-custom-css .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
 

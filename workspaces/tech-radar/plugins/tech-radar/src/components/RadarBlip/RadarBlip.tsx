@@ -18,8 +18,8 @@ import { forwardRef, HTMLAttributes, useContext } from 'react';
 import type { Blip } from '../../types';
 import { BLIP_RADIUS } from '../RadarPlot/radarPlotUtils';
 import { RadarFilterContext } from '../RadarFilterContext';
-import { BRIGHT_RING_STYLE } from '../ringColors';
 import { cn } from '../../util/cn';
+import color from 'color';
 
 type RadarBlipProps = Readonly<{
   blip: Blip;
@@ -29,7 +29,7 @@ type RadarBlipProps = Readonly<{
   HTMLAttributes<SVGElement>;
 
 const makeBlipSvg = (
-  { moved, ring: { id }, visible }: Blip,
+  { moved, ring: { color: ringColor }, visible }: Blip,
   {
     muted,
     selected,
@@ -43,21 +43,32 @@ const makeBlipSvg = (
     !visible && 'opacity-10',
     visible && muted && !selected && 'opacity-30',
     visible && (!muted || selected) && 'opacity-100',
-    BRIGHT_RING_STYLE.fill[id],
   );
+
+  const fillStyle = color(ringColor).hex();
 
   if (moved && moved > 0) {
     return (
-      <path className={sharedClasses} d="M -11,5 11,5 0,-13 z" /> // triangle pointing up
+      <path
+        className={sharedClasses}
+        d="M -11,5 11,5 0,-13 z"
+        fill={fillStyle}
+      /> // triangle pointing up
     );
   }
   if (moved && moved < 0) {
     return (
-      <path className={sharedClasses} d="M -11,-5 11,-5 0,13 z" /> // triangle pointing down
+      <path
+        className={sharedClasses}
+        d="M -11,-5 11,-5 0,13 z"
+        fill={fillStyle}
+      /> // triangle pointing down
     );
   }
 
-  return <circle className={sharedClasses} r={BLIP_RADIUS - 1} />;
+  return (
+    <circle className={sharedClasses} r={BLIP_RADIUS - 1} fill={fillStyle} />
+  );
 };
 
 export const RadarBlip = forwardRef<SVGGElement, RadarBlipProps>(
