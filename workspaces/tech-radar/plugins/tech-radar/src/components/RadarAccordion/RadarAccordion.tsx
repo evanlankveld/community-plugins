@@ -19,12 +19,14 @@ import { Info, Triangle } from 'lucide-react';
 import { DateTime } from 'luxon';
 
 import { useComponents } from './../hooks/useComponents';
-import { cn } from '../../util/cn';
 import { RingLegend } from '../Legend/RingLegend';
 import { RadarFilterContext } from '../RadarFilterContext';
 import { Blip, Quadrant, Ring } from '../../types';
-import { ACCORDION_BG_COLOR } from '../ringColors';
 import { RadarBlipDetails } from '../RadarBlipDetails/RadarBlipDetails';
+import color from 'color';
+import { appThemeApiRef } from '@backstage/frontend-plugin-api';
+import { useApi } from '@backstage/core-plugin-api';
+import { useObservable } from 'react-use';
 
 type Props = Readonly<{
   quadrants: Quadrant[];
@@ -67,6 +69,15 @@ export const RadarAccordion = ({ quadrants, rings }: Props) => {
     selectedBlip,
     selectedFilters,
   } = useContext(RadarFilterContext);
+
+  const appThemeApi = useApi(appThemeApiRef);
+  const themeId = useObservable(
+    appThemeApi.activeThemeId$(),
+    appThemeApi.getActiveThemeId(),
+  );
+  const themeIds = appThemeApi.getInstalledThemes();
+  const activeTheme = themeIds.find(t => t.id === themeId);
+  const isDarkMode = activeTheme?.variant === 'dark';
 
   const {
     Accordion,
@@ -171,18 +182,25 @@ export const RadarAccordion = ({ quadrants, rings }: Props) => {
 
                     const isSelected = selectedBlip?.id === blip.id;
 
+                    const ringColor = color(ring.color).hsv();
+                    const backgroundColor = isSelected
+                      ? color({
+                          h: ringColor.hue(),
+                          s: isDarkMode ? 80 : 40,
+                          v: isDarkMode ? 40 : 100,
+                        }).string()
+                      : undefined;
+
                     return (
                       <Accordion
-                        className={cn(
-                          'relative border-b border-muted transition-all first:rounded-t-lg last:rounded-b-lg',
-                          isSelected && ACCORDION_BG_COLOR[ring.id],
-                        )}
+                        className="relative border-b border-muted transition-all first:rounded-t-lg last:rounded-b-lg"
                         isExpanded={isSelected}
                         onExpandedChange={isExpanded =>
                           onAccordionValueChange(
                             isExpanded ? blip.id : undefined,
                           )
                         }
+                        style={{ backgroundColor }}
                         key={blip.id}
                         ref={isSelected ? activeItemRef : null}
                       >

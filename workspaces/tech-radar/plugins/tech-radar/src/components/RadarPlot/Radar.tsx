@@ -16,7 +16,6 @@
 import type { PropsWithChildren } from 'react';
 import { useContext, useId } from 'react';
 
-import { BRIGHT_RING_STYLE } from '../ringColors';
 import type { Quadrant, Ring } from '../../types';
 import { RadarBlip } from '../RadarBlip/RadarBlip';
 import { RadarFilterContext } from '../RadarFilterContext';
@@ -30,6 +29,7 @@ import { QUADRANT_GAP, RADAR_DIAMETER, RADAR_PADDING } from './radarPlotUtils';
 import { cn } from '../../util/cn';
 import { useComponents } from '../hooks/useComponents';
 import { Focusable } from 'react-aria-components';
+import color from 'color';
 
 type RadarProps = Readonly<{
   highlightRing?: string;
@@ -100,7 +100,9 @@ export const Radar = ({
                 });
 
                 const highlighted = highlightRing === ring.id;
-                const highlightColor = BRIGHT_RING_STYLE.fill[ring.id];
+                const highlightColor = highlighted
+                  ? color(ring.color).string()
+                  : undefined;
 
                 const stroke = isInLegend
                   ? 'stroke-muted-foreground'
@@ -109,14 +111,11 @@ export const Radar = ({
 
                 return (
                   <path
-                    className={cn(
-                      'fill-card',
-                      stroke,
-                      highlighted ? highlightColor : '',
-                    )}
+                    className={cn('fill-card', stroke)}
                     d={pathD}
                     key={ring.id}
                     strokeWidth={strokeWidth}
+                    style={{ fill: highlightColor }}
                   />
                 );
               })}

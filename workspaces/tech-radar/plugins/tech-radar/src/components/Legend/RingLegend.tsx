@@ -15,9 +15,10 @@
  */
 import type { Quadrant, Ring } from '../../types';
 
-import { BRIGHT_RING_STYLE } from '../ringColors';
 import { Radar } from '../RadarPlot/Radar';
 import { cn } from '../../util/cn';
+
+import color from 'color';
 import { Link } from '@backstage/ui';
 
 type Props = Readonly<{
@@ -31,8 +32,8 @@ export const RingLegend = (props: Props) => {
 
   return (
     <div className={cn('flex flex-col gap-2')}>
-      {rings.map(({ id, name, description }) => {
-        const textColor = BRIGHT_RING_STYLE.text;
+      {rings.map(({ id, name, color: ringColor, description }) => {
+        const textColor = color(ringColor).hex();
         const isHighlighted = highlighted === id;
 
         return (
@@ -58,8 +59,8 @@ export const RingLegend = (props: Props) => {
               <h3
                 className={cn(
                   'text-lg font-semibold capitalize tracking-tight',
-                  textColor[id],
                 )}
+                style={{ color: textColor }}
               >
                 {name}
               </h3>
