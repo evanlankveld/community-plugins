@@ -232,7 +232,7 @@ export const RadarBlipsAndLabels = ({
 
           <Tooltip
             placement="top"
-            offset={-3}
+            offset={-4}
             containerPadding={0}
             style={{ zIndex: 99 }}
           >
