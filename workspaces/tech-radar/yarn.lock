@@ -1440,7 +1440,8 @@ __metadata:
     lucide-react: "npm:^0.556.0"
     luxon: "npm:^3.7.2"
     react: "npm:^16.13.1 || ^17.0.0 || ^18.0.0"
-    react-aria-components: "npm:^1.15.1"
+    react-aria: "npm:^3.46.0"
+    react-aria-components: "npm:^1.13.0"
     react-dom: "npm:^16.13.1 || ^17.0.0 || ^18.0.0"
     react-router-dom: "npm:6.0.0-beta.0 || ^6.3.0"
     react-use: "npm:^17.2.4"
@@ -8038,31 +8039,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/autocomplete@npm:3.0.0-rc.5":
-  version: 3.0.0-rc.5
-  resolution: "@react-aria/autocomplete@npm:3.0.0-rc.5"
-  dependencies:
-    "@react-aria/combobox": "npm:^3.14.2"
-    "@react-aria/focus": "npm:^3.21.4"
-    "@react-aria/i18n": "npm:^3.12.15"
-    "@react-aria/interactions": "npm:^3.27.0"
-    "@react-aria/listbox": "npm:^3.15.2"
-    "@react-aria/searchfield": "npm:^3.8.11"
-    "@react-aria/textfield": "npm:^3.18.4"
-    "@react-aria/utils": "npm:^3.33.0"
-    "@react-stately/autocomplete": "npm:3.0.0-beta.4"
-    "@react-stately/combobox": "npm:^3.12.2"
-    "@react-types/autocomplete": "npm:3.0.0-alpha.37"
-    "@react-types/button": "npm:^3.15.0"
-    "@react-types/shared": "npm:^3.33.0"
-    "@swc/helpers": "npm:^0.5.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-    react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10/1ac65532bb3232b9105a4355c9ccfea690a36af24edcc71930bc51ff4daeb5838f15ebfef9d7d78b0371457c336213506ceffdfc2a3015389e54566e4ed9b634
-  languageName: node
-  linkType: hard
-
 "@react-aria/breadcrumbs@npm:^3.5.29":
   version: 3.5.29
   resolution: "@react-aria/breadcrumbs@npm:3.5.29"
@@ -8233,23 +8209,6 @@ __metadata:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
     react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
   checksum: 10/2704d35e0cc67e8e2f7fa61f593160768a633e2ff3ced45f01806928dc15738dcd005c49ff7130c0c92fbaabf0b0624833e54b7d24a10181c7910a469a9da52b
-  languageName: node
-  linkType: hard
-
-"@react-aria/collections@npm:^3.0.2":
-  version: 3.0.2
-  resolution: "@react-aria/collections@npm:3.0.2"
-  dependencies:
-    "@react-aria/interactions": "npm:^3.27.0"
-    "@react-aria/ssr": "npm:^3.9.10"
-    "@react-aria/utils": "npm:^3.33.0"
-    "@react-types/shared": "npm:^3.33.0"
-    "@swc/helpers": "npm:^0.5.0"
-    use-sync-external-store: "npm:^1.6.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-    react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10/16f529af7c8c6e30b5b262261b27374eee8f8c6f3f617cc8d3e3a86d48a465327aabe301dbc4b097d3d050aa9681a7515fec8d6ae7c679f62b76b9b5a7478428
   languageName: node
   linkType: hard
 
@@ -9796,23 +9755,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-aria/virtualizer@npm:^4.1.12":
-  version: 4.1.12
-  resolution: "@react-aria/virtualizer@npm:4.1.12"
-  dependencies:
-    "@react-aria/i18n": "npm:^3.12.15"
-    "@react-aria/interactions": "npm:^3.27.0"
-    "@react-aria/utils": "npm:^3.33.0"
-    "@react-stately/virtualizer": "npm:^4.4.5"
-    "@react-types/shared": "npm:^3.33.0"
-    "@swc/helpers": "npm:^0.5.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-    react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10/3361e83a51722df91eb39a2be9e55b40fd4c16b1bca3facff6ebd1b73ebfb839f5b5720de45aadf4189820dfc201eddb5cc05347bac7b58d6ebcc66c660038ab
-  languageName: node
-  linkType: hard
-
 "@react-aria/visually-hidden@npm:^3.8.28":
   version: 3.8.28
   resolution: "@react-aria/visually-hidden@npm:3.8.28"
@@ -9875,18 +9817,6 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
   checksum: 10/3920ce479e577730870bc6845ee888a44a9a1f90188cf68efb60c74a8264b5886c9059b0cedc07b82fcb26afd770bff5fc971bef0d93ff6ba7d07024a3e628cd
-  languageName: node
-  linkType: hard
-
-"@react-stately/autocomplete@npm:3.0.0-beta.4":
-  version: 3.0.0-beta.4
-  resolution: "@react-stately/autocomplete@npm:3.0.0-beta.4"
-  dependencies:
-    "@react-stately/utils": "npm:^3.11.0"
-    "@swc/helpers": "npm:^0.5.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10/482a58cd5753df054edb27bf308d3922da2c7757c4e2227cefda3806ae2eb14ad771a7d3741eb57c00cee3e8c3cb4fc1c81006c2e920d64b18330f533043ba2a
   languageName: node
   linkType: hard
 
@@ -10060,18 +9990,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-stately/data@npm:^3.15.1":
-  version: 3.15.1
-  resolution: "@react-stately/data@npm:3.15.1"
-  dependencies:
-    "@react-types/shared": "npm:^3.33.0"
-    "@swc/helpers": "npm:^0.5.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10/49983201041c0762de8bf4f63b24f5d98092c584ab5ebc0b1426f77ab26cf3c6fc9e2fb8e4b211f386aa0c531ace90f477a02a020eab4092ada5b66583b2e68a
-  languageName: node
-  linkType: hard
-
 "@react-stately/datepicker@npm:^3.15.2":
   version: 3.15.2
   resolution: "@react-stately/datepicker@npm:3.15.2"
@@ -10239,24 +10157,6 @@ __metadata:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
     react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
   checksum: 10/a4413d766efdea8decf4549cd773f5a94ce086690195223e605b78ccb9e1c0dd25011bd37a011b805c72a7a9f3a27dc1dd6c8684d9cc2a0b6efaa084fbd337a4
-  languageName: node
-  linkType: hard
-
-"@react-stately/layout@npm:^4.5.3":
-  version: 4.5.3
-  resolution: "@react-stately/layout@npm:4.5.3"
-  dependencies:
-    "@react-stately/collections": "npm:^3.12.9"
-    "@react-stately/table": "npm:^3.15.3"
-    "@react-stately/virtualizer": "npm:^4.4.5"
-    "@react-types/grid": "npm:^3.3.7"
-    "@react-types/shared": "npm:^3.33.0"
-    "@react-types/table": "npm:^3.13.5"
-    "@swc/helpers": "npm:^0.5.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-    react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10/3048259d3b11fd30166ecab09efb42d62db2861a8d8839edadc8f36639a9143795ab60aaea20a9e1e036ac98db8f55a8679a3b5ace126fb39cd17a44ea11f49f
   languageName: node
   linkType: hard
 
@@ -10729,19 +10629,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-stately/virtualizer@npm:^4.4.5":
-  version: 4.4.5
-  resolution: "@react-stately/virtualizer@npm:4.4.5"
-  dependencies:
-    "@react-types/shared": "npm:^3.33.0"
-    "@swc/helpers": "npm:^0.5.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-    react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10/8553d510dad29ed3c541d62d849ac66ac49388f4b0ff7df6dfc1a246b08351efdf65e3176a71ce845084ec160f58ab9efa1b9017be3cc40c32bb8c07782072d7
-  languageName: node
-  linkType: hard
-
 "@react-types/autocomplete@npm:3.0.0-alpha.35":
   version: 3.0.0-alpha.35
   resolution: "@react-types/autocomplete@npm:3.0.0-alpha.35"
@@ -10752,19 +10639,6 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
   checksum: 10/2a51111a94f5df1ce0b1b137a69ca783fa2fa399b4c305ebc7f137b0aa6a420cfe2a3925d40fda9a7d0d3b832d390823015959eee41b6c6b31f7a6b30739a596
-  languageName: node
-  linkType: hard
-
-"@react-types/autocomplete@npm:3.0.0-alpha.37":
-  version: 3.0.0-alpha.37
-  resolution: "@react-types/autocomplete@npm:3.0.0-alpha.37"
-  dependencies:
-    "@react-types/combobox": "npm:^3.13.11"
-    "@react-types/searchfield": "npm:^3.6.7"
-    "@react-types/shared": "npm:^3.33.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10/8512a9385e492bb9abe1822c515e4b19e77306891ebdf7a166ed8925bd2efc61821374375623fefcc4d0e877fa57cfb673baa3419847e5b2459f1496e81e2a89
   languageName: node
   linkType: hard
 
@@ -10966,17 +10840,6 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
   checksum: 10/3e8f156318746d31ef7470d366dcc1004f3a59b1a3a3f9e54331921a4b251ff51c6bf76a32be229f6d8c524b5b1292f3c1135597de6b0f52bae2d8c32a542a74
-  languageName: node
-  linkType: hard
-
-"@react-types/form@npm:^3.7.17":
-  version: 3.7.17
-  resolution: "@react-types/form@npm:3.7.17"
-  dependencies:
-    "@react-types/shared": "npm:^3.33.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10/dfe879576ce7f8e7c0e0dcf0f620c8d7c9dca1b548f8aaa26b2978a4de4b011e74c3a57b45d06e518856d451554f6a673d9c5e53a06294bcab222355cd697919
   languageName: node
   linkType: hard
 
@@ -28218,46 +28081,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-aria-components@npm:^1.15.1":
-  version: 1.15.1
-  resolution: "react-aria-components@npm:1.15.1"
-  dependencies:
-    "@internationalized/date": "npm:^3.11.0"
-    "@internationalized/string": "npm:^3.2.7"
-    "@react-aria/autocomplete": "npm:3.0.0-rc.5"
-    "@react-aria/collections": "npm:^3.0.2"
-    "@react-aria/dnd": "npm:^3.11.5"
-    "@react-aria/focus": "npm:^3.21.4"
-    "@react-aria/interactions": "npm:^3.27.0"
-    "@react-aria/live-announcer": "npm:^3.4.4"
-    "@react-aria/overlays": "npm:^3.31.1"
-    "@react-aria/ssr": "npm:^3.9.10"
-    "@react-aria/textfield": "npm:^3.18.4"
-    "@react-aria/toolbar": "npm:3.0.0-beta.23"
-    "@react-aria/utils": "npm:^3.33.0"
-    "@react-aria/virtualizer": "npm:^4.1.12"
-    "@react-stately/autocomplete": "npm:3.0.0-beta.4"
-    "@react-stately/layout": "npm:^4.5.3"
-    "@react-stately/selection": "npm:^3.20.8"
-    "@react-stately/table": "npm:^3.15.3"
-    "@react-stately/utils": "npm:^3.11.0"
-    "@react-stately/virtualizer": "npm:^4.4.5"
-    "@react-types/form": "npm:^3.7.17"
-    "@react-types/grid": "npm:^3.3.7"
-    "@react-types/shared": "npm:^3.33.0"
-    "@react-types/table": "npm:^3.13.5"
-    "@swc/helpers": "npm:^0.5.0"
-    client-only: "npm:^0.0.1"
-    react-aria: "npm:^3.46.0"
-    react-stately: "npm:^3.44.0"
-    use-sync-external-store: "npm:^1.6.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-    react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10/0b65782233714c3278fa55d00725e1ffd91aa95558484a35fd346afd3f388862b4952b3612a6a28874b14a92a06402a71b35986aec3f7fa0e6f7066fb2780bc4
-  languageName: node
-  linkType: hard
-
 "react-aria@npm:^3.44.0":
   version: 3.44.0
   resolution: "react-aria@npm:3.44.0"
@@ -28812,42 +28635,6 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
   checksum: 10/4913f8ae9beb909d07669b97c0960dadad72c3c9e572051158a64acac3eadc73ff495b3c145b3673c15494751506e5b8a666a59f65364900fa66917412971d32
-  languageName: node
-  linkType: hard
-
-"react-stately@npm:^3.44.0":
-  version: 3.44.0
-  resolution: "react-stately@npm:3.44.0"
-  dependencies:
-    "@react-stately/calendar": "npm:^3.9.2"
-    "@react-stately/checkbox": "npm:^3.7.4"
-    "@react-stately/collections": "npm:^3.12.9"
-    "@react-stately/color": "npm:^3.9.4"
-    "@react-stately/combobox": "npm:^3.12.2"
-    "@react-stately/data": "npm:^3.15.1"
-    "@react-stately/datepicker": "npm:^3.16.0"
-    "@react-stately/disclosure": "npm:^3.0.10"
-    "@react-stately/dnd": "npm:^3.7.3"
-    "@react-stately/form": "npm:^3.2.3"
-    "@react-stately/list": "npm:^3.13.3"
-    "@react-stately/menu": "npm:^3.9.10"
-    "@react-stately/numberfield": "npm:^3.10.4"
-    "@react-stately/overlays": "npm:^3.6.22"
-    "@react-stately/radio": "npm:^3.11.4"
-    "@react-stately/searchfield": "npm:^3.5.18"
-    "@react-stately/select": "npm:^3.9.1"
-    "@react-stately/selection": "npm:^3.20.8"
-    "@react-stately/slider": "npm:^3.7.4"
-    "@react-stately/table": "npm:^3.15.3"
-    "@react-stately/tabs": "npm:^3.8.8"
-    "@react-stately/toast": "npm:^3.1.3"
-    "@react-stately/toggle": "npm:^3.9.4"
-    "@react-stately/tooltip": "npm:^3.5.10"
-    "@react-stately/tree": "npm:^3.9.5"
-    "@react-types/shared": "npm:^3.33.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-  checksum: 10/e59e6f32393fad81252416f4fe08628c3d52648310faa95e4413054bd1950c27965ed20ba52a59eea39eeeff2a3bbecca270b653fced7c0875d13babd90ed46a
   languageName: node
   linkType: hard
 
