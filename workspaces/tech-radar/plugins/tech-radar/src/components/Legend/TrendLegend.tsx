@@ -37,7 +37,7 @@ const Item = (props: ItemProps) => {
         </div>
       </Focusable>
 
-      <Tooltip>{props.tooltipText}</Tooltip>
+      <Tooltip placement="bottom">{props.tooltipText}</Tooltip>
     </TooltipTrigger>
   );
 };
