@@ -202,11 +202,7 @@ export const RadarBlipsAndLabels = ({
         ))
       }
       {blips.map(blip => (
-        <TooltipTrigger
-          delay={150}
-          key={blip.id}
-          isOpen={selectedBlip?.id === blip.id || undefined}
-        >
+        <TooltipTrigger delay={150} key={blip.id}>
           <Focusable excludeFromTabOrder>
             <RadarBlip
               blip={blip}
