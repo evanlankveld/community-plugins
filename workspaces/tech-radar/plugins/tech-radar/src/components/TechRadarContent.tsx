@@ -66,7 +66,7 @@ export const TechRadarContent = ({ loading, quadrants, rings }: Props) => {
           placeholder="Search"
           type="text"
         />
-        <div className="flex items-center gap-2">
+        <div className="flex gap-2 items-center">
           <TechRadarFilter
             className="h-10"
             quadrants={quadrants}
