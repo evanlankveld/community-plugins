@@ -54,7 +54,11 @@ export const TechRadarContent = ({ loading, quadrants, rings }: Props) => {
   return (
     /* https://react-aria.adobe.com/PortalProvider
     UNSAFE_PortalProvider is considered UNSAFE. Some portal locations may not
-    work with styling, accessibility,or for a variety of other reasons. */
+    work with styling, accessibility,or for a variety of other reasons.
+
+    This wrapper is used to help render tooltips in full screen.
+    Otherwise, the tooltips are placed outside this div, and not rendered.
+     */
     <UNSAFE_PortalProvider getContainer={() => ref.current}>
       <div
         className={cn(
