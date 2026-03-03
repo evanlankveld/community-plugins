@@ -33,26 +33,6 @@ const config = {
           DEFAULT: 'var(--bui-bg-surface-1)',
           foreground: 'var(--bui-fg-secondary)',
         },
-        success: {
-          DEFAULT: 'var(--bui-bg-success)',
-          border: 'var(--bui-border-border)',
-          foreground: 'var(--bui-fg-success)',
-        },
-        info: {
-          DEFAULT: 'var(--bui-bg-solid)',
-          border: 'var(--bui-border)',
-          foreground: 'var(--bui-fg-link)',
-        },
-        warning: {
-          DEFAULT: 'var(--bui-bg-warning)',
-          border: 'var(--bui-border-warning)',
-          foreground: 'var(--bui-fg-warning)',
-        },
-        error: {
-          DEFAULT: 'var(--bui-bg-danger)',
-          border: 'var(--bui-border-danger)',
-          foreground: 'var(--bui-fg-danger)',
-        },
       },
       borderRadius: {
         lg: 'var(--bui-radius-3)',
@@ -61,12 +41,6 @@ const config = {
       },
     },
   },
-  safelist: [
-    '[&:has([data-state=open])]:bg-success',
-    '[&:has([data-state=open])]:bg-warning',
-    '[&:has([data-state=open])]:bg-info',
-    '[&:has([data-state=open])]:bg-error',
-  ],
 };
 
 exports.default = config;
