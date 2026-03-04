@@ -47,7 +47,7 @@ export const TrendLegend = () => {
     <div className="flex items-center justify-end gap-5 py-2 text-xs font-medium text-muted-foreground">
       <Item
         icon={<CircleDot size={12} />}
-        text="New"
+        text="Unchanged"
         tooltipText="New or unchanged"
       />
       <Item

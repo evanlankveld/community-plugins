@@ -106,6 +106,10 @@
   --tw-contain-style:  ;
 }
 
+.with-custom-css .pointer-events-none {
+  pointer-events: none
+}
+
 .with-custom-css .\!visible {
   visibility: visible !important
 }
@@ -446,6 +450,10 @@
   fill: var(--bui-fg-secondary)
 }
 
+.with-custom-css .fill-white {
+  fill: #fff
+}
+
 .with-custom-css .stroke-border {
   stroke: var(--bui-border)
 }
@@ -494,6 +502,10 @@
 
 .with-custom-css .text-\[12px\] {
   font-size: 12px
+}
+
+.with-custom-css .text-\[5px\] {
+  font-size: 5px
 }
 
 .with-custom-css .text-lg {
@@ -545,6 +557,10 @@
 
 .with-custom-css .tracking-tight {
   letter-spacing: -0.025em
+}
+
+.with-custom-css .tracking-tighter {
+  letter-spacing: -0.05em
 }
 
 .with-custom-css .text-muted-foreground {
@@ -623,6 +639,10 @@
   transition-duration: 150ms
 }
 
+.with-custom-css .duration-100 {
+  transition-duration: 100ms
+}
+
 .with-custom-css .duration-200 {
   transition-duration: 200ms
 }
@@ -637,6 +657,10 @@
 
 .with-custom-css .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+.with-custom-css .\[transition-property\:opacity\2c stroke\] {
+  transition-property: opacity,stroke
 }
 
 .with-custom-css .first\:rounded-t-lg:first-child {
