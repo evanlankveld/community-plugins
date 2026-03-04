@@ -49,6 +49,7 @@
   --tw-contain-size:  ;
   --tw-contain-layout:  ;
   --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 ::backdrop {
@@ -102,6 +103,7 @@
   --tw-contain-size:  ;
   --tw-contain-layout:  ;
   --tw-contain-paint:  ;
+  --tw-contain-style:  ;
 }
 
 .with-custom-css .\!visible {
@@ -133,7 +135,7 @@
 }
 
 .with-custom-css .inset-0 {
-  inset: 0
+  inset: 0px
 }
 
 .with-custom-css .bottom-\[-1px\] {
@@ -149,7 +151,7 @@
 }
 
 .with-custom-css .top-0 {
-  top: 0
+  top: 0px
 }
 
 .with-custom-css .top-\[-1px\] {
@@ -261,7 +263,7 @@
 }
 
 .with-custom-css .flex-1 {
-  flex: 1 1 0
+  flex: 1 1 0%
 }
 
 .with-custom-css .grow {
@@ -392,7 +394,7 @@
 }
 
 .with-custom-css .border-0 {
-  border-width: 0
+  border-width: 0px
 }
 
 .with-custom-css .border-b {
@@ -432,52 +434,16 @@
   background-color: var(--bui-bg-surface-1)
 }
 
-.with-custom-css .bg-error {
-  background-color: var(--bui-bg-danger)
-}
-
-.with-custom-css .bg-info {
-  background-color: var(--bui-bg-solid)
-}
-
-.with-custom-css .bg-muted {
-  background-color: var(--bui-bg-surface-1)
-}
-
-.with-custom-css .bg-success {
-  background-color: var(--bui-bg-success)
-}
-
 .with-custom-css .bg-transparent {
   background-color: transparent
-}
-
-.with-custom-css .bg-warning {
-  background-color: var(--bui-bg-warning)
 }
 
 .with-custom-css .fill-card {
   fill: var(--bui-bg-surface-1)
 }
 
-.with-custom-css .fill-error-foreground {
-  fill: var(--bui-fg-danger)
-}
-
-.with-custom-css .fill-info-foreground {
-  fill: var(--bui-fg-link)
-}
-
 .with-custom-css .fill-muted-foreground {
   fill: var(--bui-fg-secondary)
-}
-
-.with-custom-css .fill-success-foreground {
-  fill: var(--bui-fg-success)
-}
-
-.with-custom-css .fill-warning-foreground {
-  fill: var(--bui-fg-warning)
 }
 
 .with-custom-css .stroke-border {
@@ -489,7 +455,7 @@
 }
 
 .with-custom-css .p-0 {
-  padding: 0
+  padding: 0px
 }
 
 .with-custom-css .p-0\.5 {
@@ -581,28 +547,12 @@
   letter-spacing: -0.025em
 }
 
-.with-custom-css .text-error-foreground {
-  color: var(--bui-fg-danger)
-}
-
-.with-custom-css .text-info-foreground {
-  color: var(--bui-fg-link)
-}
-
 .with-custom-css .text-muted-foreground {
   color: var(--bui-fg-secondary)
 }
 
 .with-custom-css .text-primary {
   color: var(--bui-bg-solid)
-}
-
-.with-custom-css .text-success-foreground {
-  color: var(--bui-fg-success)
-}
-
-.with-custom-css .text-warning-foreground {
-  color: var(--bui-fg-warning)
 }
 
 .with-custom-css .opacity-0 {
@@ -623,6 +573,7 @@
 
 .with-custom-css .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
 
@@ -746,22 +697,6 @@
   .with-custom-css .lg\:flex-row {
     flex-direction: row
   }
-}
-
-.with-custom-css .\[\&\:has\(\[data-state\=open\]\)\]\:bg-error:has([data-state=open]) {
-  background-color: var(--bui-bg-danger)
-}
-
-.with-custom-css .\[\&\:has\(\[data-state\=open\]\)\]\:bg-info:has([data-state=open]) {
-  background-color: var(--bui-bg-solid)
-}
-
-.with-custom-css .\[\&\:has\(\[data-state\=open\]\)\]\:bg-success:has([data-state=open]) {
-  background-color: var(--bui-bg-success)
-}
-
-.with-custom-css .\[\&\:has\(\[data-state\=open\]\)\]\:bg-warning:has([data-state=open]) {
-  background-color: var(--bui-bg-warning)
 }
 
 .with-custom-css :is(.\[\&_\.bui-ButtonContent\]\:justify-between .bui-ButtonContent) {
