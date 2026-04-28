@@ -21,12 +21,16 @@ import { PageBlueprint } from '@backstage/frontend-plugin-api';
 import { rootRouteRef } from '../routes';
 
 /**
+ * The announcements page provides a filterable list of announcements.
+ *
+ * @remarks
+ * Extension ID: `page:announcements`
+ *
  * @alpha
  */
 export const announcementsPage = PageBlueprint.makeWithOverrides({
   config: {
     schema: {
-      title: z => z.string().optional(),
       /**
        * @deprecated Filter by category using URL state (e.g. ?category=...). This option will be removed.
        */

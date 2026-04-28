@@ -1,5 +1,50 @@
 # @backstage-community/plugin-jenkins-backend
 
+## 0.28.0
+
+### Minor Changes
+
+- 6e513d2: Backstage version bump to v1.50.2
+
+### Patch Changes
+
+- Updated dependencies [6e513d2]
+  - @backstage-community/plugin-jenkins-common@0.19.0
+
+## 0.27.0
+
+### Minor Changes
+
+- 54da0c1: Backstage version bump to v1.49.2
+
+### Patch Changes
+
+- Updated dependencies [54da0c1]
+  - @backstage-community/plugin-jenkins-common@0.18.0
+
+## 0.26.0
+
+### Minor Changes
+
+- 5b10e9e: Backstage version bump to v1.48.2
+
+### Patch Changes
+
+- Updated dependencies [5b10e9e]
+  - @backstage-community/plugin-jenkins-common@0.17.0
+
+## 0.25.0
+
+### Minor Changes
+
+- 5141efa: Drops support for old backend system which includes removing exports for JenkinsBuilder. Please migrate to the new backend system way of installing the plugin.
+
+### Patch Changes
+
+- fc25522: remove unused dependencies
+- Updated dependencies [fc25522]
+  - @backstage-community/plugin-jenkins-common@0.16.1
+
 ## 0.24.1
 
 ### Patch Changes

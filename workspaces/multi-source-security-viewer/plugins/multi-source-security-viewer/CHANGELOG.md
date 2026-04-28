@@ -1,5 +1,74 @@
 # @backstage-community/plugin-multi-source-security-viewer
 
+## 0.15.2
+
+### Patch Changes
+
+- 33fff24: Updated dependency `@backstage-community/plugin-azure-devops-common` to `^0.21.0`.
+
+## 0.15.1
+
+### Patch Changes
+
+- 29371ff: Updated dependency `@backstage-community/plugin-jenkins` to `^0.30.0`.
+- 4e630e4: Updated dependency `@backstage-community/plugin-github-actions` to `^0.22.0`.
+- edbdf1a: Updated dependency `@backstage-community/plugin-azure-devops` to `^0.29.0`.
+
+## 0.15.0
+
+### Minor Changes
+
+- 179f726: Backstage version bump to v1.49.2
+
+### Patch Changes
+
+- Updated dependencies [179f726]
+  - @backstage-community/plugin-multi-source-security-viewer-common@0.13.0
+
+## 0.14.1
+
+### Patch Changes
+
+- 0467b33: Updated dependency `@testing-library/react` to `^16.0.0`.
+  Updated dependency `@testing-library/dom` to `10.4.1`.
+  Updated dependency `@testing-library/jest-dom` to `^6.0.0`.
+- a7cbd3f: Backstage version bump to v1.48.5
+- Updated dependencies [a7cbd3f]
+  - @backstage-community/plugin-multi-source-security-viewer-common@0.12.1
+
+## 0.14.0
+
+### Minor Changes
+
+- d9a66c5: Backstage version bump to v1.48.4
+
+### Patch Changes
+
+- 39da154: Updated dependency `@backstage-community/plugin-github-actions` to `^0.21.0`.
+- f38f7ba: Updated dependency `@backstage-community/plugin-azure-devops` to `^0.28.0`.
+- 73fd985: Updated dependency `@backstage-community/plugin-azure-devops-common` to `^0.20.0`.
+- Updated dependencies [d9a66c5]
+  - @backstage-community/plugin-multi-source-security-viewer-common@0.12.0
+
+## 0.13.1
+
+### Patch Changes
+
+- 4ff4586: Updated dependency `@backstage-community/plugin-azure-devops` to `^0.26.0`.
+
+## 0.13.0
+
+### Minor Changes
+
+- 0e8efcd: Backstage version bump to v1.47.2
+
+### Patch Changes
+
+- 30425e7: Updated dependency `@backstage-community/plugin-jenkins` to `^0.28.0`.
+- 7c6e7b4: Updated dependency `@backstage-community/plugin-github-actions` to `^0.20.0`.
+- Updated dependencies [0e8efcd]
+  - @backstage-community/plugin-multi-source-security-viewer-common@0.11.0
+
 ## 0.12.2
 
 ### Patch Changes

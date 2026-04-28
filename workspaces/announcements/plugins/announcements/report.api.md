@@ -13,17 +13,7 @@ import { RouteRef } from '@backstage/core-plugin-api';
 import { SearchResultListItemExtensionProps } from '@backstage/plugin-search-react';
 
 // @public (undocumented)
-export const AnnouncementsCard: ({
-  title,
-  max,
-  category,
-  active,
-  variant,
-  sortBy,
-  order,
-  current,
-  hideStartAt,
-}: {
+export const AnnouncementsCard: (input: {
   title?: string | undefined;
   max?: number | undefined;
   category?: string | undefined;
@@ -73,7 +63,6 @@ export type MarkdownRendererTypeProps = 'backstage' | 'md-editor';
 
 // @public (undocumented)
 export const NewAnnouncementBanner: (props: {
-  variant?: 'block' | 'floating' | undefined;
   max?: number | undefined;
   category?: string | undefined;
   active?: boolean | undefined;

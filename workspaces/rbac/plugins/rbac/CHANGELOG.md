@@ -1,5 +1,93 @@
 # @backstage-community/plugin-rbac
 
+## 1.52.1
+
+### Patch Changes
+
+- a559dfb: Updated dependency `@types/node` to `22.19.17`.
+
+## 1.52.0
+
+### Minor Changes
+
+- 8993474: Backstage version bump to v1.49.2
+
+### Patch Changes
+
+- Updated dependencies [8993474]
+  - @backstage-community/plugin-rbac-common@1.26.0
+
+## 1.51.0
+
+### Minor Changes
+
+- 50e194d: Add support for a default role and permissions for authenticated users in RBAC backend
+
+  - Introduced a new `defaultRole` and `basicPermissions` configuration options to assign a default role to all authenticated users.
+
+    ```diff
+    permission:
+      rbac:
+    +   defaultPermissions:
+    +     defaultRole: role:default/my-default-role
+    +     basicPermissions:
+    +       - permission: catalog.entity.read
+    +         action: read
+    ```
+
+  - Updated the RBAC permission policy to include the default role in user roles if not already present.
+
+### Patch Changes
+
+- Updated dependencies [50e194d]
+  - @backstage-community/plugin-rbac-common@1.25.0
+
+## 1.50.2
+
+### Patch Changes
+
+- d737494: Backstage version bump to v1.48.5
+- Updated dependencies [d737494]
+  - @backstage-community/plugin-rbac-common@1.24.1
+
+## 1.50.1
+
+### Patch Changes
+
+- 0467b33: Updated dependency `@testing-library/react` to `^16.0.0`.
+  Updated dependency `@testing-library/dom` to `10.4.1`.
+  Updated dependency `@testing-library/jest-dom` to `^6.0.0`.
+
+## 1.50.0
+
+### Minor Changes
+
+- 843bbe2: Backstage version bump to v1.48.4
+
+### Patch Changes
+
+- d22bce2: Updated dependency `start-server-and-test` to `2.1.5`.
+- Updated dependencies [843bbe2]
+  - @backstage-community/plugin-rbac-common@1.24.0
+
+## 1.49.0
+
+### Minor Changes
+
+- 8c7bddb: Added NFS support
+
+### Patch Changes
+
+- 42c05f7: exported rbacPlugin as a default and other minor updates
+- a55af54: Updated the translation of a Japanese word.
+- 1d15595: Translation updated for German and Spanish
+
+## 1.48.1
+
+### Patch Changes
+
+- 497d5c6: Updated dependency `@types/node` to `22.19.11`.
+
 ## 1.48.0
 
 ### Minor Changes

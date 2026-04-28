@@ -1,5 +1,89 @@
 # @backstage-community/plugin-npm
 
+## 1.21.1
+
+### Patch Changes
+
+- 8833c60: Remove any from exported alpha types so that they are now correctly typed.
+  - @backstage-community/plugin-npm-common@1.21.1
+
+## 1.21.0
+
+### Minor Changes
+
+- 57f14ed: Backstage version bump to v1.50.2
+
+### Patch Changes
+
+- 90b17c9: Export a new `app` module for translations, which needs to be manually imported:
+
+  ```tsx
+  import npmPlugin, {
+    npmTranslationsModule,
+  } from '@backstage-community/plugin-npm/alpha';
+
+  // ...
+
+  export default createApp({
+    features: [
+      // ...other plugins
+      npmPlugin,
+      npmTranslationsModule,
+    ],
+  });
+  ```
+
+- Updated dependencies [57f14ed]
+  - @backstage-community/plugin-npm-common@1.21.0
+
+## 1.20.0
+
+### Minor Changes
+
+- 38b66a1: Backstage version bump to v1.49.2
+
+### Patch Changes
+
+- Updated dependencies [38b66a1]
+  - @backstage-community/plugin-npm-common@1.20.0
+
+## 1.19.1
+
+### Patch Changes
+
+- f934f69: Backstage version bump to v1.48.5
+- Updated dependencies [f934f69]
+  - @backstage-community/plugin-npm-common@1.19.1
+
+## 1.19.0
+
+### Minor Changes
+
+- 35645d6: Backstage version bump to v1.48.4
+
+### Patch Changes
+
+- Updated dependencies [35645d6]
+  - @backstage-community/plugin-npm-common@1.19.0
+
+## 1.18.1
+
+### Patch Changes
+
+- 1d15595: Translation updated for German and added for Spanish
+  - @backstage-community/plugin-npm-common@1.18.1
+
+## 1.18.0
+
+### Minor Changes
+
+- 3f67411: Backstage version bump to v1.48.1
+
+### Patch Changes
+
+- Updated dependencies [3f67411]
+  - @backstage-community/plugin-npm-common@1.18.0
+
 ## 1.17.0
 
 ### Minor Changes

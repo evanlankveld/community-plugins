@@ -1,5 +1,23 @@
 # @backstage-community/plugin-scaffolder-backend-module-annotator
 
+## 2.16.1
+
+### Patch Changes
+
+- 0fa0506: Bumped TypeScript to ~5.7 to align with Backstage 1.49 and added @backstage/cli-defaults
+
+## 2.16.0
+
+### Minor Changes
+
+- c386ef9: Backstage version bump to v1.49.3
+
+## 2.15.0
+
+### Minor Changes
+
+- 7d83040: Backstage version bump to v1.48.4
+
 ## 2.14.0
 
 ### Minor Changes

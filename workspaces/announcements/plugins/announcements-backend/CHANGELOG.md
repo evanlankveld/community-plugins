@@ -1,5 +1,58 @@
 # @backstage-community/plugin-announcements-backend
 
+## 0.24.0
+
+### Minor Changes
+
+- 510c863: Backstage version bump to v1.50.2
+
+### Patch Changes
+
+- 3f2d8c2: Updated dependency `@types/supertest` to `^7.0.0`.
+- Updated dependencies [510c863]
+  - @backstage-community/plugin-announcements-common@0.20.0
+
+## 0.23.1
+
+### Patch Changes
+
+- 31d6225: Added actions for announcement management.
+
+  Registered four actions that expose the announcements backend via MCP and scaffolder templates:
+
+  - `announcements:list-announcements` — list announcements with optional filters for category, tags, active status, and pagination
+  - `announcements:get-announcement` — fetch full details of a single announcement by ID
+  - `announcements:create-announcement` — create a new announcement (requires `announcement.entity.create` permission)
+  - `announcements:delete-announcement` — delete an announcement by ID (requires `announcement.entity.delete` permission)
+
+## 0.23.0
+
+### Minor Changes
+
+- e0c2eb4: Backstage version bump to v1.49.2
+
+### Patch Changes
+
+- Updated dependencies [e0c2eb4]
+  - @backstage-community/plugin-announcements-common@0.19.0
+
+## 0.22.0
+
+### Minor Changes
+
+- 8b42b6b: Backstage version bump to v1.48.2
+
+### Patch Changes
+
+- Updated dependencies [8b42b6b]
+  - @backstage-community/plugin-announcements-common@0.18.0
+
+## 0.21.1
+
+### Patch Changes
+
+- b133c9d: Updated dependency `@types/supertest` to `^6.0.0`.
+
 ## 0.21.0
 
 ### Minor Changes

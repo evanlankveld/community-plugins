@@ -6,7 +6,7 @@
 import { Announcement } from '@backstage-community/plugin-announcements-common';
 import { AnnouncementsFilters } from '@backstage-community/plugin-announcements-common';
 import { AnnouncementsList } from '@backstage-community/plugin-announcements-common';
-import { ApiRef } from '@backstage/frontend-plugin-api';
+import { ApiRef } from '@backstage/core-plugin-api';
 import { Category } from '@backstage-community/plugin-announcements-common';
 import { DateTime } from 'luxon';
 import { DiscoveryApi } from '@backstage/core-plugin-api';
@@ -68,16 +68,7 @@ export class AnnouncementsClient implements AnnouncementsApi {
   // (undocumented)
   announcementByID(id: string): Promise<Announcement>;
   // (undocumented)
-  announcements({
-    max,
-    page,
-    category,
-    active,
-    sortBy,
-    order,
-    current,
-    tags,
-  }: {
+  announcements(input: {
     max?: number;
     page?: number;
     category?: string;
