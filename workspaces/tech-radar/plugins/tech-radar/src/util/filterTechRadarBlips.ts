@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import type { Blip } from './types';
+import type { Blip } from '../types';
 
 type Options = Readonly<{
   blips: Blip[];
@@ -29,7 +29,7 @@ export const filterBlips = (options: Options): Blip[] => {
       !searchTerm ||
       blip.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
       blip.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      blip.timeline[0].description
+      blip.timeline?.[0].description
         ?.toLowerCase()
         .includes(searchTerm.toLowerCase());
 

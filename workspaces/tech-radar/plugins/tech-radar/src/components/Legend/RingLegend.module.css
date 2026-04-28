@@ -1,18 +1,18 @@
 .ringItem {
-  border: 1px solid var(--bui-border);
-  background-color: var(--bui-bg-surface-1);
+  border: 1px solid var(--bui-border-1);
+  background-color: var(--bui-bg-neutral-1);
   transition: background-color 0.2s ease-in-out;
 }
 
 .highlighted {
-  background-color: var(--bui-bg-neutral-on-surface-1);
+  background-color: var(--bui-bg-app);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .radarPreview {
   margin-top: 0.125rem; /* mt-0.5 */
   border: 1px solid #d1d5d9; /* border-gray-300 */
-  background-color: var(--bui-bg-surface-1);
+  background-color: var(--bui-bg-neutral-1);
 }
 
 .description {

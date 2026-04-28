@@ -18,7 +18,6 @@ import { Content, Header, Page } from '@backstage/core-components';
 import { TechRadarComponent } from './TechRadarComponent';
 
 export type TechRadarPageProps = {
-  pageTitle?: string;
   title?: string;
   subtitle?: string;
 };

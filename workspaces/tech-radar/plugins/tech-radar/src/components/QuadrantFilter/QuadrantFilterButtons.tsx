@@ -81,6 +81,7 @@ export const QuadrantFilterButtons = ({ quadrants }: Props) => {
         return (
           <Button
             data-testid={q.id}
+            aria-label={q.name}
             className={cn(
               styles.quadrantButton,
               isFocused && styles.isFocused,

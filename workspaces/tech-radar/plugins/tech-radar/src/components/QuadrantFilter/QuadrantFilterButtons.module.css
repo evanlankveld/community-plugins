@@ -3,8 +3,8 @@
   aspect-ratio: 5 / 3;
   height: 2.5rem; /* h-10 */
   border-radius: var(--bui-radius-2); /* rounded-md */
-  border: 1px solid var(--bui-border); /* border-border */
-  background-color: var(--bui-bg-surface-1); /* bg-card */
+  border: 1px solid var(--bui-border-1); /* border-border */
+  background-color: var(--bui-bg-neutral-1); /* bg-card */
 }
 
 .svg {

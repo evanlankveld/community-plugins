@@ -1,6 +1,6 @@
 .filterButton {
-  background-color: var(--bui-bg-surface-1); /* bg-card */
-  border: 1px solid var(--bui-border); /* border-border */
+  background-color: var(--bui-bg-neutral-1); /* bg-card */
+  border: 1px solid var(--bui-border-1); /* border-border */
   border-style: solid;
   width: 15rem; /* w-60 */
   height: 2.5rem; /* h-10 */

@@ -15,7 +15,7 @@
  */
 import { useContext, useMemo } from 'react';
 
-import { Box, Button, Flex, Text } from '@backstage/ui';
+import { Box, Button, Text } from '@backstage/ui';
 import { useComponents } from './../hooks/useComponents';
 import { ChevronDown } from 'lucide-react';
 import { RadarFilterContext } from '../RadarFilterContext';

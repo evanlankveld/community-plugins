@@ -15,7 +15,7 @@
  */
 import { useEffect } from 'react';
 
-import { techRadarApiRef } from '@backstage-community/plugin-tech-radar';
+import { techRadarApiRef } from '../../api';
 import useAsync from 'react-use/lib/useAsync';
 
 import { errorApiRef, useApi } from '@backstage/core-plugin-api';

@@ -41,10 +41,9 @@ import { TechRadarPage } from '@backstage-community/plugin-tech-radar';
 const routes = (
   <FlatRoutes>
     {/* ...other routes */}
-    <Route
-      path="/tech-radar"
-      element={<TechRadarPage />}
-    />
+    <Route path="/tech-radar" element={<TechRadarPage />} />
+  </FlatRoutes>
+);
 ```
 
 If you'd like to configure it more, see the `TechRadarPageProps` and `TechRadarComponentProps` types for options:
@@ -53,7 +52,6 @@ If you'd like to configure it more, see the `TechRadarPageProps` and `TechRadarC
 export type TechRadarPageProps = {
   title?: string;
   subtitle?: string;
-  pageTitle?: string;
 };
 ```
 
@@ -281,9 +279,7 @@ export const app = createApp({
 The TechRadarComponent accepts any props that a <div /> accepts. This complements well with the `data-testid` attribute and the `@testing-library/react` library we use in Backstage.
 
 ```tsx
-<TechRadarComponent
-  data-testid: 'tech-radar-svg'
-/>
+<TechRadarComponent data-testid={'tech-radar-svg'} />
 
 // Then, in your tests...
 // const { getByTestId } = render(...);

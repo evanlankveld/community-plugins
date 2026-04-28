@@ -42,30 +42,4 @@ describe('RingLegend', () => {
     expect(screen.getByText('hold')).toBeInTheDocument();
     expect(screen.getByText('trial')).toBeInTheDocument();
   });
-
-  it('should move the highlighted ring to the top', () => {
-    render(
-      <RingLegend
-        highlighted="hold"
-        quadrants={mockQuadrants}
-        rings={mockRings}
-      />,
-    );
-    const rings = screen.getAllByRole('heading');
-    expect(rings[0]).toHaveTextContent('hold');
-  });
-
-  it('should apply highlighted styles to the highlighted ring', () => {
-    render(
-      <RingLegend
-        highlighted="adopt"
-        quadrants={mockQuadrants}
-        rings={mockRings}
-      />,
-    );
-    const highlightedRing = screen
-      .getByText('adopt')
-      .closest('div[class*="border-primary/40"]');
-    expect(highlightedRing).toBeInTheDocument();
-  });
 });

@@ -1,6 +1,6 @@
 .container {
   border-radius: 0.25rem; /* rounded */
-  background-color: var(--bui-bg-surface-0); /* bg-background */
+  background-color: var(--bui-bg-neutral-1-0); /* bg-background */
   padding: 0;
 }
 
@@ -24,7 +24,7 @@
 
 .accordion {
   position: relative;
-  border-bottom: 1px solid var(--bui-bg-surface-1); /* border-muted */
+  border-bottom: 1px solid var(--bui-bg-neutral-1); /* border-muted */
   transition: all 0.2s;
 }
 

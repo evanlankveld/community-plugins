@@ -108,8 +108,8 @@ export const Radar = ({
                   : styles.strokeBorder;
                 const strokeWidth = isInLegend ? '8' : '1';
 
-                const defaultFill = 'var(--bui-bg-surface-1)';
-                const defaultStroke = 'var(--bui-border)';
+                const defaultFill = 'var(--bui-bg-neutral-1)';
+                const defaultStroke = 'var(--bui-border-1)';
 
                 return (
                   <path
